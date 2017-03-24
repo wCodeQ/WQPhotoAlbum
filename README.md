@@ -3,7 +3,7 @@
 * 系统：iOS 8及以上
 * 依赖库：Photos.framework
 ## 接入说明
-```swfit
+```objective-c
 //直接跳转所有照片
 let photoAlbumVC = WQPhotoAlbumViewController()
 self.navigationController?.pushViewController(photoAlbumVC, animated: true)
