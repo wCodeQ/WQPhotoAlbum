@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AB072E011E70FA8C00A3D028 /* WQProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB072E001E70FA8C00A3D028 /* WQProgressView.swift */; };
+		AB3B721F1DF510E80083B0AC /* WQPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3B721E1DF510E80083B0AC /* WQPreviewCollectionViewCell.swift */; };
+		AB4AE26C1DED57D8002E58E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AE26B1DED57D8002E58E0 /* AppDelegate.swift */; };
+		AB4AE26E1DED57D8002E58E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AE26D1DED57D8002E58E0 /* ViewController.swift */; };
+		AB4AE2711DED57D8002E58E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4AE26F1DED57D8002E58E0 /* Main.storyboard */; };
+		AB4AE2731DED57D8002E58E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB4AE2721DED57D8002E58E0 /* Assets.xcassets */; };
+		AB4AE2761DED57D8002E58E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4AE2741DED57D8002E58E0 /* LaunchScreen.storyboard */; };
+		AB4AE27E1DED5867002E58E0 /* WQPhotoBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AE27D1DED5867002E58E0 /* WQPhotoBaseViewController.swift */; };
+		AB5E1B251DED722200708C2A /* icon_back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB5E1B231DED722200708C2A /* icon_back_white@2x.png */; };
+		AB5E1B261DED722200708C2A /* icon_back_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB5E1B241DED722200708C2A /* icon_back_white@3x.png */; };
+		AB9A18B31DF68767004EAF3A /* WQCachingImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9A18B21DF68767004EAF3A /* WQCachingImageManager.swift */; };
+		AB9A18B71DF6A844004EAF3A /* WQExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9A18B61DF6A844004EAF3A /* WQExtension.swift */; };
+		AB9A18BB1DF6AF1A004EAF3A /* WQPhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9A18BA1DF6AF1A004EAF3A /* WQPhotoData.swift */; };
+		AB9D6E5E1DEFF9A60004F7D5 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9D6E5D1DEFF9A60004F7D5 /* Photos.framework */; };
+		AB9D6E631DF004CC0004F7D5 /* WQPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9D6E621DF004CC0004F7D5 /* WQPhotoAlbumViewController.swift */; };
+		AB9D6E651DF005040004F7D5 /* WQPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9D6E641DF005040004F7D5 /* WQPhotoCollectionViewCell.swift */; };
+		AB9D6E681DF009100004F7D5 /* album_select_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9D6E661DF009100004F7D5 /* album_select_blue@2x.png */; };
+		AB9D6E691DF009100004F7D5 /* album_select_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9D6E671DF009100004F7D5 /* album_select_gray@2x.png */; };
+		AB9D6E6C1DF0091B0004F7D5 /* album_select_blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9D6E6A1DF0091B0004F7D5 /* album_select_blue@3x.png */; };
+		AB9D6E6D1DF0091B0004F7D5 /* album_select_gray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB9D6E6B1DF0091B0004F7D5 /* album_select_gray@3x.png */; };
+		AB9D6E891DF15E960004F7D5 /* WQPhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9D6E881DF15E960004F7D5 /* WQPhotoPreviewViewController.swift */; };
+		ABA219F71E83EC3A007F5032 /* album_photo_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA219F61E83EC3A007F5032 /* album_photo_delete@2x.png */; };
+		ABA219F91E83EC48007F5032 /* album_photo_delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA219F81E83EC48007F5032 /* album_photo_delete@3x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AB072E001E70FA8C00A3D028 /* WQProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQProgressView.swift; sourceTree = "<group>"; };
+		AB3B721E1DF510E80083B0AC /* WQPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		AB4AE2681DED57D8002E58E0 /* WQPhotoAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WQPhotoAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB4AE26B1DED57D8002E58E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AB4AE26D1DED57D8002E58E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB4AE2701DED57D8002E58E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AB4AE2721DED57D8002E58E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AB4AE2751DED57D8002E58E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AB4AE2771DED57D8002E58E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB4AE27D1DED5867002E58E0 /* WQPhotoBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoBaseViewController.swift; sourceTree = "<group>"; };
+		AB5E1B231DED722200708C2A /* icon_back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back_white@2x.png"; sourceTree = "<group>"; };
+		AB5E1B241DED722200708C2A /* icon_back_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back_white@3x.png"; sourceTree = "<group>"; };
+		AB9A18B21DF68767004EAF3A /* WQCachingImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQCachingImageManager.swift; sourceTree = "<group>"; };
+		AB9A18B61DF6A844004EAF3A /* WQExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQExtension.swift; sourceTree = "<group>"; };
+		AB9A18BA1DF6AF1A004EAF3A /* WQPhotoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoData.swift; sourceTree = "<group>"; };
+		AB9D6E5D1DEFF9A60004F7D5 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		AB9D6E621DF004CC0004F7D5 /* WQPhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		AB9D6E641DF005040004F7D5 /* WQPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		AB9D6E661DF009100004F7D5 /* album_select_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_select_blue@2x.png"; sourceTree = "<group>"; };
+		AB9D6E671DF009100004F7D5 /* album_select_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_select_gray@2x.png"; sourceTree = "<group>"; };
+		AB9D6E6A1DF0091B0004F7D5 /* album_select_blue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_select_blue@3x.png"; sourceTree = "<group>"; };
+		AB9D6E6B1DF0091B0004F7D5 /* album_select_gray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_select_gray@3x.png"; sourceTree = "<group>"; };
+		AB9D6E881DF15E960004F7D5 /* WQPhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewViewController.swift; sourceTree = "<group>"; };
+		ABA219F61E83EC3A007F5032 /* album_photo_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_photo_delete@2x.png"; sourceTree = "<group>"; };
+		ABA219F81E83EC48007F5032 /* album_photo_delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_photo_delete@3x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB4AE2651DED57D8002E58E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB9D6E5E1DEFF9A60004F7D5 /* Photos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AB4AE25F1DED57D8002E58E0 = {
+			isa = PBXGroup;
+			children = (
+				AB4AE26A1DED57D8002E58E0 /* WQPhotoAlbum */,
+				AB4AE2691DED57D8002E58E0 /* Products */,
+				AB9D6E5C1DEFF9A60004F7D5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AB4AE2691DED57D8002E58E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB4AE2681DED57D8002E58E0 /* WQPhotoAlbum.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB4AE26A1DED57D8002E58E0 /* WQPhotoAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				AB9A18B21DF68767004EAF3A /* WQCachingImageManager.swift */,
+				AB9D6E611DF004B10004F7D5 /* ViewController */,
+				AB9D6E5F1DF004850004F7D5 /* Model */,
+				AB9D6E601DF004940004F7D5 /* View */,
+				AB4AE26B1DED57D8002E58E0 /* AppDelegate.swift */,
+				AB4AE26D1DED57D8002E58E0 /* ViewController.swift */,
+				AB4AE27D1DED5867002E58E0 /* WQPhotoBaseViewController.swift */,
+				AB9A18B61DF6A844004EAF3A /* WQExtension.swift */,
+				AB4AE26F1DED57D8002E58E0 /* Main.storyboard */,
+				AB5E1B221DED722200708C2A /* resource */,
+				AB4AE2721DED57D8002E58E0 /* Assets.xcassets */,
+				AB4AE2741DED57D8002E58E0 /* LaunchScreen.storyboard */,
+				AB4AE2771DED57D8002E58E0 /* Info.plist */,
+			);
+			path = WQPhotoAlbum;
+			sourceTree = "<group>";
+		};
+		AB5E1B221DED722200708C2A /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				ABA219F81E83EC48007F5032 /* album_photo_delete@3x.png */,
+				ABA219F61E83EC3A007F5032 /* album_photo_delete@2x.png */,
+				AB9D6E6A1DF0091B0004F7D5 /* album_select_blue@3x.png */,
+				AB9D6E6B1DF0091B0004F7D5 /* album_select_gray@3x.png */,
+				AB9D6E661DF009100004F7D5 /* album_select_blue@2x.png */,
+				AB9D6E671DF009100004F7D5 /* album_select_gray@2x.png */,
+				AB5E1B231DED722200708C2A /* icon_back_white@2x.png */,
+				AB5E1B241DED722200708C2A /* icon_back_white@3x.png */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		AB9D6E5C1DEFF9A60004F7D5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB9D6E5D1DEFF9A60004F7D5 /* Photos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AB9D6E5F1DF004850004F7D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB9A18BA1DF6AF1A004EAF3A /* WQPhotoData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB9D6E601DF004940004F7D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB9D6E641DF005040004F7D5 /* WQPhotoCollectionViewCell.swift */,
+				AB3B721E1DF510E80083B0AC /* WQPreviewCollectionViewCell.swift */,
+				AB072E001E70FA8C00A3D028 /* WQProgressView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB9D6E611DF004B10004F7D5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AB9D6E621DF004CC0004F7D5 /* WQPhotoAlbumViewController.swift */,
+				AB9D6E881DF15E960004F7D5 /* WQPhotoPreviewViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AB4AE2671DED57D8002E58E0 /* WQPhotoAlbum */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB4AE27A1DED57D8002E58E0 /* Build configuration list for PBXNativeTarget "WQPhotoAlbum" */;
+			buildPhases = (
+				AB4AE2641DED57D8002E58E0 /* Sources */,
+				AB4AE2651DED57D8002E58E0 /* Frameworks */,
+				AB4AE2661DED57D8002E58E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WQPhotoAlbum;
+			productName = WQPhotoAlbum;
+			productReference = AB4AE2681DED57D8002E58E0 /* WQPhotoAlbum.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB4AE2601DED57D8002E58E0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = qian.com;
+				TargetAttributes = {
+					AB4AE2671DED57D8002E58E0 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = ZGPWV67SM9;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AB4AE2631DED57D8002E58E0 /* Build configuration list for PBXProject "WQPhotoAlbum" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AB4AE25F1DED57D8002E58E0;
+			productRefGroup = AB4AE2691DED57D8002E58E0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AB4AE2671DED57D8002E58E0 /* WQPhotoAlbum */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB4AE2661DED57D8002E58E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB9D6E681DF009100004F7D5 /* album_select_blue@2x.png in Resources */,
+				AB9D6E691DF009100004F7D5 /* album_select_gray@2x.png in Resources */,
+				AB5E1B261DED722200708C2A /* icon_back_white@3x.png in Resources */,
+				AB5E1B251DED722200708C2A /* icon_back_white@2x.png in Resources */,
+				AB9D6E6D1DF0091B0004F7D5 /* album_select_gray@3x.png in Resources */,
+				ABA219F91E83EC48007F5032 /* album_photo_delete@3x.png in Resources */,
+				AB4AE2761DED57D8002E58E0 /* LaunchScreen.storyboard in Resources */,
+				AB9D6E6C1DF0091B0004F7D5 /* album_select_blue@3x.png in Resources */,
+				AB4AE2731DED57D8002E58E0 /* Assets.xcassets in Resources */,
+				AB4AE2711DED57D8002E58E0 /* Main.storyboard in Resources */,
+				ABA219F71E83EC3A007F5032 /* album_photo_delete@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB4AE2641DED57D8002E58E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB3B721F1DF510E80083B0AC /* WQPreviewCollectionViewCell.swift in Sources */,
+				AB9A18B71DF6A844004EAF3A /* WQExtension.swift in Sources */,
+				AB9A18BB1DF6AF1A004EAF3A /* WQPhotoData.swift in Sources */,
+				AB9A18B31DF68767004EAF3A /* WQCachingImageManager.swift in Sources */,
+				AB4AE26E1DED57D8002E58E0 /* ViewController.swift in Sources */,
+				AB072E011E70FA8C00A3D028 /* WQProgressView.swift in Sources */,
+				AB9D6E651DF005040004F7D5 /* WQPhotoCollectionViewCell.swift in Sources */,
+				AB4AE26C1DED57D8002E58E0 /* AppDelegate.swift in Sources */,
+				AB9D6E631DF004CC0004F7D5 /* WQPhotoAlbumViewController.swift in Sources */,
+				AB9D6E891DF15E960004F7D5 /* WQPhotoPreviewViewController.swift in Sources */,
+				AB4AE27E1DED5867002E58E0 /* WQPhotoBaseViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AB4AE26F1DED57D8002E58E0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB4AE2701DED57D8002E58E0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AB4AE2741DED57D8002E58E0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB4AE2751DED57D8002E58E0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AB4AE2781DED57D8002E58E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AB4AE2791DED57D8002E58E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AB4AE27B1DED57D8002E58E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZGPWV67SM9;
+				INFOPLIST_FILE = WQPhotoAlbum/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = qian.com.WQPhotoAlbum;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AB4AE27C1DED57D8002E58E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZGPWV67SM9;
+				INFOPLIST_FILE = WQPhotoAlbum/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = qian.com.WQPhotoAlbum;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB4AE2631DED57D8002E58E0 /* Build configuration list for PBXProject "WQPhotoAlbum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB4AE2781DED57D8002E58E0 /* Debug */,
+				AB4AE2791DED57D8002E58E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB4AE27A1DED57D8002E58E0 /* Build configuration list for PBXNativeTarget "WQPhotoAlbum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB4AE27B1DED57D8002E58E0 /* Debug */,
+				AB4AE27C1DED57D8002E58E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AB4AE2601DED57D8002E58E0 /* Project object */;
+}
