@@ -6,15 +6,15 @@ provides-nominal:
 provides-member:
 - ["C12WQPhotoAlbum14ViewController", ""]
 provides-dynamic-lookup:
-- "buttonClick"
 - "viewDidLoad"
+- "buttonClick"
 - "didReceiveMemoryWarning"
 depends-top-level:
-- "UIViewController"
+- "UIButton"
+- !private "BooleanLiteralType"
 - "ViewController"
 - !private "WQPhotoAlbumViewController"
-- !private "BooleanLiteralType"
-- "UIButton"
+- "UIViewController"
 depends-member:
 - !private ["Ps9AnyObject", "WQPhotoAlbumViewController"]
 - ["Ps9AnyObject", "buttonClick"]
@@ -24,7 +24,6 @@ depends-member:
 - !private ["Ps9AnyObject", "pushViewController"]
 - ["Ps9AnyObject", "viewDidLoad"]
 - ["Ps9AnyObject", ""]
-- !private ["C12WQPhotoAlbum18BaseViewController", "init"]
 - ["Sb", "deinit"]
 - !private ["Ps7CVarArg", "WQPhotoAlbumViewController"]
 - ["Ps7CVarArg", "buttonClick"]
@@ -182,6 +181,7 @@ depends-member:
 - ["C12WQPhotoAlbum14ViewController", "viewDidLoad"]
 - ["C12WQPhotoAlbum26WQPhotoAlbumViewController", "deinit"]
 - !private ["C12WQPhotoAlbum26WQPhotoAlbumViewController", "init"]
+- !private ["C12WQPhotoAlbum25WQPhotoBaseViewController", "init"]
 - !private ["Ps9_Hashable", "WQPhotoAlbumViewController"]
 - ["Ps9_Hashable", "buttonClick"]
 - ["Ps9_Hashable", "didReceiveMemoryWarning"]
@@ -192,7 +192,6 @@ depends-member:
 - ["Ps9_Hashable", ""]
 depends-nominal:
 - "Ps9AnyObject"
-- !private "C12WQPhotoAlbum18BaseViewController"
 - "Sb"
 - "Ps7CVarArg"
 - "Ps28CustomDebugStringConvertible"
@@ -220,6 +219,7 @@ depends-nominal:
 - "CSo16UIViewController"
 - "C12WQPhotoAlbum14ViewController"
 - "C12WQPhotoAlbum26WQPhotoAlbumViewController"
+- !private "C12WQPhotoAlbum25WQPhotoBaseViewController"
 - "Ps9_Hashable"
 depends-dynamic-lookup:
 depends-external:

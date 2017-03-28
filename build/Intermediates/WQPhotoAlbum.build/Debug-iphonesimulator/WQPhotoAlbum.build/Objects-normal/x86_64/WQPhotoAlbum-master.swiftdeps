@@ -1,15 +1,15 @@
 version: "Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)"
 options: "82ba576bf6d3eec05bc68440ff43eeba"
-build_time: [542387807, 567250000]
+build_time: [543663825, 579988000]
 inputs:
-  "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/View/WQPreviewCollectionViewCell.swift": [534421149, 0]
+  "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/View/WQPreviewCollectionViewCell.swift": [543593575, 0]
   "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/WQExtension.swift": [534326697, 0]
   "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/Model/WQPhotoData.swift": [534329580, 0]
-  "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/WQCachingImageManager.swift": [542375731, 0]
+  "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/WQCachingImageManager.swift": [543657488, 0]
   "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/ViewController.swift": [533893850, 0]
   "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/View/WQProgressView.swift": [542371645, 0]
   "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/View/WQPhotoCollectionViewCell.swift": [542342367, 0]
   "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/AppDelegate.swift": [533894164, 0]
-  "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/ViewController/WQPhotoAlbumViewController.swift": [534330501, 0]
-  "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/ViewController/WQPhotoPreviewViewController.swift": [542371718, 0]
-  "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/BaseViewController.swift": [534327844, 0]
+  "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/ViewController/WQPhotoAlbumViewController.swift": [543663825, 0]
+  "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/ViewController/WQPhotoPreviewViewController.swift": [543663791, 0]
+  "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbum/WQPhotoAlbum/WQPhotoBaseViewController.swift": [543657583, 0]

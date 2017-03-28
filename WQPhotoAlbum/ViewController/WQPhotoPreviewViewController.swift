@@ -159,15 +159,22 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
                 self.completedButtonShow()
             }
         } else {
-            self.isDeleteCell = true
-            self.previewPhotoArray.remove(at: self.currentIndex)
-            self.photoCollectionView.deleteItems(at: [IndexPath(item: self.currentIndex, section: 0)])
-            if self.deleteClicked != nil {
-                self.deleteClicked!(self.previewPhotoArray)
-            }
-            if self.previewPhotoArray.count == 0 {
-                self.navigationController!.popViewController(animated: true)
-            }
+            let deleteAlert = UIAlertController(title: nil, message: "确定要删除此照片吗？", preferredStyle: .alert)
+            let cancleAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            deleteAlert.addAction(cancleAction)
+            let deleteAction = UIAlertAction(title: "删除", style: .default, handler: { [unowned self] (alertAction) in
+                self.isDeleteCell = true
+                self.previewPhotoArray.remove(at: self.currentIndex)
+                self.photoCollectionView.deleteItems(at: [IndexPath(item: self.currentIndex, section: 0)])
+                if self.deleteClicked != nil {
+                    self.deleteClicked!(self.previewPhotoArray)
+                }
+                if self.previewPhotoArray.count == 0 {
+                    self.navigationController!.popViewController(animated: true)
+                }
+            })
+            deleteAlert.addAction(deleteAction)
+            self.navigationController?.present(deleteAlert, animated: true, completion: nil)
         }
     }
     

@@ -6,26 +6,26 @@ provides-nominal:
 provides-member:
 - ["C12WQPhotoAlbum11AppDelegate", ""]
 provides-dynamic-lookup:
-- "applicationDidBecomeActive"
-- "window"
 - "applicationWillResignActive"
 - "applicationWillTerminate"
-- "applicationDidEnterBackground"
-- "application"
+- "applicationDidBecomeActive"
+- "window"
 - "applicationWillEnterForeground"
+- "application"
+- "applicationDidEnterBackground"
 depends-top-level:
-- "UIApplication"
-- !private "BooleanLiteralType"
-- "AppDelegate"
-- !private "StringLiteralType"
-- "UIWindow"
-- "UIApplicationDelegate"
 - "UIApplicationLaunchOptionsKey"
-- "Bool"
-- !private "UIStoryboard"
-- "AssignmentPrecedence"
-- !private "UINavigationController"
+- !private "BooleanLiteralType"
 - "UIResponder"
+- !private "UINavigationController"
+- !private "StringLiteralType"
+- "UIApplicationDelegate"
+- "Bool"
+- "AssignmentPrecedence"
+- !private "UIStoryboard"
+- "UIWindow"
+- "UIApplication"
+- "AppDelegate"
 depends-member:
 - !private ["Ps9AnyObject", "UINavigationController"]
 - !private ["Ps9AnyObject", "UIStoryboard"]

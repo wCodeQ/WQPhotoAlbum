@@ -6,11 +6,11 @@ provides-member:
 - ["CSo13DispatchQueue", "once"]
 provides-dynamic-lookup:
 depends-top-level:
-- "Void"
+- "String"
+- !private "objc_sync_exit"
 - "DispatchQueue"
 - !private "objc_sync_enter"
-- !private "objc_sync_exit"
-- "String"
+- "Void"
 depends-member:
 - ["Ps9AnyObject", "String"]
 - ["Ps9AnyObject", "_onceTracker"]

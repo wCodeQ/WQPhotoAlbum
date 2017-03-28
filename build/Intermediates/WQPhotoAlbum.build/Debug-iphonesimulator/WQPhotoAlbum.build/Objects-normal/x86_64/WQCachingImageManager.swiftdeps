@@ -6,42 +6,39 @@ provides-nominal:
 provides-member:
 - ["C12WQPhotoAlbum21WQCachingImageManager", ""]
 provides-dynamic-lookup:
-- "requestOriginalImage"
 - "default"
 - "requestThumbnailImage"
+- "requestOriginalImage"
 depends-top-level:
+- "PHImageRequestID"
+- !private "*"
+- !private "UIScreen"
+- !private "CGFloat"
+- "TernaryPrecedence"
+- "CastingPrecedence"
 - "Photos"
-- "UIImage"
+- "PHAsset"
+- "AssignmentPrecedence"
+- !private ">"
+- !private "PHImageRequestOptions"
+- "PHCachingImageManager"
+- !private "Dictionary"
 - "WQCachingImageManager"
+- "UIImage"
+- !private "WQScreenWidth"
+- !private "CGSize"
+- !private "/"
+- "Void"
+- "AnyHashable"
 - !private "-"
 - !private "BooleanLiteralType"
-- !private "*"
-- !private "CGSize"
-- "AnyHashable"
-- !private "AppWidth"
-- !private "StringLiteralType"
-- !private "print"
-- !private "UnicodeScalarType"
-- "PHImageRequestID"
-- "AssignmentPrecedence"
-- !private "/"
-- !private "Dictionary"
-- "CastingPrecedence"
-- "PHAsset"
-- !private "PHImageRequestOptions"
-- !private ">"
-- "TernaryPrecedence"
-- !private "UIScreen"
-- "PHCachingImageManager"
-- "Void"
-- !private "CGFloat"
 depends-member:
 - !private ["Ps16AbsoluteValuable", "init"]
-- !private ["Ps9AnyObject", "AppWidth"]
 - !private ["Ps9AnyObject", "CGFloat"]
 - !private ["Ps9AnyObject", "CGSize"]
 - !private ["Ps9AnyObject", "PHImageRequestOptions"]
 - !private ["Ps9AnyObject", "UIScreen"]
+- !private ["Ps9AnyObject", "WQScreenWidth"]
 - !private ["Ps9AnyObject", "bounds"]
 - ["Ps9AnyObject", "default"]
 - !private ["Ps9AnyObject", "init"]
@@ -49,7 +46,6 @@ depends-member:
 - !private ["Ps9AnyObject", "main"]
 - !private ["Ps9AnyObject", "pixelHeight"]
 - !private ["Ps9AnyObject", "pixelWidth"]
-- !private ["Ps9AnyObject", "print"]
 - !private ["Ps9AnyObject", "progressHandler"]
 - !private ["Ps9AnyObject", "requestImage"]
 - ["Ps9AnyObject", "requestOriginalImage"]
@@ -68,11 +64,11 @@ depends-member:
 - !private ["VSC6CGSize", "height"]
 - !private ["VSC6CGSize", "init"]
 - !private ["VSC6CGSize", "width"]
-- !private ["Ps7CVarArg", "AppWidth"]
 - !private ["Ps7CVarArg", "CGFloat"]
 - !private ["Ps7CVarArg", "CGSize"]
 - !private ["Ps7CVarArg", "PHImageRequestOptions"]
 - !private ["Ps7CVarArg", "UIScreen"]
+- !private ["Ps7CVarArg", "WQScreenWidth"]
 - !private ["Ps7CVarArg", "bounds"]
 - ["Ps7CVarArg", "default"]
 - !private ["Ps7CVarArg", "init"]
@@ -80,20 +76,18 @@ depends-member:
 - !private ["Ps7CVarArg", "main"]
 - !private ["Ps7CVarArg", "pixelHeight"]
 - !private ["Ps7CVarArg", "pixelWidth"]
-- !private ["Ps7CVarArg", "print"]
 - !private ["Ps7CVarArg", "progressHandler"]
 - !private ["Ps7CVarArg", "requestImage"]
 - ["Ps7CVarArg", "requestOriginalImage"]
 - ["Ps7CVarArg", "requestThumbnailImage"]
 - !private ["Ps7CVarArg", "scale"]
 - ["Ps7CVarArg", ""]
-- !private ["Vs9Character", "deinit"]
 - !private ["Ps10Comparable", "init"]
-- !private ["Ps28CustomDebugStringConvertible", "AppWidth"]
 - !private ["Ps28CustomDebugStringConvertible", "CGFloat"]
 - !private ["Ps28CustomDebugStringConvertible", "CGSize"]
 - !private ["Ps28CustomDebugStringConvertible", "PHImageRequestOptions"]
 - !private ["Ps28CustomDebugStringConvertible", "UIScreen"]
+- !private ["Ps28CustomDebugStringConvertible", "WQScreenWidth"]
 - !private ["Ps28CustomDebugStringConvertible", "bounds"]
 - ["Ps28CustomDebugStringConvertible", "default"]
 - !private ["Ps28CustomDebugStringConvertible", "height"]
@@ -102,7 +96,6 @@ depends-member:
 - !private ["Ps28CustomDebugStringConvertible", "main"]
 - !private ["Ps28CustomDebugStringConvertible", "pixelHeight"]
 - !private ["Ps28CustomDebugStringConvertible", "pixelWidth"]
-- !private ["Ps28CustomDebugStringConvertible", "print"]
 - !private ["Ps28CustomDebugStringConvertible", "progressHandler"]
 - !private ["Ps28CustomDebugStringConvertible", "requestImage"]
 - ["Ps28CustomDebugStringConvertible", "requestOriginalImage"]
@@ -118,11 +111,11 @@ depends-member:
 - !private ["Ps17CustomReflectable", "height"]
 - !private ["Ps17CustomReflectable", "init"]
 - !private ["Ps17CustomReflectable", "width"]
-- !private ["Ps23CustomStringConvertible", "AppWidth"]
 - !private ["Ps23CustomStringConvertible", "CGFloat"]
 - !private ["Ps23CustomStringConvertible", "CGSize"]
 - !private ["Ps23CustomStringConvertible", "PHImageRequestOptions"]
 - !private ["Ps23CustomStringConvertible", "UIScreen"]
+- !private ["Ps23CustomStringConvertible", "WQScreenWidth"]
 - !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
 - !private ["Ps23CustomStringConvertible", "bounds"]
 - ["Ps23CustomStringConvertible", "default"]
@@ -131,7 +124,6 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "main"]
 - !private ["Ps23CustomStringConvertible", "pixelHeight"]
 - !private ["Ps23CustomStringConvertible", "pixelWidth"]
-- !private ["Ps23CustomStringConvertible", "print"]
 - !private ["Ps23CustomStringConvertible", "progressHandler"]
 - !private ["Ps23CustomStringConvertible", "requestImage"]
 - ["Ps23CustomStringConvertible", "requestOriginalImage"]
@@ -139,11 +131,11 @@ depends-member:
 - !private ["Ps23CustomStringConvertible", "scale"]
 - ["Ps23CustomStringConvertible", ""]
 - !private ["Sd", "deinit"]
-- !private ["Ps9Equatable", "AppWidth"]
 - !private ["Ps9Equatable", "CGFloat"]
 - !private ["Ps9Equatable", "CGSize"]
 - !private ["Ps9Equatable", "PHImageRequestOptions"]
 - !private ["Ps9Equatable", "UIScreen"]
+- !private ["Ps9Equatable", "WQScreenWidth"]
 - !private ["Ps9Equatable", "_getBuiltinLogicValue"]
 - !private ["Ps9Equatable", "aspectFit"]
 - !private ["Ps9Equatable", "bounds"]
@@ -154,7 +146,6 @@ depends-member:
 - !private ["Ps9Equatable", "main"]
 - !private ["Ps9Equatable", "pixelHeight"]
 - !private ["Ps9Equatable", "pixelWidth"]
-- !private ["Ps9Equatable", "print"]
 - !private ["Ps9Equatable", "progressHandler"]
 - !private ["Ps9Equatable", "requestImage"]
 - ["Ps9Equatable", "requestOriginalImage"]
@@ -163,19 +154,14 @@ depends-member:
 - !private ["Ps9Equatable", "width"]
 - ["Ps9Equatable", ""]
 - !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
-- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
 - !private ["Ps25ExpressibleByFloatLiteral", "init"]
 - !private ["Ps27ExpressibleByIntegerLiteral", "init"]
-- !private ["Ps32ExpressibleByStringInterpolation", "init"]
-- !private ["Ps26ExpressibleByStringLiteral", "init"]
-- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
-- !private ["Sf", "deinit"]
 - !private ["Ps13FloatingPoint", "init"]
-- !private ["Ps8Hashable", "AppWidth"]
 - !private ["Ps8Hashable", "CGFloat"]
 - !private ["Ps8Hashable", "CGSize"]
 - !private ["Ps8Hashable", "PHImageRequestOptions"]
 - !private ["Ps8Hashable", "UIScreen"]
+- !private ["Ps8Hashable", "WQScreenWidth"]
 - !private ["Ps8Hashable", "_getBuiltinLogicValue"]
 - !private ["Ps8Hashable", "aspectFit"]
 - !private ["Ps8Hashable", "bounds"]
@@ -185,7 +171,6 @@ depends-member:
 - !private ["Ps8Hashable", "main"]
 - !private ["Ps8Hashable", "pixelHeight"]
 - !private ["Ps8Hashable", "pixelWidth"]
-- !private ["Ps8Hashable", "print"]
 - !private ["Ps8Hashable", "progressHandler"]
 - !private ["Ps8Hashable", "requestImage"]
 - ["Ps8Hashable", "requestOriginalImage"]
@@ -193,22 +178,14 @@ depends-member:
 - !private ["Ps8Hashable", "scale"]
 - ["Ps8Hashable", ""]
 - ["Si", "deinit"]
-- !private ["Vs5Int16", "deinit"]
 - ["Vs5Int32", "deinit"]
-- !private ["Vs5Int64", "deinit"]
-- !private ["Vs4Int8", "deinit"]
 - !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
-- !private ["Ps25LosslessStringConvertible", "init"]
-- !private ["Ps10MirrorPath", "init"]
-- !private ["PSo8NSCoding", "init"]
 - !private ["PSo9NSCopying", "init"]
 - !private ["PSo9NSCopying", "isNetworkAccessAllowed"]
 - !private ["PSo9NSCopying", "pixelHeight"]
 - !private ["PSo9NSCopying", "pixelWidth"]
 - !private ["PSo9NSCopying", "progressHandler"]
-- !private ["PSo16NSMutableCopying", "init"]
 - ["CSo8NSObject", "AnyHashable"]
-- !private ["CSo8NSObject", "AppWidth"]
 - !private ["CSo8NSObject", "CGFloat"]
 - !private ["CSo8NSObject", "CGSize"]
 - !private ["CSo8NSObject", "Dictionary"]
@@ -220,6 +197,7 @@ depends-member:
 - !private ["CSo8NSObject", "UIScreen"]
 - ["CSo8NSObject", "Void"]
 - ["CSo8NSObject", "WQCachingImageManager"]
+- !private ["CSo8NSObject", "WQScreenWidth"]
 - !private ["CSo8NSObject", "bounds"]
 - ["CSo8NSObject", "default"]
 - ["CSo8NSObject", "init"]
@@ -227,17 +205,16 @@ depends-member:
 - !private ["CSo8NSObject", "main"]
 - !private ["CSo8NSObject", "pixelHeight"]
 - !private ["CSo8NSObject", "pixelWidth"]
-- !private ["CSo8NSObject", "print"]
 - !private ["CSo8NSObject", "progressHandler"]
 - !private ["CSo8NSObject", "requestImage"]
 - ["CSo8NSObject", "requestOriginalImage"]
 - ["CSo8NSObject", "requestThumbnailImage"]
 - !private ["CSo8NSObject", "scale"]
-- !private ["PSo16NSObjectProtocol", "AppWidth"]
 - !private ["PSo16NSObjectProtocol", "CGFloat"]
 - !private ["PSo16NSObjectProtocol", "CGSize"]
 - !private ["PSo16NSObjectProtocol", "PHImageRequestOptions"]
 - !private ["PSo16NSObjectProtocol", "UIScreen"]
+- !private ["PSo16NSObjectProtocol", "WQScreenWidth"]
 - !private ["PSo16NSObjectProtocol", "bounds"]
 - ["PSo16NSObjectProtocol", "default"]
 - !private ["PSo16NSObjectProtocol", "init"]
@@ -245,21 +222,17 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "main"]
 - !private ["PSo16NSObjectProtocol", "pixelHeight"]
 - !private ["PSo16NSObjectProtocol", "pixelWidth"]
-- !private ["PSo16NSObjectProtocol", "print"]
 - !private ["PSo16NSObjectProtocol", "progressHandler"]
 - !private ["PSo16NSObjectProtocol", "requestImage"]
 - ["PSo16NSObjectProtocol", "requestOriginalImage"]
 - ["PSo16NSObjectProtocol", "requestThumbnailImage"]
 - !private ["PSo16NSObjectProtocol", "scale"]
 - ["PSo16NSObjectProtocol", ""]
-- !private ["PSo14NSSecureCoding", "init"]
-- !private ["CSo8NSString", "init"]
 - ["Sq", "deinit"]
 - ["CSo7PHAsset", "deinit"]
 - !private ["CSo7PHAsset", "pixelHeight"]
 - !private ["CSo7PHAsset", "pixelWidth"]
 - ["CSo21PHCachingImageManager", "AnyHashable"]
-- !private ["CSo21PHCachingImageManager", "AppWidth"]
 - !private ["CSo21PHCachingImageManager", "CGFloat"]
 - !private ["CSo21PHCachingImageManager", "CGSize"]
 - !private ["CSo21PHCachingImageManager", "Dictionary"]
@@ -271,10 +244,10 @@ depends-member:
 - !private ["CSo21PHCachingImageManager", "UIScreen"]
 - ["CSo21PHCachingImageManager", "Void"]
 - ["CSo21PHCachingImageManager", "WQCachingImageManager"]
+- !private ["CSo21PHCachingImageManager", "WQScreenWidth"]
 - ["CSo21PHCachingImageManager", "default"]
 - ["CSo21PHCachingImageManager", "deinit"]
 - ["CSo21PHCachingImageManager", "init"]
-- !private ["CSo21PHCachingImageManager", "print"]
 - !private ["CSo21PHCachingImageManager", "requestImage"]
 - ["CSo21PHCachingImageManager", "requestOriginalImage"]
 - ["CSo21PHCachingImageManager", "requestThumbnailImage"]
@@ -282,7 +255,6 @@ depends-member:
 - !private ["OSC18PHImageContentMode", "aspectFit"]
 - ["OSC18PHImageContentMode", "deinit"]
 - ["CSo14PHImageManager", "AnyHashable"]
-- !private ["CSo14PHImageManager", "AppWidth"]
 - !private ["CSo14PHImageManager", "CGFloat"]
 - !private ["CSo14PHImageManager", "CGSize"]
 - !private ["CSo14PHImageManager", "Dictionary"]
@@ -294,10 +266,10 @@ depends-member:
 - !private ["CSo14PHImageManager", "UIScreen"]
 - ["CSo14PHImageManager", "Void"]
 - ["CSo14PHImageManager", "WQCachingImageManager"]
+- !private ["CSo14PHImageManager", "WQScreenWidth"]
 - ["CSo14PHImageManager", "default"]
 - ["CSo14PHImageManager", "deinit"]
 - ["CSo14PHImageManager", "init"]
-- !private ["CSo14PHImageManager", "print"]
 - !private ["CSo14PHImageManager", "requestImage"]
 - ["CSo14PHImageManager", "requestOriginalImage"]
 - ["CSo14PHImageManager", "requestThumbnailImage"]
@@ -310,10 +282,6 @@ depends-member:
 - !private ["Ps16RawRepresentable", "aspectFit"]
 - !private ["Ps12SignedNumber", "init"]
 - !private ["Ps10Strideable", "init"]
-- ["SS", "deinit"]
-- !private ["SS", "init"]
-- !private ["Ps16TextOutputStream", "init"]
-- !private ["Ps20TextOutputStreamable", "init"]
 - !private ["CSo8UIScreen", "bounds"]
 - ["CSo8UIScreen", "deinit"]
 - !private ["CSo8UIScreen", "main"]
@@ -321,14 +289,7 @@ depends-member:
 - !private ["PSo18UITraitEnvironment", "bounds"]
 - !private ["PSo18UITraitEnvironment", "main"]
 - !private ["PSo18UITraitEnvironment", "scale"]
-- !private ["Su", "deinit"]
-- !private ["Vs6UInt16", "deinit"]
-- !private ["Vs6UInt32", "deinit"]
-- !private ["Vs6UInt64", "deinit"]
-- !private ["Vs5UInt8", "deinit"]
-- !private ["Sc", "deinit"]
 - ["C12WQPhotoAlbum21WQCachingImageManager", "AnyHashable"]
-- !private ["C12WQPhotoAlbum21WQCachingImageManager", "AppWidth"]
 - !private ["C12WQPhotoAlbum21WQCachingImageManager", "CGFloat"]
 - !private ["C12WQPhotoAlbum21WQCachingImageManager", "CGSize"]
 - !private ["C12WQPhotoAlbum21WQCachingImageManager", "Dictionary"]
@@ -340,26 +301,21 @@ depends-member:
 - !private ["C12WQPhotoAlbum21WQCachingImageManager", "UIScreen"]
 - ["C12WQPhotoAlbum21WQCachingImageManager", "Void"]
 - ["C12WQPhotoAlbum21WQCachingImageManager", "WQCachingImageManager"]
+- !private ["C12WQPhotoAlbum21WQCachingImageManager", "WQScreenWidth"]
 - ["C12WQPhotoAlbum21WQCachingImageManager", "default"]
 - ["C12WQPhotoAlbum21WQCachingImageManager", "deinit"]
 - ["C12WQPhotoAlbum21WQCachingImageManager", "init"]
-- !private ["C12WQPhotoAlbum21WQCachingImageManager", "print"]
 - !private ["C12WQPhotoAlbum21WQCachingImageManager", "requestImage"]
 - ["C12WQPhotoAlbum21WQCachingImageManager", "requestOriginalImage"]
 - ["C12WQPhotoAlbum21WQCachingImageManager", "requestThumbnailImage"]
 - !private ["Ps15_CVarArgAligned", "init"]
 - !private ["Ps22_CVarArgPassedAsDouble", "init"]
 - !private ["Ps35_ExpressibleByBuiltinBooleanLiteral", "_getBuiltinLogicValue"]
-- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
-- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
-- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
-- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
-- !private ["Ps35_HasCustomAnyHashableRepresentation", "init"]
-- !private ["Ps9_Hashable", "AppWidth"]
 - !private ["Ps9_Hashable", "CGFloat"]
 - !private ["Ps9_Hashable", "CGSize"]
 - !private ["Ps9_Hashable", "PHImageRequestOptions"]
 - !private ["Ps9_Hashable", "UIScreen"]
+- !private ["Ps9_Hashable", "WQScreenWidth"]
 - !private ["Ps9_Hashable", "_getBuiltinLogicValue"]
 - !private ["Ps9_Hashable", "aspectFit"]
 - !private ["Ps9_Hashable", "bounds"]
@@ -369,7 +325,6 @@ depends-member:
 - !private ["Ps9_Hashable", "main"]
 - !private ["Ps9_Hashable", "pixelHeight"]
 - !private ["Ps9_Hashable", "pixelWidth"]
-- !private ["Ps9_Hashable", "print"]
 - !private ["Ps9_Hashable", "progressHandler"]
 - !private ["Ps9_Hashable", "requestImage"]
 - ["Ps9_Hashable", "requestOriginalImage"]
@@ -390,7 +345,6 @@ depends-nominal:
 - "VSC6CGRect"
 - "VSC6CGSize"
 - "Ps7CVarArg"
-- !private "Vs9Character"
 - !private "Ps10Comparable"
 - "Ps28CustomDebugStringConvertible"
 - !private "Ps29CustomPlaygroundQuickLookable"
@@ -399,29 +353,16 @@ depends-nominal:
 - !private "Sd"
 - "Ps9Equatable"
 - !private "Ps27ExpressibleByBooleanLiteral"
-- !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
 - !private "Ps25ExpressibleByFloatLiteral"
 - !private "Ps27ExpressibleByIntegerLiteral"
-- !private "Ps32ExpressibleByStringInterpolation"
-- !private "Ps26ExpressibleByStringLiteral"
-- !private "Ps33ExpressibleByUnicodeScalarLiteral"
-- !private "Sf"
 - !private "Ps13FloatingPoint"
 - "Ps8Hashable"
 - "Si"
-- !private "Vs5Int16"
 - "Vs5Int32"
-- !private "Vs5Int64"
-- !private "Vs4Int8"
 - !private "Ps25LosslessStringConvertible"
-- !private "Ps10MirrorPath"
-- !private "PSo8NSCoding"
 - !private "PSo9NSCopying"
-- !private "PSo16NSMutableCopying"
 - "CSo8NSObject"
 - "PSo16NSObjectProtocol"
-- !private "PSo14NSSecureCoding"
-- !private "CSo8NSString"
 - "Sq"
 - "CSo7PHAsset"
 - "CSo21PHCachingImageManager"
@@ -432,26 +373,12 @@ depends-nominal:
 - !private "Ps16RawRepresentable"
 - !private "Ps12SignedNumber"
 - !private "Ps10Strideable"
-- "SS"
-- !private "Ps16TextOutputStream"
-- !private "Ps20TextOutputStreamable"
 - "CSo8UIScreen"
 - !private "PSo18UITraitEnvironment"
-- !private "Su"
-- !private "Vs6UInt16"
-- !private "Vs6UInt32"
-- !private "Vs6UInt64"
-- !private "Vs5UInt8"
-- !private "Sc"
 - "C12WQPhotoAlbum21WQCachingImageManager"
 - !private "Ps15_CVarArgAligned"
 - !private "Ps22_CVarArgPassedAsDouble"
 - !private "Ps35_ExpressibleByBuiltinBooleanLiteral"
-- !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
-- !private "Ps34_ExpressibleByBuiltinStringLiteral"
-- !private "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
-- !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
-- !private "Ps35_HasCustomAnyHashableRepresentation"
 - "Ps9_Hashable"
 - !private "Ps21_ObjectiveCBridgeable"
 - !private "Ps11_Strideable"

@@ -7,16 +7,16 @@ provides-member:
 - ["C12WQPhotoAlbum11WQPhotoData", ""]
 provides-dynamic-lookup:
 - "divideArray"
-- "seletedAssetArray"
 - "assetArray"
 - "dataChanged"
+- "seletedAssetArray"
 depends-top-level:
-- "NSObject"
-- "BooleanLiteralType"
-- "PHAsset"
-- "WQPhotoData"
 - "Bool"
+- "BooleanLiteralType"
+- "NSObject"
+- "PHAsset"
 - "AssignmentPrecedence"
+- "WQPhotoData"
 depends-member:
 - ["Ps9AnyObject", "Bool"]
 - ["Ps9AnyObject", "PHAsset"]

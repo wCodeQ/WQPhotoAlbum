@@ -6,33 +6,34 @@ provides-nominal:
 provides-member:
 - ["C12WQPhotoAlbum27WQPreviewCollectionViewCell", ""]
 provides-dynamic-lookup:
-- "photoImage"
 - "defaultScale"
 - "photoImageView"
-- "doubleTap"
-- "viewForZooming"
 - "scrollViewDidEndZooming"
+- "viewForZooming"
+- "doubleTap"
+- "photoImage"
 depends-top-level:
-- !private "StringLiteralType"
-- "NSCoder"
 - "UIView"
+- "UIImageView"
 - !private "BooleanLiteralType"
-- !private "fatalError"
-- "UICollectionViewCell"
-- !private "<"
-- "UIScrollViewDelegate"
+- !private "-="
+- !private "StringLiteralType"
 - !private "/"
+- !private "-"
+- "UIScrollViewDelegate"
+- "UICollectionViewCell"
+- "AssignmentPrecedence"
+- !private "+"
 - "UIScrollView"
-- "CGRect"
-- !private ">="
+- "NSCoder"
 - "WQPreviewCollectionViewCell"
 - "UITapGestureRecognizer"
-- !private "-"
-- "UIImageView"
-- "AssignmentPrecedence"
-- "CGFloat"
 - "UIImage"
-- !private "+"
+- "CGRect"
+- !private "<"
+- "CGFloat"
+- !private ">="
+- !private "fatalError"
 depends-member:
 - !private ["Ps9AnyObject", "CGRect"]
 - !private ["Ps9AnyObject", "UIImageView"]
@@ -133,6 +134,8 @@ depends-member:
 - !private ["VSC7CGPoint", "y"]
 - ["VSC6CGRect", "deinit"]
 - !private ["VSC6CGRect", "init"]
+- !private ["VSC6CGRect", "size"]
+- !private ["VSC6CGSize", "width"]
 - !private ["Ps7CVarArg", "CGRect"]
 - !private ["Ps7CVarArg", "UIImageView"]
 - !private ["Ps7CVarArg", "UIScrollView"]
@@ -224,18 +227,24 @@ depends-member:
 - ["Ps28CustomDebugStringConvertible", "scrollViewWillBeginZooming"]
 - ["Ps28CustomDebugStringConvertible", "scrollViewWillEndDragging"]
 - !private ["Ps28CustomDebugStringConvertible", "setZoomScale"]
+- !private ["Ps28CustomDebugStringConvertible", "size"]
 - ["Ps28CustomDebugStringConvertible", "viewForZooming"]
 - ["Ps28CustomDebugStringConvertible", "viewForZoomingInScrollView"]
+- !private ["Ps28CustomDebugStringConvertible", "width"]
 - !private ["Ps28CustomDebugStringConvertible", "x"]
 - !private ["Ps28CustomDebugStringConvertible", "y"]
 - !private ["Ps28CustomDebugStringConvertible", "zoom"]
 - ["Ps28CustomDebugStringConvertible", ""]
 - !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
 - !private ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "size"]
+- !private ["Ps29CustomPlaygroundQuickLookable", "width"]
 - !private ["Ps29CustomPlaygroundQuickLookable", "x"]
 - !private ["Ps29CustomPlaygroundQuickLookable", "y"]
 - !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
 - !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps17CustomReflectable", "size"]
+- !private ["Ps17CustomReflectable", "width"]
 - !private ["Ps17CustomReflectable", "x"]
 - !private ["Ps17CustomReflectable", "y"]
 - !private ["Ps23CustomStringConvertible", "CGRect"]
@@ -331,8 +340,10 @@ depends-member:
 - ["Ps9Equatable", "scrollViewWillBeginZooming"]
 - ["Ps9Equatable", "scrollViewWillEndDragging"]
 - !private ["Ps9Equatable", "setZoomScale"]
+- !private ["Ps9Equatable", "size"]
 - ["Ps9Equatable", "viewForZooming"]
 - ["Ps9Equatable", "viewForZoomingInScrollView"]
+- !private ["Ps9Equatable", "width"]
 - !private ["Ps9Equatable", "x"]
 - !private ["Ps9Equatable", "y"]
 - !private ["Ps9Equatable", "zoom"]
@@ -1309,6 +1320,8 @@ depends-member:
 - ["Ps9_Hashable", ""]
 - !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
 - !private ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "size"]
+- !private ["Ps21_ObjectiveCBridgeable", "width"]
 - !private ["Ps21_ObjectiveCBridgeable", "x"]
 - !private ["Ps21_ObjectiveCBridgeable", "y"]
 depends-nominal:
@@ -1318,6 +1331,7 @@ depends-nominal:
 - "V12CoreGraphics7CGFloat"
 - "VSC7CGPoint"
 - "VSC6CGRect"
+- !private "VSC6CGSize"
 - "Ps7CVarArg"
 - !private "Ps10Comparable"
 - "Ps28CustomDebugStringConvertible"
@@ -1396,4 +1410,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreMedia.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreAudio.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator/x86_64/CoreLocation.swiftmodule"
-interface-hash: "fc3bb61a4179849c217c4f99031fadf5"
+interface-hash: "567a526b6af95b5c35db6e7a7642da13"

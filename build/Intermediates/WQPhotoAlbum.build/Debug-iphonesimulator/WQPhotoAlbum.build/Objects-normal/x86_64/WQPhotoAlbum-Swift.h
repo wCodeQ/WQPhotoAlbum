@@ -139,24 +139,9 @@ SWIFT_CLASS("_TtC12WQPhotoAlbum11AppDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIView;
 @class UIButton;
 @class NSBundle;
 @class NSCoder;
-
-SWIFT_CLASS("_TtC12WQPhotoAlbum18BaseViewController")
-@interface BaseViewController : UIViewController
-@property (nonatomic, readonly, strong) UIView * _Nonnull naviView;
-@property (nonatomic, readonly, strong) UIButton * _Nonnull rightImageButton;
-- (void)viewDidLoad;
-- (void)setNavTitleWithTitle:(NSString * _Nonnull)title;
-- (void)setRightImageButtonWithNormalImageName:(NSString * _Nonnull)normalImageName selectedImageName:(NSString * _Nullable)selectedImageName isSelected:(BOOL)isSelected;
-- (void)backClickWithButton:(UIButton * _Nonnull)button;
-- (void)rightButtonClickWithButton:(UIButton * _Nonnull)button;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@end
-
 
 SWIFT_CLASS("_TtC12WQPhotoAlbum14ViewController")
 @interface ViewController : UIViewController
@@ -193,12 +178,29 @@ SWIFT_CLASS("_TtC12WQPhotoAlbum21WQCachingImageManager")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UILabel;
+
+SWIFT_CLASS("_TtC12WQPhotoAlbum25WQPhotoBaseViewController")
+@interface WQPhotoBaseViewController : UIViewController
+@property (nonatomic, readonly, strong) UIView * _Nonnull naviView;
+@property (nonatomic, readonly, strong) UIButton * _Nonnull rightImageButton;
+@property (nonatomic, strong) UILabel * _Nonnull titleLabel;
+- (void)viewDidLoad;
+- (void)setNavTitleWithTitle:(NSString * _Nonnull)title;
+- (void)setRightImageButtonWithNormalImageName:(NSString * _Nonnull)normalImageName selectedImageName:(NSString * _Nullable)selectedImageName isSelected:(BOOL)isSelected;
+- (void)backClickWithButton:(UIButton * _Nonnull)button;
+- (void)rightButtonClickWithButton:(UIButton * _Nonnull)button;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class PHChange;
 @class UICollectionView;
 @class UICollectionViewCell;
 
 SWIFT_CLASS("_TtC12WQPhotoAlbum26WQPhotoAlbumViewController")
-@interface WQPhotoAlbumViewController : BaseViewController <UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, PHPhotoLibraryChangeObserver>
+@interface WQPhotoAlbumViewController : WQPhotoBaseViewController <UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, PHPhotoLibraryChangeObserver>
+@property (nonatomic, copy) void (^ _Nullable sureClicked)(NSArray<PHAsset *> * _Nonnull);
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
@@ -209,6 +211,7 @@ SWIFT_CLASS("_TtC12WQPhotoAlbum26WQPhotoAlbumViewController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 @class UIImageView;
 
@@ -238,10 +241,13 @@ SWIFT_CLASS("_TtC12WQPhotoAlbum11WQPhotoData")
 @class UIScrollView;
 
 SWIFT_CLASS("_TtC12WQPhotoAlbum28WQPhotoPreviewViewController")
-@interface WQPhotoPreviewViewController : BaseViewController <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface WQPhotoPreviewViewController : WQPhotoBaseViewController <UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic) NSInteger currentIndex;
 @property (nonatomic, strong) WQPhotoData * _Nonnull photoData;
-@property (nonatomic, copy) NSArray<PHAsset *> * _Nonnull previewPhotoData;
+@property (nonatomic, copy) NSArray<PHAsset *> * _Nonnull previewPhotoArray;
+@property (nonatomic, copy) void (^ _Nullable sureClicked)(NSArray<PHAsset *> * _Nonnull);
+@property (nonatomic) BOOL isSelectPhoto;
+@property (nonatomic, copy) void (^ _Nullable deleteClicked)(NSArray<PHAsset *> * _Nonnull);
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)didMoveToParentViewController:(UIViewController * _Nullable)parent;
@@ -251,6 +257,7 @@ SWIFT_CLASS("_TtC12WQPhotoAlbum28WQPhotoPreviewViewController")
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView willDisplayCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView didEndDisplayingCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (void)scrollViewWillBeginDragging:(UIScrollView * _Nonnull)scrollView;
+- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
 - (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
