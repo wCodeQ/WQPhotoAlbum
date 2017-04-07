@@ -30,7 +30,7 @@ class WQProgressView: UIView {
             progressView!.backgroundColor = UIColor.clear
             parentView.addSubview(progressView!)
             let radius = progressView!.frame.width/2
-            let path = UIBezierPath(arcCenter: CGPoint(x: radius, y: radius), radius: CGFloat(radius), startAngle: 0, endAngle: CGFloat(M_PI*2), clockwise: true)
+            let path = UIBezierPath(arcCenter: CGPoint(x: radius, y: radius), radius: CGFloat(radius), startAngle: 0, endAngle: CGFloat(Double.pi*2), clockwise: true)
             let circlePathLayer = CAShapeLayer()
             circlePathLayer.lineWidth = 2
             circlePathLayer.fillColor = UIColor.clear.cgColor
@@ -53,8 +53,8 @@ class WQProgressView: UIView {
         // 2.拼接路径
         let radius = self.frame.width/2
         let center = CGPoint(x: radius, y: radius)
-        let startA = -M_PI_2
-        let endA = -M_PI_2+progress*M_PI*2
+        let startA = -Double.pi/2
+        let endA = -Double.pi/2+progress*Double.pi*2
         let path = UIBezierPath(arcCenter: center, radius: CGFloat(radius/2), startAngle: CGFloat(startA), endAngle: CGFloat(endA), clockwise: true)
         ctx!.setLineWidth(CGFloat(radius));
         // 3.把路径添加到上下文

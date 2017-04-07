@@ -8,15 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, WQPhotoAlbumProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     @IBAction func buttonClick(_ sender: UIButton) {
-        let photoAlbumVC = WQPhotoAlbumViewController()
-        self.navigationController?.pushViewController(photoAlbumVC, animated: true)
+        let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self)
+        self.navigationController?.present(photoAlbumVC, animated: true, completion: nil)
+    }
+    
+    func photoAlbum(selectPhotos: [UIImage]) {
+        print(selectPhotos.count)
     }
 
     override func didReceiveMemoryWarning() {

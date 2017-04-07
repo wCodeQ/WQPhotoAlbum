@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AB072E011E70FA8C00A3D028 /* WQProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB072E001E70FA8C00A3D028 /* WQProgressView.swift */; };
+		AB0F68231E9720C1009E3C0A /* WQPhotoAlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F68221E9720C1009E3C0A /* WQPhotoAlbumListViewController.swift */; };
+		AB0F68271E976E96009E3C0A /* WQPhotoNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F68261E976E96009E3C0A /* WQPhotoNavigationViewController.swift */; };
 		AB3B721F1DF510E80083B0AC /* WQPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3B721E1DF510E80083B0AC /* WQPreviewCollectionViewCell.swift */; };
 		AB4AE26C1DED57D8002E58E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AE26B1DED57D8002E58E0 /* AppDelegate.swift */; };
 		AB4AE26E1DED57D8002E58E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AE26D1DED57D8002E58E0 /* ViewController.swift */; };
@@ -34,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		AB072E001E70FA8C00A3D028 /* WQProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQProgressView.swift; sourceTree = "<group>"; };
+		AB0F68221E9720C1009E3C0A /* WQPhotoAlbumListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoAlbumListViewController.swift; sourceTree = "<group>"; };
+		AB0F68261E976E96009E3C0A /* WQPhotoNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoNavigationViewController.swift; sourceTree = "<group>"; };
 		AB3B721E1DF510E80083B0AC /* WQPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB4AE2681DED57D8002E58E0 /* WQPhotoAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WQPhotoAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB4AE26B1DED57D8002E58E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,8 +157,10 @@
 		AB9D6E611DF004B10004F7D5 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AB0F68221E9720C1009E3C0A /* WQPhotoAlbumListViewController.swift */,
 				AB9D6E621DF004CC0004F7D5 /* WQPhotoAlbumViewController.swift */,
 				AB9D6E881DF15E960004F7D5 /* WQPhotoPreviewViewController.swift */,
+				AB0F68261E976E96009E3C0A /* WQPhotoNavigationViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -243,10 +249,12 @@
 				AB3B721F1DF510E80083B0AC /* WQPreviewCollectionViewCell.swift in Sources */,
 				AB9A18B71DF6A844004EAF3A /* WQExtension.swift in Sources */,
 				AB9A18BB1DF6AF1A004EAF3A /* WQPhotoData.swift in Sources */,
+				AB0F68231E9720C1009E3C0A /* WQPhotoAlbumListViewController.swift in Sources */,
 				AB9A18B31DF68767004EAF3A /* WQCachingImageManager.swift in Sources */,
 				AB4AE26E1DED57D8002E58E0 /* ViewController.swift in Sources */,
 				AB072E011E70FA8C00A3D028 /* WQProgressView.swift in Sources */,
 				AB9D6E651DF005040004F7D5 /* WQPhotoCollectionViewCell.swift in Sources */,
+				AB0F68271E976E96009E3C0A /* WQPhotoNavigationViewController.swift in Sources */,
 				AB4AE26C1DED57D8002E58E0 /* AppDelegate.swift in Sources */,
 				AB9D6E631DF004CC0004F7D5 /* WQPhotoAlbumViewController.swift in Sources */,
 				AB9D6E891DF15E960004F7D5 /* WQPhotoPreviewViewController.swift in Sources */,

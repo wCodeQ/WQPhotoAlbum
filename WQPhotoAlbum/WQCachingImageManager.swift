@@ -25,7 +25,7 @@ class WQCachingImageManager: PHCachingImageManager {
         }
     }
     
-    open func requestOriginalImage(for asset: PHAsset, progressHandler: Photos.PHAssetImageProgressHandler?, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) -> PHImageRequestID {
+    open func requestPreviewImage(for asset: PHAsset, progressHandler: Photos.PHAssetImageProgressHandler?, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) -> PHImageRequestID {
         let option = PHImageRequestOptions()
 //        option.version = .current
 //        option.resizeMode = .exact
@@ -39,11 +39,11 @@ class WQCachingImageManager: PHCachingImageManager {
         let minWidth = targetSize.width > CGFloat(asset.pixelWidth) ? CGFloat(asset.pixelWidth) : targetSize.width
         let minHeight = targetSize.height > CGFloat(asset.pixelHeight) ? CGFloat(asset.pixelHeight) : targetSize.height
         if minWidth > minHeight {
-            targetSize.width = minHeight*pixelScale
-            targetSize.height = minHeight
+            targetSize.width = minHeight*pixelScale*2
+            targetSize.height = minHeight*2
         } else {
-            targetSize.width = minWidth
-            targetSize.height = minWidth/pixelScale
+            targetSize.width = minWidth*2
+            targetSize.height = minWidth/pixelScale*2
         }
         return self.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: option) { (image: UIImage?, dictionry: Dictionary?) in
             resultHandler(image, dictionry)

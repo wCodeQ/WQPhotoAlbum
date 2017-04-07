@@ -17,7 +17,7 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
     //  浏览数据源
     var previewPhotoArray = [PHAsset]()
     //  完成闭包
-    var sureClicked: ((_ selectPhotos: [PHAsset]) -> Void)?
+    var sureClicked: ((_ view: UIView, _ selectPhotos: [PHAsset]) -> Void)?
     //  是否支持选择
     var isSelectPhoto = false
     //  删除闭包
@@ -87,6 +87,7 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
     
     //  MARK:- private method
     private func initNavigation() {
+        self.setBackNav()
         if self.isSelectPhoto {
             if let index = self.photoData.assetArray.index(of: self.previewPhotoArray[currentIndex]) {
                 self.setRightImageButton(normalImageName: "album_select_gray.png", selectedImageName: "album_select_blue.png", isSelected: self.photoData.divideArray[index])
@@ -99,10 +100,10 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
     }
     
     private func setBottomView() {
-        self.bottomView.backgroundColor = UIColor(white: 0.1, alpha: 1)
+//        self.bottomView.backgroundColor = UIColor(white: 0.1, alpha: 0.9)
         self.bottomView.sureClicked = { [unowned self] in
             if self.sureClicked != nil {
-                self.sureClicked!(self.photoData.seletedAssetArray)
+                self.sureClicked!(self.view, self.photoData.seletedAssetArray)
             }
         }
         self.view.addSubview(self.bottomView)
@@ -119,9 +120,9 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
         }
     }
     
-    private func setOriginalImage(cell: WQPreviewCollectionViewCell, asset: PHAsset) {
+    private func setPreviewImage(cell: WQPreviewCollectionViewCell, asset: PHAsset) {
         let pixelScale = CGFloat(asset.pixelWidth)/CGFloat(asset.pixelHeight)
-        let id = WQCachingImageManager.default().requestOriginalImage(for: asset, progressHandler: { (progress: Double, error: Error?, pointer: UnsafeMutablePointer<ObjCBool>, dictionry: Dictionary?) in
+        let id = WQCachingImageManager.default().requestPreviewImage(for: asset, progressHandler: { (progress: Double, error: Error?, pointer: UnsafeMutablePointer<ObjCBool>, dictionry: Dictionary?) in
             //下载进度
             DispatchQueue.main.async {
                 let progressView = WQProgressView.showWQProgressView(in: cell.contentView, frame: CGRect(x: cell.frame.width-20-12, y: cell.frame.midY+(cell.frame.width/pixelScale-20)/2-12, width: 20, height: 20))
@@ -199,14 +200,14 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
         self.willDisplayCellAndIndex = (cell as! WQPreviewCollectionViewCell, indexPath)
         if indexPath.row == self.currentIndex && self.isFirstCell {
             self.isFirstCell = false
-            self.setOriginalImage(cell: cell as! WQPreviewCollectionViewCell, asset: asset)
+            self.setPreviewImage(cell: cell as! WQPreviewCollectionViewCell, asset: asset)
         } else if self.isDeleteCell {
             self.isDeleteCell = false
             if self.currentIndex > self.previewPhotoArray.count-1 {
                 self.currentIndex = self.previewPhotoArray.count-1
             }
             let asset = self.previewPhotoArray[self.currentIndex]
-            self.setOriginalImage(cell: cell as! WQPreviewCollectionViewCell, asset: asset)
+            self.setPreviewImage(cell: cell as! WQPreviewCollectionViewCell, asset: asset)
             self.setNavTitle(title: "\(self.currentIndex+1)/\(self.previewPhotoArray.count)")
         }
     }
@@ -228,7 +229,7 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
         }
         if self.isSelectPhoto {
             if let index = self.photoData.assetArray.index(of: self.previewPhotoArray[self.currentIndex]) {
-                self.rightImageButton.isSelected = self.photoData.divideArray[index]
+                self.rightButton.isSelected = self.photoData.divideArray[index]
             }
         } else {
             self.setNavTitle(title: "\(self.currentIndex+1)/\(self.previewPhotoArray.count)")
@@ -239,7 +240,7 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
         if scrollView.contentOffset.x != self.scrollDistance {
             let currentCell = self.photoCollectionView.cellForItem(at: IndexPath(item: self.currentIndex, section: 0)) as! WQPreviewCollectionViewCell
             let asset = self.previewPhotoArray[self.currentIndex]
-            self.setOriginalImage(cell: currentCell, asset: asset)
+            self.setPreviewImage(cell: currentCell, asset: asset)
         }
     }
 

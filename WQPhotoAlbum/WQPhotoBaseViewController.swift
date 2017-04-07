@@ -14,11 +14,19 @@ public let WQScreenHeight: CGFloat = UIScreen.main.bounds.size.height
 class WQPhotoBaseViewController: UIViewController {
 
     let naviView = UIView(frame: CGRect(x: 0, y: 0, width: WQScreenWidth, height: 64))
-    let rightImageButton = UIButton()
+    lazy var rightButton: UIButton = {
+        let rightButton = UIButton()
+        rightButton.frame = CGRect(x: WQScreenWidth-50, y: 20, width: 50, height: 44)
+        rightButton.backgroundColor = UIColor.clear
+        rightButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        rightButton.addTarget(self, action: #selector(rightButtonClick(button:)), for: .touchUpInside)
+        return rightButton
+    }()
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel(frame: CGRect(x: WQScreenWidth/2-50, y: 20, width: 100, height: 44))
         titleLabel.textAlignment = .center
         titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 17)
         return titleLabel
     }()
     
@@ -33,6 +41,9 @@ class WQPhotoBaseViewController: UIViewController {
     fileprivate func setNavigationView() {
         naviView.backgroundColor = UIColor(white: 0.1, alpha: 0.9)
         self.view.addSubview(naviView)
+    }
+    
+    func setBackNav() {
         let backImage = UIImage(named: "icon_back_white.png")
         let backButton = UIButton(frame: CGRect(x: 0, y: 20, width: 50, height: 44))
         backButton.backgroundColor = UIColor.clear
@@ -47,18 +58,21 @@ class WQPhotoBaseViewController: UIViewController {
             naviView.addSubview(titleLabel)
         }
     }
+    
+    func setRightTextButton(text: String, color: UIColor) {
+        rightButton.setTitle(text, for: .normal)
+        rightButton.setTitleColor(color, for: .normal)
+        naviView.addSubview(rightButton)
+    }
 
     func setRightImageButton(normalImageName: String, selectedImageName: String?, isSelected: Bool) {
-        rightImageButton.frame = CGRect(x: WQScreenWidth-50, y: 20, width: 50, height: 44)
-        rightImageButton.backgroundColor = UIColor.clear
-        rightImageButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 13, bottom: 10, right: 13)
-        rightImageButton.setImage(UIImage.init(named: normalImageName), for: .normal)
+        rightButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 13, bottom: 10, right: 13)
+        rightButton.setImage(UIImage.init(named: normalImageName), for: .normal)
         if selectedImageName != nil {
-            rightImageButton.setImage(UIImage.init(named: selectedImageName!), for: .selected)
+            rightButton.setImage(UIImage.init(named: selectedImageName!), for: .selected)
         }
-        rightImageButton.addTarget(self, action: #selector(rightButtonClick(button:)), for: .touchUpInside)
-        rightImageButton.isSelected = isSelected
-        naviView.addSubview(rightImageButton)
+        rightButton.isSelected = isSelected
+        naviView.addSubview(rightButton)
     }
     
     func backClick(button: UIButton) {

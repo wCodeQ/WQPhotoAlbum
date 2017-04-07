@@ -11,8 +11,11 @@ import Photos
 
 class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChangeObserver, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    // 完成闭包
-    var sureClicked: ((_ selectPhotos: [PHAsset]) -> Void)?
+    var assetsFetchResult: PHFetchResult<PHAsset>?
+    
+//     完成闭包
+//    var sureClicked: ((_ selectPhotos: [PHAsset]) -> Void)?
+    weak var photoAlbumDelegate: WQPhotoAlbumProtocol?
     
     private let cellIdentifier = "PhotoCollectionCell"
     private lazy var photoCollectionView: UICollectionView = {
@@ -37,6 +40,20 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     }()
     
     private var bottomView = WQAlbumBottomView()
+    private lazy var loadingView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 64, width: WQScreenWidth, height: WQScreenHeight-64))
+        view.backgroundColor = UIColor.clear
+        let loadingBackView = UIView(frame: CGRect(x: view.frame.width/2-30, y: view.frame.height/2-32-30, width: 60, height: 60))
+        loadingBackView.backgroundColor = UIColor(white: 0, alpha: 0.8)
+        loadingBackView.layer.cornerRadius = 10;
+        loadingBackView.clipsToBounds = true
+        view.addSubview(loadingBackView)
+        let loading = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        loading.center = CGPoint(x: 30, y: 30)
+        loading.startAnimating()
+        loadingBackView.addSubview(loading)
+        return view
+    }()
     
     //  数据源
     private var photoData = WQPhotoData()
@@ -75,6 +92,8 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     //  MARK:- private method
     private func initNavigation() {
         self.setNavTitle(title: "所有图片")
+        self.setBackNav()
+        self.setRightTextButton(text: "取消", color: UIColor.white)
         self.view.bringSubview(toFront: self.naviView)
     }
     
@@ -83,10 +102,7 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
             self.gotoPreviewViewController(previewArray: self.photoData.seletedAssetArray, currentIndex: 0)
         }
         self.bottomView.sureClicked = { [unowned self] in
-            if self.sureClicked != nil {
-                self.sureClicked!(self.photoData.seletedAssetArray)
-            }
-            self.navigationController!.popViewController(animated: true)
+            self.selectSuccess(fromeView: self.view, selectAssetArray: self.photoData.seletedAssetArray)
         }
         self.view.addSubview(self.bottomView)
     }
@@ -99,10 +115,47 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
         //  对内部元素排序，按照时间由远到近排序
         allOptions.sortDescriptors = [NSSortDescriptor.init(key: "creationDate", ascending: false)]
         //  将元素集合拆解开，此时 allResults 内部是一个个的PHAsset单元
-        let fetchAssets = PHAsset.fetchAssets(with: allOptions)
+        let fetchAssets = assetsFetchResult ?? PHAsset.fetchAssets(with: allOptions)
         self.photoData.assetArray = fetchAssets.objects(at: IndexSet.init(integersIn: 0..<fetchAssets.count))
         
         self.photoData.divideArray = Array(repeating: false, count: self.photoData.assetArray.count)
+    }
+    
+    private func selectSuccess(fromeView: UIView, selectAssetArray: [PHAsset]) {
+        self.showLoadingView(inView: fromeView)
+        var selectPhotos = [UIImage]()
+        let group = DispatchGroup()
+        for asset in selectAssetArray {
+            group.enter()
+            _ = WQCachingImageManager.default().requestPreviewImage(for: asset, progressHandler: nil, resultHandler: { (image: UIImage?, dictionry: Dictionary?) in
+                var downloadFinined = true
+                if let cancelled = dictionry![PHImageCancelledKey] as? Bool {
+                    downloadFinined = !cancelled
+                }
+                if downloadFinined, let error = dictionry![PHImageErrorKey] as? Bool {
+                    downloadFinined = !error
+                }
+                if downloadFinined, let resultIsDegraded = dictionry![PHImageResultIsDegradedKey] as? Bool {
+                    downloadFinined = !resultIsDegraded
+                }
+                if downloadFinined, let photoImage = image {
+                    selectPhotos.append(photoImage)
+                    group.leave()
+                }
+            })
+        }
+        group.notify(queue: DispatchQueue.main, execute: {
+            self.hideLoadingView()
+            if self.photoAlbumDelegate != nil {
+                if self.photoAlbumDelegate!.responds(to: #selector(WQPhotoAlbumProtocol.photoAlbum(selectPhotoAssets:))){
+                    self.photoAlbumDelegate?.photoAlbum!(selectPhotoAssets: selectAssetArray)
+                }
+                if self.photoAlbumDelegate!.responds(to: #selector(WQPhotoAlbumProtocol.photoAlbum(selectPhotos:))) {
+                    self.photoAlbumDelegate?.photoAlbum!(selectPhotos: selectPhotos)
+                }
+            }
+            self.dismiss(animated: true, completion: nil)
+        })
     }
     
     private func completedButtonShow() {
@@ -115,13 +168,27 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
         }
     }
     
+    private func showLoadingView(inView: UIView) {
+        inView.addSubview(loadingView)
+    }
+    private func hideLoadingView() {
+        loadingView.removeFromSuperview()
+    }
+    
     // MARK:- handle events
     private func gotoPreviewViewController(previewArray: [PHAsset], currentIndex: Int) {
         let previewVC = WQPhotoPreviewViewController()
         previewVC.currentIndex = currentIndex
         previewVC.photoData = self.photoData
         previewVC.previewPhotoArray = previewArray
+        previewVC.sureClicked = { [unowned self] (view: UIView, selectPhotos: [PHAsset]) in
+            self.selectSuccess(fromeView: view, selectAssetArray: selectPhotos)
+        }
         self.navigationController?.pushViewController(previewVC, animated: true)
+    }
+    
+    override func rightButtonClick(button: UIButton) {
+        self.navigationController?.dismiss(animated: true)
     }
     
     // MARK:- delegate
@@ -166,9 +233,10 @@ class WQAlbumBottomView: UIView {
         let button = UIButton(frame: CGRect(x: 12, y: 12, width: 60, height: 20))
         button.backgroundColor = UIColor.clear
         button.contentHorizontalAlignment = .left
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         button.setTitle("预览", for: .normal)
-        button.setTitleColor(UIColor.lightGray, for: .disabled)
-        button.setTitleColor(UIColor.green, for: .normal)
+        button.setTitleColor(UIColor(white: 0.5, alpha: 1), for: .disabled)
+        button.setTitleColor(UIColor.white, for: .normal)
         button.addTarget(self, action: #selector(previewClick(button:)), for: .touchUpInside)
         button.isEnabled = false
         return button
@@ -178,9 +246,10 @@ class WQAlbumBottomView: UIView {
         let button = UIButton(frame: CGRect(x: WQScreenWidth-12-80, y: 12, width: 80, height: 20))
         button.backgroundColor = UIColor.clear
         button.contentHorizontalAlignment = .right
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         button.setTitle("完成", for: .normal)
-        button.setTitleColor(UIColor.lightGray, for: .disabled)
-        button.setTitleColor(UIColor.green, for: .normal)
+        button.setTitleColor(UIColor(white: 0.5, alpha: 1), for: .disabled)
+        button.setTitleColor(UIColor.white, for: .normal)
         button.addTarget(self, action: #selector(sureClick(button:)), for: .touchUpInside)
         button.isEnabled = false
         return button
@@ -229,15 +298,15 @@ class WQAlbumBottomView: UIView {
     
     init(frame: CGRect, type: WQAlbumBottomViewType) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor(white: 0.9, alpha: 1)
+        self.backgroundColor = UIColor(white: 0.1, alpha: 0.9)
         if type == .normal {
             self.addSubview(self.previewButton)
         }
         
         self.addSubview(self.sureButton)
-        let cutLine = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 0.5))
-        cutLine.backgroundColor = UIColor.black
-        self.addSubview(cutLine)
+//        let cutLine = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 0.5))
+//        cutLine.backgroundColor = UIColor(red: 223/255.0, green: 223/255.0, blue: 223/255.0, alpha: 1)
+//        self.addSubview(cutLine)
     }
     
     required init?(coder aDecoder: NSCoder) {

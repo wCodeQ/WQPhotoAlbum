@@ -1,5 +1,5 @@
 //
-//  WQPhotoAlbumLisetViewController.swift
+//  WQPhotoAlbumListViewController.swift
 //  WQPhotoAlbum
 //
 //  Created by 王前 on 2017/4/7.
@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class WQPhotoAlbumLisetViewController: WQPhotoBaseViewController, UITableViewDelegate, UITableViewDataSource {
+class WQPhotoAlbumListViewController: WQPhotoBaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     private var albumsList: [(assetCollection:PHAssetCollection, assetsFetchResult: PHFetchResult<PHAsset>)] = []
     private lazy var albumTableView: UITableView = {
@@ -17,8 +17,13 @@ class WQPhotoAlbumLisetViewController: WQPhotoBaseViewController, UITableViewDel
         tableView.backgroundColor = UIColor.white
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = .none
         return tableView
     }()
+    
+    deinit {
+        print("=====================\(self)未内存泄露")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +60,10 @@ class WQPhotoAlbumLisetViewController: WQPhotoBaseViewController, UITableViewDel
         albumTableView.reloadData()
     }
     
+    override func rightButtonClick(button: UIButton) {
+        self.navigationController?.dismiss(animated: true)
+    }
+    
     //  MARK: - delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return albumsList.count
@@ -83,6 +92,7 @@ class WQPhotoAlbumLisetViewController: WQPhotoBaseViewController, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let assetsFetchResult = albumsList[indexPath.row].assetsFetchResult
         let photoAlbumViewController = WQPhotoAlbumViewController()
         photoAlbumViewController.assetsFetchResult = assetsFetchResult
@@ -105,6 +115,12 @@ private class WQAlbumCell: UITableViewCell {
         }
     }
     
+    private lazy var cutLine: UIView = {
+        let line = UIView()
+        line.backgroundColor = UIColor(white: 223/255.0, alpha: 1)
+        return line
+    }()
+    
     private let albumImageView = UIImageView()
     private let albumNameLabel = UILabel()
     
@@ -116,6 +132,7 @@ private class WQAlbumCell: UITableViewCell {
         albumImageView.clipsToBounds = true
         self.contentView.addSubview(albumImageView)
         self.contentView.addSubview(albumNameLabel)
+        self.contentView.addSubview(cutLine)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -127,5 +144,6 @@ private class WQAlbumCell: UITableViewCell {
         let size = self.frame.size
         albumImageView.frame = CGRect(x: 0, y: 0, width: size.height, height: size.height)
         albumNameLabel.frame = CGRect(x: size.height+10, y: 0, width: 100, height: size.height)
+        cutLine.frame = CGRect(x: 0, y: size.height-0.5, width: size.width, height: 0.5)
     }
 }

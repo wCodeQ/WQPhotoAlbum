@@ -7,29 +7,44 @@
 //
 
 import UIKit
+import Photos
 
-class WQPhotoNavigationViewController: UIViewController {
+@objc public protocol WQPhotoAlbumProtocol: NSObjectProtocol {
+    @available(iOS 8.0, *)
+    @objc optional func photoAlbum(selectPhotoAssets: [PHAsset]) -> Void
+    
+    @available(iOS 8.0, *)
+    @objc optional func photoAlbum(selectPhotos: [UIImage]) -> Void
+}
 
+class WQPhotoNavigationViewController: UINavigationController {
+    
+    convenience init() {
+        self.init(photoAlbumDelegate: nil)
+    }
+    
+    init(photoAlbumDelegate: WQPhotoAlbumProtocol?) {
+        super.init(rootViewController: WQPhotoAlbumListViewController())
+        self.isNavigationBarHidden = true
+        let photoAlbumVC = WQPhotoAlbumViewController()
+        photoAlbumVC.photoAlbumDelegate = photoAlbumDelegate
+        self.pushViewController(photoAlbumVC, animated: false)
+    }
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        print("=====================\(self)未内存泄露")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
