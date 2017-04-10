@@ -13,7 +13,7 @@ class WQProgressView: UIView {
     var progress: Double = 0 {
         didSet {
             self.setNeedsDisplay()
-            if progress == 1 {
+            if progress >= 1 {
                 self.removeFromSuperview()
             }
         }

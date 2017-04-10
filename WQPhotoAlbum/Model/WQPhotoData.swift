@@ -23,3 +23,9 @@ class WQPhotoData: NSObject {
     //  已选图片数组，数据类型是 PHAsset
     var seletedAssetArray = [PHAsset]()
 }
+
+public struct WQPhotoModel {
+    var thumbnailImage: UIImage?
+    var originImage: UIImage?
+    var imageURL: String?
+}

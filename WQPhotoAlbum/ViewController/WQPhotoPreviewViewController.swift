@@ -18,17 +18,12 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
     var previewPhotoArray = [PHAsset]()
     //  完成闭包
     var sureClicked: ((_ view: UIView, _ selectPhotos: [PHAsset]) -> Void)?
-    //  是否支持选择
-    var isSelectPhoto = false
-    //  删除闭包
-    var deleteClicked: ((_ selectPhotos: [PHAsset]) -> Void)?
     
     private let cellIdentifier = "PreviewCollectionCell"
     
     private var scrollDistance: CGFloat = 0
     private var willDisplayCellAndIndex: (cell: WQPreviewCollectionViewCell, indexPath: IndexPath)?
     private var isFirstCell = true
-    private var isDeleteCell = false
     
     private var requestIDs = [PHImageRequestID]()
 
@@ -61,15 +56,10 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if self.photoData.assetArray.count != 0 {
-            self.isSelectPhoto = true
-        }
         self.view.backgroundColor = UIColor.black
         self.view.addSubview(self.photoCollectionView)
         self.initNavigation()
-        if self.isSelectPhoto {
-            self.setBottomView()
-        }
+        self.setBottomView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,13 +78,8 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
     //  MARK:- private method
     private func initNavigation() {
         self.setBackNav()
-        if self.isSelectPhoto {
-            if let index = self.photoData.assetArray.index(of: self.previewPhotoArray[currentIndex]) {
-                self.setRightImageButton(normalImageName: "album_select_gray.png", selectedImageName: "album_select_blue.png", isSelected: self.photoData.divideArray[index])
-            }
-        } else {
-            self.setNavTitle(title: "\(self.currentIndex+1)/\(self.previewPhotoArray.count)")
-            self.setRightImageButton(normalImageName: "album_photo_delete.png", selectedImageName: "album_photo_delete.png", isSelected: false)
+        if let index = self.photoData.assetArray.index(of: self.previewPhotoArray[currentIndex]) {
+            self.setRightImageButton(normalImageName: "album_select_gray.png", selectedImageName: "album_select_blue.png", isSelected: self.photoData.divideArray[index])
         }
         self.view.bringSubview(toFront: self.naviView)
     }
@@ -148,34 +133,15 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
     
     // handle events
     override func rightButtonClick(button: UIButton) {
-        if self.isSelectPhoto {
-            if let index = self.photoData.assetArray.index(of: self.previewPhotoArray[currentIndex]) {
-                button.isSelected = !button.isSelected
-                self.photoData.divideArray[index] = !self.photoData.divideArray[index]
-                if self.photoData.divideArray[index] {
-                    self.photoData.seletedAssetArray.append(self.previewPhotoArray[currentIndex])
-                } else {
-                    self.photoData.seletedAssetArray.remove(at: self.photoData.seletedAssetArray.index(of: self.previewPhotoArray[currentIndex])!)
-                }
-                self.completedButtonShow()
+        if let index = self.photoData.assetArray.index(of: self.previewPhotoArray[currentIndex]) {
+            button.isSelected = !button.isSelected
+            self.photoData.divideArray[index] = !self.photoData.divideArray[index]
+            if self.photoData.divideArray[index] {
+                self.photoData.seletedAssetArray.append(self.previewPhotoArray[currentIndex])
+            } else {
+                self.photoData.seletedAssetArray.remove(at: self.photoData.seletedAssetArray.index(of: self.previewPhotoArray[currentIndex])!)
             }
-        } else {
-            let deleteAlert = UIAlertController(title: nil, message: "确定要删除此照片吗？", preferredStyle: .alert)
-            let cancleAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-            deleteAlert.addAction(cancleAction)
-            let deleteAction = UIAlertAction(title: "删除", style: .default, handler: { [unowned self] (alertAction) in
-                self.isDeleteCell = true
-                self.previewPhotoArray.remove(at: self.currentIndex)
-                self.photoCollectionView.deleteItems(at: [IndexPath(item: self.currentIndex, section: 0)])
-                if self.deleteClicked != nil {
-                    self.deleteClicked!(self.previewPhotoArray)
-                }
-                if self.previewPhotoArray.count == 0 {
-                    self.navigationController!.popViewController(animated: true)
-                }
-            })
-            deleteAlert.addAction(deleteAction)
-            self.navigationController?.present(deleteAlert, animated: true, completion: nil)
+            self.completedButtonShow()
         }
     }
     
@@ -201,14 +167,6 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
         if indexPath.row == self.currentIndex && self.isFirstCell {
             self.isFirstCell = false
             self.setPreviewImage(cell: cell as! WQPreviewCollectionViewCell, asset: asset)
-        } else if self.isDeleteCell {
-            self.isDeleteCell = false
-            if self.currentIndex > self.previewPhotoArray.count-1 {
-                self.currentIndex = self.previewPhotoArray.count-1
-            }
-            let asset = self.previewPhotoArray[self.currentIndex]
-            self.setPreviewImage(cell: cell as! WQPreviewCollectionViewCell, asset: asset)
-            self.setNavTitle(title: "\(self.currentIndex+1)/\(self.previewPhotoArray.count)")
         }
     }
     
@@ -227,12 +185,8 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
         } else if self.currentIndex < 0 {
             self.currentIndex = 0
         }
-        if self.isSelectPhoto {
-            if let index = self.photoData.assetArray.index(of: self.previewPhotoArray[self.currentIndex]) {
-                self.rightButton.isSelected = self.photoData.divideArray[index]
-            }
-        } else {
-            self.setNavTitle(title: "\(self.currentIndex+1)/\(self.previewPhotoArray.count)")
+        if let index = self.photoData.assetArray.index(of: self.previewPhotoArray[self.currentIndex]) {
+            self.rightButton.isSelected = self.photoData.divideArray[index]
         }
     }
     

@@ -32,7 +32,24 @@
 		AB9D6E891DF15E960004F7D5 /* WQPhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9D6E881DF15E960004F7D5 /* WQPhotoPreviewViewController.swift */; };
 		ABA219F71E83EC3A007F5032 /* album_photo_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA219F61E83EC3A007F5032 /* album_photo_delete@2x.png */; };
 		ABA219F91E83EC48007F5032 /* album_photo_delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABA219F81E83EC48007F5032 /* album_photo_delete@3x.png */; };
+		ABC07BF81E9B6C7B00619C00 /* WQPhotoPreviewDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC07BF71E9B6C7B00619C00 /* WQPhotoPreviewDeleteViewController.swift */; };
+		ABC07BFE1E9B77E900619C00 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABC07BFC1E9B772000619C00 /* Kingfisher.framework */; };
+		ABC07BFF1E9B77E900619C00 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ABC07BFC1E9B772000619C00 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ABC07C001E9B77E900619C00 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ABC07BFF1E9B77E900619C00 /* Kingfisher.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AB072E001E70FA8C00A3D028 /* WQProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQProgressView.swift; sourceTree = "<group>"; };
@@ -62,6 +79,8 @@
 		AB9D6E881DF15E960004F7D5 /* WQPhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		ABA219F61E83EC3A007F5032 /* album_photo_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_photo_delete@2x.png"; sourceTree = "<group>"; };
 		ABA219F81E83EC48007F5032 /* album_photo_delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_photo_delete@3x.png"; sourceTree = "<group>"; };
+		ABC07BF71E9B6C7B00619C00 /* WQPhotoPreviewDeleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewDeleteViewController.swift; sourceTree = "<group>"; };
+		ABC07BFC1E9B772000619C00 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABC07BFE1E9B77E900619C00 /* Kingfisher.framework in Frameworks */,
 				AB9D6E5E1DEFF9A60004F7D5 /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,6 +116,7 @@
 		AB4AE26A1DED57D8002E58E0 /* WQPhotoAlbum */ = {
 			isa = PBXGroup;
 			children = (
+				ABC07BF91E9B75C000619C00 /* Third */,
 				AB9A18B21DF68767004EAF3A /* WQCachingImageManager.swift */,
 				AB9D6E611DF004B10004F7D5 /* ViewController */,
 				AB9D6E5F1DF004850004F7D5 /* Model */,
@@ -160,9 +181,18 @@
 				AB0F68221E9720C1009E3C0A /* WQPhotoAlbumListViewController.swift */,
 				AB9D6E621DF004CC0004F7D5 /* WQPhotoAlbumViewController.swift */,
 				AB9D6E881DF15E960004F7D5 /* WQPhotoPreviewViewController.swift */,
+				ABC07BF71E9B6C7B00619C00 /* WQPhotoPreviewDeleteViewController.swift */,
 				AB0F68261E976E96009E3C0A /* WQPhotoNavigationViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		ABC07BF91E9B75C000619C00 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				ABC07BFC1E9B772000619C00 /* Kingfisher.framework */,
+			);
+			path = Third;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +205,7 @@
 				AB4AE2641DED57D8002E58E0 /* Sources */,
 				AB4AE2651DED57D8002E58E0 /* Frameworks */,
 				AB4AE2661DED57D8002E58E0 /* Resources */,
+				ABC07C001E9B77E900619C00 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB3B721F1DF510E80083B0AC /* WQPreviewCollectionViewCell.swift in Sources */,
+				ABC07BF81E9B6C7B00619C00 /* WQPhotoPreviewDeleteViewController.swift in Sources */,
 				AB9A18B71DF6A844004EAF3A /* WQExtension.swift in Sources */,
 				AB9A18BB1DF6AF1A004EAF3A /* WQPhotoData.swift in Sources */,
 				AB0F68231E9720C1009E3C0A /* WQPhotoAlbumListViewController.swift in Sources */,
@@ -380,6 +412,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ZGPWV67SM9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WQPhotoAlbum/Third",
+				);
 				INFOPLIST_FILE = WQPhotoAlbum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -394,6 +430,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = ZGPWV67SM9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WQPhotoAlbum/Third",
+				);
 				INFOPLIST_FILE = WQPhotoAlbum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

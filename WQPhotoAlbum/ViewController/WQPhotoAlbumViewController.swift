@@ -23,14 +23,14 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
         let shape: CGFloat = 5
         let cellWidth: CGFloat = (WQScreenWidth - 5 * shape) / 4
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsetsMake(64, shape, 0, shape)
+        flowLayout.sectionInset = UIEdgeInsetsMake(64, shape, 44, shape)
         flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
         flowLayout.minimumLineSpacing = shape
         flowLayout.minimumInteritemSpacing = shape
         //  collectionView
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: WQScreenWidth, height: WQScreenHeight - 44), collectionViewLayout: flowLayout)
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: WQScreenWidth, height: WQScreenHeight), collectionViewLayout: flowLayout)
         collectionView.backgroundColor = UIColor.white
-//        collectionView.clipsToBounds = false
+        collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 44, 0)
         //  添加协议方法
         collectionView.delegate = self
         collectionView.dataSource = self
