@@ -1,0 +1,33 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbumKit/build/Debug-iphoneos/WQPhotoAlbumKit.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "WQPhotoAlbumKit-Swift.h",
+          'external-contents': "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbumKit/build/Debug-iphoneos/WQPhotoAlbumKit.framework/Headers/WQPhotoAlbumKit-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "WQPhotoAlbumKit.h",
+          'external-contents': "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbumKit/WQPhotoAlbumKit/WQPhotoAlbumKit.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbumKit/build/Debug-iphoneos/WQPhotoAlbumKit.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbumKit/build/Intermediates/WQPhotoAlbumKit.build/Debug-iphoneos/WQPhotoAlbumKit.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+framework module WQPhotoAlbumKit {
+  umbrella header "WQPhotoAlbumKit.h"
+
+  export *
+  module * { export * }
+}
+
+module WQPhotoAlbumKit.__Swift {
+    exclude header "WQPhotoAlbumKit-Swift.h"
+}

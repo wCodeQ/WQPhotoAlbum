@@ -1,0 +1,389 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "WQPhotoAlbumProtocol"
+- "WQPhotoNavigationViewController"
+provides-nominal:
+- "P15WQPhotoAlbumKit20WQPhotoAlbumProtocol"
+- "C15WQPhotoAlbumKit31WQPhotoNavigationViewController"
+provides-member:
+- ["P15WQPhotoAlbumKit20WQPhotoAlbumProtocol", ""]
+- ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", ""]
+provides-dynamic-lookup:
+- "photoAlbum"
+- "viewDidLoad"
+depends-top-level:
+- "AssignmentPrecedence"
+- !private "BooleanLiteralType"
+- "Bundle"
+- "NSCoder"
+- "NSObjectProtocol"
+- "PHAsset"
+- "String"
+- !private "StringLiteralType"
+- "UIImage"
+- "UINavigationController"
+- "Void"
+- !private "WQPhotoAlbumListViewController"
+- "WQPhotoAlbumProtocol"
+- !private "WQPhotoAlbumViewController"
+- "WQPhotoNavigationViewController"
+- !private "fatalError"
+- !private "print"
+depends-member:
+- !private ["Ps9AnyObject", "WQPhotoAlbumListViewController"]
+- !private ["Ps9AnyObject", "WQPhotoAlbumViewController"]
+- !private ["Ps9AnyObject", "fatalError"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "isNavigationBarHidden"]
+- !private ["Ps9AnyObject", "photoAlbumDelegate"]
+- !private ["Ps9AnyObject", "print"]
+- !private ["Ps9AnyObject", "pushViewController"]
+- !private ["Ps9AnyObject", "viewDidLoad"]
+- ["Ps9AnyObject", ""]
+- !private ["Ps7CVarArg", "WQPhotoAlbumListViewController"]
+- !private ["Ps7CVarArg", "WQPhotoAlbumViewController"]
+- !private ["Ps7CVarArg", "fatalError"]
+- !private ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "isNavigationBarHidden"]
+- !private ["Ps7CVarArg", "photoAlbumDelegate"]
+- !private ["Ps7CVarArg", "print"]
+- !private ["Ps7CVarArg", "pushViewController"]
+- !private ["Ps7CVarArg", "viewDidLoad"]
+- ["Ps7CVarArg", ""]
+- !private ["Ps10Comparable", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "WQPhotoAlbumListViewController"]
+- !private ["Ps28CustomDebugStringConvertible", "WQPhotoAlbumViewController"]
+- !private ["Ps28CustomDebugStringConvertible", "fatalError"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "isNavigationBarHidden"]
+- !private ["Ps28CustomDebugStringConvertible", "photoAlbumDelegate"]
+- !private ["Ps28CustomDebugStringConvertible", "print"]
+- !private ["Ps28CustomDebugStringConvertible", "pushViewController"]
+- !private ["Ps28CustomDebugStringConvertible", "viewDidLoad"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps29CustomPlaygroundQuickLookable", "init"]
+- !private ["Ps17CustomReflectable", "init"]
+- !private ["Ps23CustomStringConvertible", "WQPhotoAlbumListViewController"]
+- !private ["Ps23CustomStringConvertible", "WQPhotoAlbumViewController"]
+- !private ["Ps23CustomStringConvertible", "fatalError"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "isNavigationBarHidden"]
+- !private ["Ps23CustomStringConvertible", "photoAlbumDelegate"]
+- !private ["Ps23CustomStringConvertible", "print"]
+- !private ["Ps23CustomStringConvertible", "pushViewController"]
+- !private ["Ps23CustomStringConvertible", "viewDidLoad"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["Ps9Equatable", "WQPhotoAlbumListViewController"]
+- !private ["Ps9Equatable", "WQPhotoAlbumViewController"]
+- !private ["Ps9Equatable", "fatalError"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "isNavigationBarHidden"]
+- !private ["Ps9Equatable", "photoAlbumDelegate"]
+- !private ["Ps9Equatable", "print"]
+- !private ["Ps9Equatable", "pushViewController"]
+- !private ["Ps9Equatable", "viewDidLoad"]
+- ["Ps9Equatable", ""]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps26ExpressibleByStringLiteral", "init"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["Ps8Hashable", "WQPhotoAlbumListViewController"]
+- !private ["Ps8Hashable", "WQPhotoAlbumViewController"]
+- !private ["Ps8Hashable", "fatalError"]
+- !private ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "isNavigationBarHidden"]
+- !private ["Ps8Hashable", "photoAlbumDelegate"]
+- !private ["Ps8Hashable", "print"]
+- !private ["Ps8Hashable", "pushViewController"]
+- !private ["Ps8Hashable", "viewDidLoad"]
+- ["Ps8Hashable", ""]
+- !private ["Ps25LosslessStringConvertible", "init"]
+- !private ["Ps10MirrorPath", "init"]
+- !private ["PSo8NSCoding", "WQPhotoAlbumListViewController"]
+- !private ["PSo8NSCoding", "WQPhotoAlbumViewController"]
+- !private ["PSo8NSCoding", "fatalError"]
+- !private ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "isNavigationBarHidden"]
+- !private ["PSo8NSCoding", "photoAlbumDelegate"]
+- !private ["PSo8NSCoding", "print"]
+- !private ["PSo8NSCoding", "pushViewController"]
+- !private ["PSo8NSCoding", "viewDidLoad"]
+- ["PSo8NSCoding", ""]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo26NSExtensionRequestHandling", "WQPhotoAlbumListViewController"]
+- !private ["PSo26NSExtensionRequestHandling", "WQPhotoAlbumViewController"]
+- !private ["PSo26NSExtensionRequestHandling", "fatalError"]
+- !private ["PSo26NSExtensionRequestHandling", "init"]
+- !private ["PSo26NSExtensionRequestHandling", "isNavigationBarHidden"]
+- !private ["PSo26NSExtensionRequestHandling", "photoAlbumDelegate"]
+- !private ["PSo26NSExtensionRequestHandling", "print"]
+- !private ["PSo26NSExtensionRequestHandling", "pushViewController"]
+- !private ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
+- ["PSo26NSExtensionRequestHandling", ""]
+- !private ["PSo16NSMutableCopying", "init"]
+- ["CSo8NSObject", "Bundle"]
+- ["CSo8NSObject", "NSCoder"]
+- ["CSo8NSObject", "String"]
+- !private ["CSo8NSObject", "WQPhotoAlbumListViewController"]
+- ["CSo8NSObject", "WQPhotoAlbumProtocol"]
+- !private ["CSo8NSObject", "WQPhotoAlbumViewController"]
+- !private ["CSo8NSObject", "fatalError"]
+- ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "isNavigationBarHidden"]
+- !private ["CSo8NSObject", "photoAlbumDelegate"]
+- !private ["CSo8NSObject", "print"]
+- !private ["CSo8NSObject", "pushViewController"]
+- ["CSo8NSObject", "viewDidLoad"]
+- ["PSo16NSObjectProtocol", "PHAsset"]
+- ["PSo16NSObjectProtocol", "UIImage"]
+- ["PSo16NSObjectProtocol", "Void"]
+- !private ["PSo16NSObjectProtocol", "WQPhotoAlbumListViewController"]
+- !private ["PSo16NSObjectProtocol", "WQPhotoAlbumViewController"]
+- !private ["PSo16NSObjectProtocol", "fatalError"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "isNavigationBarHidden"]
+- ["PSo16NSObjectProtocol", "photoAlbum"]
+- !private ["PSo16NSObjectProtocol", "photoAlbumDelegate"]
+- !private ["PSo16NSObjectProtocol", "print"]
+- !private ["PSo16NSObjectProtocol", "pushViewController"]
+- !private ["PSo16NSObjectProtocol", "viewDidLoad"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["CSo8NSString", "init"]
+- !private ["PSo28PHPhotoLibraryChangeObserver", "init"]
+- !private ["PSo28PHPhotoLibraryChangeObserver", "photoAlbumDelegate"]
+- !private ["Vs12StaticString", "init"]
+- !private ["SS", "init"]
+- !private ["Ps16TextOutputStream", "init"]
+- !private ["Ps20TextOutputStreamable", "init"]
+- !private ["PSo21UIAppearanceContainer", "WQPhotoAlbumListViewController"]
+- !private ["PSo21UIAppearanceContainer", "WQPhotoAlbumViewController"]
+- !private ["PSo21UIAppearanceContainer", "fatalError"]
+- !private ["PSo21UIAppearanceContainer", "init"]
+- !private ["PSo21UIAppearanceContainer", "isNavigationBarHidden"]
+- !private ["PSo21UIAppearanceContainer", "photoAlbumDelegate"]
+- !private ["PSo21UIAppearanceContainer", "print"]
+- !private ["PSo21UIAppearanceContainer", "pushViewController"]
+- !private ["PSo21UIAppearanceContainer", "viewDidLoad"]
+- ["PSo21UIAppearanceContainer", ""]
+- !private ["PSo26UICollectionViewDataSource", "init"]
+- !private ["PSo26UICollectionViewDataSource", "photoAlbumDelegate"]
+- !private ["PSo24UICollectionViewDelegate", "init"]
+- !private ["PSo24UICollectionViewDelegate", "photoAlbumDelegate"]
+- !private ["PSo18UIContentContainer", "WQPhotoAlbumListViewController"]
+- !private ["PSo18UIContentContainer", "WQPhotoAlbumViewController"]
+- !private ["PSo18UIContentContainer", "fatalError"]
+- !private ["PSo18UIContentContainer", "init"]
+- !private ["PSo18UIContentContainer", "isNavigationBarHidden"]
+- !private ["PSo18UIContentContainer", "photoAlbumDelegate"]
+- !private ["PSo18UIContentContainer", "print"]
+- !private ["PSo18UIContentContainer", "pushViewController"]
+- !private ["PSo18UIContentContainer", "viewDidLoad"]
+- ["PSo18UIContentContainer", ""]
+- !private ["PSo18UIFocusEnvironment", "WQPhotoAlbumListViewController"]
+- !private ["PSo18UIFocusEnvironment", "WQPhotoAlbumViewController"]
+- !private ["PSo18UIFocusEnvironment", "fatalError"]
+- !private ["PSo18UIFocusEnvironment", "init"]
+- !private ["PSo18UIFocusEnvironment", "isNavigationBarHidden"]
+- !private ["PSo18UIFocusEnvironment", "photoAlbumDelegate"]
+- !private ["PSo18UIFocusEnvironment", "print"]
+- !private ["PSo18UIFocusEnvironment", "pushViewController"]
+- !private ["PSo18UIFocusEnvironment", "viewDidLoad"]
+- ["PSo18UIFocusEnvironment", ""]
+- ["CSo22UINavigationController", "Bundle"]
+- ["CSo22UINavigationController", "NSCoder"]
+- ["CSo22UINavigationController", "String"]
+- !private ["CSo22UINavigationController", "WQPhotoAlbumListViewController"]
+- ["CSo22UINavigationController", "WQPhotoAlbumProtocol"]
+- !private ["CSo22UINavigationController", "WQPhotoAlbumViewController"]
+- !private ["CSo22UINavigationController", "fatalError"]
+- ["CSo22UINavigationController", "init"]
+- !private ["CSo22UINavigationController", "isNavigationBarHidden"]
+- !private ["CSo22UINavigationController", "print"]
+- !private ["CSo22UINavigationController", "pushViewController"]
+- ["CSo22UINavigationController", "viewDidLoad"]
+- ["CSo22UINavigationController", ""]
+- ["CSo11UIResponder", "Bundle"]
+- ["CSo11UIResponder", "NSCoder"]
+- ["CSo11UIResponder", "String"]
+- !private ["CSo11UIResponder", "WQPhotoAlbumListViewController"]
+- ["CSo11UIResponder", "WQPhotoAlbumProtocol"]
+- !private ["CSo11UIResponder", "WQPhotoAlbumViewController"]
+- !private ["CSo11UIResponder", "fatalError"]
+- ["CSo11UIResponder", "init"]
+- !private ["CSo11UIResponder", "isNavigationBarHidden"]
+- !private ["CSo11UIResponder", "photoAlbumDelegate"]
+- !private ["CSo11UIResponder", "print"]
+- !private ["CSo11UIResponder", "pushViewController"]
+- ["CSo11UIResponder", "viewDidLoad"]
+- !private ["PSo30UIResponderStandardEditActions", "WQPhotoAlbumListViewController"]
+- !private ["PSo30UIResponderStandardEditActions", "WQPhotoAlbumViewController"]
+- !private ["PSo30UIResponderStandardEditActions", "fatalError"]
+- !private ["PSo30UIResponderStandardEditActions", "init"]
+- !private ["PSo30UIResponderStandardEditActions", "isNavigationBarHidden"]
+- !private ["PSo30UIResponderStandardEditActions", "photoAlbumDelegate"]
+- !private ["PSo30UIResponderStandardEditActions", "print"]
+- !private ["PSo30UIResponderStandardEditActions", "pushViewController"]
+- !private ["PSo30UIResponderStandardEditActions", "viewDidLoad"]
+- ["PSo30UIResponderStandardEditActions", ""]
+- !private ["PSo20UIScrollViewDelegate", "init"]
+- !private ["PSo20UIScrollViewDelegate", "photoAlbumDelegate"]
+- !private ["PSo16UIStateRestoring", "WQPhotoAlbumListViewController"]
+- !private ["PSo16UIStateRestoring", "WQPhotoAlbumViewController"]
+- !private ["PSo16UIStateRestoring", "fatalError"]
+- !private ["PSo16UIStateRestoring", "init"]
+- !private ["PSo16UIStateRestoring", "isNavigationBarHidden"]
+- !private ["PSo16UIStateRestoring", "photoAlbumDelegate"]
+- !private ["PSo16UIStateRestoring", "print"]
+- !private ["PSo16UIStateRestoring", "pushViewController"]
+- !private ["PSo16UIStateRestoring", "viewDidLoad"]
+- ["PSo16UIStateRestoring", ""]
+- !private ["PSo21UITableViewDataSource", "init"]
+- !private ["PSo19UITableViewDelegate", "init"]
+- !private ["PSo18UITraitEnvironment", "WQPhotoAlbumListViewController"]
+- !private ["PSo18UITraitEnvironment", "WQPhotoAlbumViewController"]
+- !private ["PSo18UITraitEnvironment", "fatalError"]
+- !private ["PSo18UITraitEnvironment", "init"]
+- !private ["PSo18UITraitEnvironment", "isNavigationBarHidden"]
+- !private ["PSo18UITraitEnvironment", "photoAlbumDelegate"]
+- !private ["PSo18UITraitEnvironment", "print"]
+- !private ["PSo18UITraitEnvironment", "pushViewController"]
+- !private ["PSo18UITraitEnvironment", "viewDidLoad"]
+- ["PSo18UITraitEnvironment", ""]
+- ["CSo16UIViewController", "Bundle"]
+- ["CSo16UIViewController", "NSCoder"]
+- ["CSo16UIViewController", "String"]
+- !private ["CSo16UIViewController", "WQPhotoAlbumListViewController"]
+- ["CSo16UIViewController", "WQPhotoAlbumProtocol"]
+- !private ["CSo16UIViewController", "WQPhotoAlbumViewController"]
+- !private ["CSo16UIViewController", "fatalError"]
+- ["CSo16UIViewController", "init"]
+- !private ["CSo16UIViewController", "isNavigationBarHidden"]
+- !private ["CSo16UIViewController", "photoAlbumDelegate"]
+- !private ["CSo16UIViewController", "print"]
+- !private ["CSo16UIViewController", "pushViewController"]
+- ["CSo16UIViewController", "viewDidLoad"]
+- !private ["C15WQPhotoAlbumKit30WQPhotoAlbumListViewController", "init"]
+- ["P15WQPhotoAlbumKit20WQPhotoAlbumProtocol", "PHAsset"]
+- ["P15WQPhotoAlbumKit20WQPhotoAlbumProtocol", "UIImage"]
+- ["P15WQPhotoAlbumKit20WQPhotoAlbumProtocol", "Void"]
+- ["P15WQPhotoAlbumKit20WQPhotoAlbumProtocol", "photoAlbum"]
+- !private ["C15WQPhotoAlbumKit26WQPhotoAlbumViewController", "init"]
+- !private ["C15WQPhotoAlbumKit26WQPhotoAlbumViewController", "photoAlbumDelegate"]
+- !private ["C15WQPhotoAlbumKit25WQPhotoBaseViewController", "init"]
+- !private ["C15WQPhotoAlbumKit25WQPhotoBaseViewController", "photoAlbumDelegate"]
+- ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "Bundle"]
+- ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "NSCoder"]
+- ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "String"]
+- !private ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "WQPhotoAlbumListViewController"]
+- ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "WQPhotoAlbumProtocol"]
+- !private ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "WQPhotoAlbumViewController"]
+- ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "deinit"]
+- !private ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "fatalError"]
+- ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "init"]
+- !private ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "isNavigationBarHidden"]
+- !private ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "print"]
+- !private ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "pushViewController"]
+- ["C15WQPhotoAlbumKit31WQPhotoNavigationViewController", "viewDidLoad"]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- !private ["Ps39_ExpressibleByBuiltinUTF16StringLiteral", "init"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps33_ExpressibleByStringInterpolation", "init"]
+- !private ["Ps35_HasCustomAnyHashableRepresentation", "init"]
+- !private ["Ps9_Hashable", "WQPhotoAlbumListViewController"]
+- !private ["Ps9_Hashable", "WQPhotoAlbumViewController"]
+- !private ["Ps9_Hashable", "fatalError"]
+- !private ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "isNavigationBarHidden"]
+- !private ["Ps9_Hashable", "photoAlbumDelegate"]
+- !private ["Ps9_Hashable", "print"]
+- !private ["Ps9_Hashable", "pushViewController"]
+- !private ["Ps9_Hashable", "viewDidLoad"]
+- ["Ps9_Hashable", ""]
+- !private ["Ps21_ObjectiveCBridgeable", "init"]
+depends-nominal:
+- "Ps9AnyObject"
+- "Ps7CVarArg"
+- !private "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- !private "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps26ExpressibleByStringLiteral"
+- !private "Ps33ExpressibleByUnicodeScalarLiteral"
+- "Ps8Hashable"
+- !private "Ps25LosslessStringConvertible"
+- !private "Ps10MirrorPath"
+- "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- "PSo26NSExtensionRequestHandling"
+- !private "PSo16NSMutableCopying"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "CSo8NSString"
+- !private "PSo28PHPhotoLibraryChangeObserver"
+- !private "Vs12StaticString"
+- !private "SS"
+- !private "Ps16TextOutputStream"
+- !private "Ps20TextOutputStreamable"
+- "PSo21UIAppearanceContainer"
+- !private "PSo26UICollectionViewDataSource"
+- !private "PSo24UICollectionViewDelegate"
+- "PSo18UIContentContainer"
+- "PSo18UIFocusEnvironment"
+- "CSo22UINavigationController"
+- "CSo11UIResponder"
+- "PSo30UIResponderStandardEditActions"
+- !private "PSo20UIScrollViewDelegate"
+- "PSo16UIStateRestoring"
+- !private "PSo21UITableViewDataSource"
+- !private "PSo19UITableViewDelegate"
+- "PSo18UITraitEnvironment"
+- "CSo16UIViewController"
+- !private "C15WQPhotoAlbumKit30WQPhotoAlbumListViewController"
+- "P15WQPhotoAlbumKit20WQPhotoAlbumProtocol"
+- !private "C15WQPhotoAlbumKit26WQPhotoAlbumViewController"
+- !private "C15WQPhotoAlbumKit25WQPhotoBaseViewController"
+- "C15WQPhotoAlbumKit31WQPhotoNavigationViewController"
+- !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- !private "Ps34_ExpressibleByBuiltinStringLiteral"
+- !private "Ps39_ExpressibleByBuiltinUTF16StringLiteral"
+- !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- !private "Ps33_ExpressibleByStringInterpolation"
+- !private "Ps35_HasCustomAnyHashableRepresentation"
+- "Ps9_Hashable"
+- !private "Ps21_ObjectiveCBridgeable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/ObjectiveC.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Foundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreGraphics.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Metal.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreText.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/UIKit.apinotesc"
+- "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbumKit/WQPhotoAlbumKit/WQPhotoAlbumKit.h"
+- "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbumKit/build/Intermediates/WQPhotoAlbumKit.build/Debug-iphoneos/WQPhotoAlbumKit.build/unextended-module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Photos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreLocation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/AudioToolbox.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/AVFoundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Photos.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/AVFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreMedia.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreLocation.swiftmodule"
+interface-hash: "fd32b102a2961a37388fe05596d35799"

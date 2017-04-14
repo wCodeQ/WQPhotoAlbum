@@ -1,0 +1,167 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "WQPhotoData"
+- "WQPhotoModel"
+provides-nominal:
+- "C15WQPhotoAlbumKit11WQPhotoData"
+- "V15WQPhotoAlbumKit12WQPhotoModel"
+provides-member:
+- ["C15WQPhotoAlbumKit11WQPhotoData", ""]
+- ["V15WQPhotoAlbumKit12WQPhotoModel", ""]
+provides-dynamic-lookup:
+- "assetArray"
+- "dataChanged"
+- "divideArray"
+- "seletedAssetArray"
+depends-top-level:
+- "AssignmentPrecedence"
+- "Bool"
+- "BooleanLiteralType"
+- "NSObject"
+- "PHAsset"
+- "String"
+- "UIImage"
+- "WQPhotoData"
+- "WQPhotoModel"
+depends-member:
+- ["Ps9AnyObject", "Bool"]
+- ["Ps9AnyObject", "PHAsset"]
+- !private ["Ps9AnyObject", "dataChanged"]
+- !private ["Ps9AnyObject", "init"]
+- ["Ps9AnyObject", ""]
+- ["Sa", "init"]
+- ["Ps23BidirectionalCollection", "init"]
+- ["Ps7CVarArg", "Bool"]
+- ["Ps7CVarArg", "PHAsset"]
+- !private ["Ps7CVarArg", "dataChanged"]
+- ["Ps7CVarArg", "init"]
+- ["Ps7CVarArg", ""]
+- ["Ps10Collection", "init"]
+- ["Ps28CustomDebugStringConvertible", "Bool"]
+- ["Ps28CustomDebugStringConvertible", "PHAsset"]
+- !private ["Ps28CustomDebugStringConvertible", "dataChanged"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- ["Ps17CustomReflectable", "init"]
+- ["Ps23CustomStringConvertible", "Bool"]
+- ["Ps23CustomStringConvertible", "PHAsset"]
+- !private ["Ps23CustomStringConvertible", "dataChanged"]
+- ["Ps23CustomStringConvertible", "init"]
+- ["Ps23CustomStringConvertible", ""]
+- ["Ps9Equatable", "Bool"]
+- ["Ps9Equatable", "PHAsset"]
+- !private ["Ps9Equatable", "dataChanged"]
+- !private ["Ps9Equatable", "init"]
+- ["Ps9Equatable", ""]
+- ["Ps25ExpressibleByArrayLiteral", "init"]
+- ["Ps8Hashable", "Bool"]
+- ["Ps8Hashable", "PHAsset"]
+- !private ["Ps8Hashable", "dataChanged"]
+- !private ["Ps8Hashable", "init"]
+- ["Ps8Hashable", ""]
+- ["Ps17MutableCollection", "init"]
+- ["CSo8NSObject", "Bool"]
+- ["CSo8NSObject", "PHAsset"]
+- ["CSo8NSObject", "assetArray"]
+- ["CSo8NSObject", "dataChanged"]
+- ["CSo8NSObject", "divideArray"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "seletedAssetArray"]
+- ["CSo8NSObject", ""]
+- ["PSo16NSObjectProtocol", "Bool"]
+- ["PSo16NSObjectProtocol", "PHAsset"]
+- !private ["PSo16NSObjectProtocol", "dataChanged"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", ""]
+- ["Ps22RandomAccessCollection", "init"]
+- ["Ps26RangeReplaceableCollection", "init"]
+- ["Ps8Sequence", "init"]
+- ["C15WQPhotoAlbumKit11WQPhotoData", "Bool"]
+- ["C15WQPhotoAlbumKit11WQPhotoData", "PHAsset"]
+- ["C15WQPhotoAlbumKit11WQPhotoData", "assetArray"]
+- ["C15WQPhotoAlbumKit11WQPhotoData", "dataChanged"]
+- ["C15WQPhotoAlbumKit11WQPhotoData", "deinit"]
+- ["C15WQPhotoAlbumKit11WQPhotoData", "divideArray"]
+- ["C15WQPhotoAlbumKit11WQPhotoData", "init"]
+- ["C15WQPhotoAlbumKit11WQPhotoData", "seletedAssetArray"]
+- ["V15WQPhotoAlbumKit12WQPhotoModel", "String"]
+- ["V15WQPhotoAlbumKit12WQPhotoModel", "UIImage"]
+- ["V15WQPhotoAlbumKit12WQPhotoModel", "imageURL"]
+- ["V15WQPhotoAlbumKit12WQPhotoModel", "init"]
+- ["V15WQPhotoAlbumKit12WQPhotoModel", "originImage"]
+- ["V15WQPhotoAlbumKit12WQPhotoModel", "thumbnailImage"]
+- ["Ps14_ArrayProtocol", "init"]
+- ["Ps23_BidirectionalIndexable", "init"]
+- ["Ps24_DestructorSafeContainer", "init"]
+- ["Ps9_Hashable", "Bool"]
+- ["Ps9_Hashable", "PHAsset"]
+- !private ["Ps9_Hashable", "dataChanged"]
+- !private ["Ps9_Hashable", "init"]
+- ["Ps9_Hashable", ""]
+- ["Ps10_Indexable", "init"]
+- ["Ps14_IndexableBase", "init"]
+- ["Ps17_MutableIndexable", "init"]
+- ["Ps21_ObjectiveCBridgeable", "init"]
+- ["Ps22_RandomAccessIndexable", "init"]
+- ["Ps26_RangeReplaceableIndexable", "init"]
+depends-nominal:
+- "Ps9AnyObject"
+- "Sa"
+- "Ps23BidirectionalCollection"
+- "Ps7CVarArg"
+- "Ps10Collection"
+- "Ps28CustomDebugStringConvertible"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- "Ps25ExpressibleByArrayLiteral"
+- "Ps8Hashable"
+- "Ps17MutableCollection"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "Ps22RandomAccessCollection"
+- "Ps26RangeReplaceableCollection"
+- "Ps8Sequence"
+- "C15WQPhotoAlbumKit11WQPhotoData"
+- "V15WQPhotoAlbumKit12WQPhotoModel"
+- "Ps14_ArrayProtocol"
+- "Ps23_BidirectionalIndexable"
+- "Ps24_DestructorSafeContainer"
+- "Ps9_Hashable"
+- "Ps10_Indexable"
+- "Ps14_IndexableBase"
+- "Ps17_MutableIndexable"
+- "Ps21_ObjectiveCBridgeable"
+- "Ps22_RandomAccessIndexable"
+- "Ps26_RangeReplaceableIndexable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Metal.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreText.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.apinotesc"
+- "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbumKit/WQPhotoAlbumKit/WQPhotoAlbumKit.h"
+- "/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbumKit/build/Intermediates/WQPhotoAlbumKit.build/Debug-iphoneos/WQPhotoAlbumKit.build/unextended-module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Photos.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreLocation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/AudioToolbox.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/AVFoundation.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Photos.apinotesc"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/AVFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreMedia.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreLocation.swiftmodule"
+interface-hash: "a5282c02e00a638ae284aa1e3f389c87"

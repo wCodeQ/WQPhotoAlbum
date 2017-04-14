@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbumKit/build/Debug-iphoneos/WQPhotoAlbumKit.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/W_qian/Desktop/W_qian/demo/WQPhotoAlbumKit/build/Intermediates/WQPhotoAlbumKit.build/Debug-iphoneos/WQPhotoAlbumKit.build/unextended-module.modulemap',
+    }]
+  }]
+}

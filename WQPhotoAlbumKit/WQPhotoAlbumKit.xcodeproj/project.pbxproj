@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AB0F683C1E9796B7009E3C0A /* WQPhotoAlbumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0F68321E9796B7009E3C0A /* WQPhotoAlbumKit.framework */; };
+		AB0F68411E9796B7009E3C0A /* WQPhotoAlbumKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F68401E9796B7009E3C0A /* WQPhotoAlbumKitTests.swift */; };
+		AB0F68431E9796B7009E3C0A /* WQPhotoAlbumKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AB0F68351E9796B7009E3C0A /* WQPhotoAlbumKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB0F68621E97978A009E3C0A /* WQPhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F684D1E97978A009E3C0A /* WQPhotoData.swift */; };
+		AB0F686B1E97978A009E3C0A /* WQPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F68581E97978A009E3C0A /* WQPhotoCollectionViewCell.swift */; };
+		AB0F686C1E97978A009E3C0A /* WQPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F68591E97978A009E3C0A /* WQPreviewCollectionViewCell.swift */; };
+		AB0F686D1E97978A009E3C0A /* WQProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F685A1E97978A009E3C0A /* WQProgressView.swift */; };
+		AB0F686E1E97978A009E3C0A /* WQPhotoAlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F685C1E97978A009E3C0A /* WQPhotoAlbumListViewController.swift */; };
+		AB0F686F1E97978A009E3C0A /* WQPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F685D1E97978A009E3C0A /* WQPhotoAlbumViewController.swift */; };
+		AB0F68701E97978A009E3C0A /* WQPhotoBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F685E1E97978A009E3C0A /* WQPhotoBaseViewController.swift */; };
+		AB0F68711E97978A009E3C0A /* WQPhotoNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F685F1E97978A009E3C0A /* WQPhotoNavigationViewController.swift */; };
+		AB0F68721E97978A009E3C0A /* WQPhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F68601E97978A009E3C0A /* WQPhotoPreviewViewController.swift */; };
+		AB0F68731E97978A009E3C0A /* WQCachingImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0F68611E97978A009E3C0A /* WQCachingImageManager.swift */; };
+		AB1D022B1E97A14E0087D146 /* WQPhotoNavigationViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = AB0F685F1E97978A009E3C0A /* WQPhotoNavigationViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB1D022C1E97A2140087D146 /* WQCachingImageManager.swift in Headers */ = {isa = PBXBuildFile; fileRef = AB0F68611E97978A009E3C0A /* WQCachingImageManager.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB3D8E981E9CE4B000EF5D42 /* WQExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D8E971E9CE4B000EF5D42 /* WQExtension.swift */; };
+		ABC07C021E9B890C00619C00 /* WQPhotoPreviewDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC07C011E9B890C00619C00 /* WQPhotoPreviewDeleteViewController.swift */; };
+		ABC07C061E9B893D00619C00 /* WQPhotoPreviewDeleteViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = ABC07C011E9B890C00619C00 /* WQPhotoPreviewDeleteViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		ABC07C091E9B895700619C00 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABC07C081E9B895700619C00 /* Photos.framework */; };
+		ABC200001E9CFB60006A8AE1 /* icon_back_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC2FFF81E9CFB60006A8AE1 /* icon_back_white@3x.png */; };
+		ABC2FFF91E9CFB60006A8AE1 /* album_photo_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC2FFF11E9CFB60006A8AE1 /* album_photo_delete@2x.png */; };
+		ABC2FFFA1E9CFB60006A8AE1 /* album_photo_delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC2FFF21E9CFB60006A8AE1 /* album_photo_delete@3x.png */; };
+		ABC2FFFB1E9CFB60006A8AE1 /* album_select_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC2FFF31E9CFB60006A8AE1 /* album_select_blue@2x.png */; };
+		ABC2FFFC1E9CFB60006A8AE1 /* album_select_blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC2FFF41E9CFB60006A8AE1 /* album_select_blue@3x.png */; };
+		ABC2FFFD1E9CFB60006A8AE1 /* album_select_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC2FFF51E9CFB60006A8AE1 /* album_select_gray@2x.png */; };
+		ABC2FFFE1E9CFB60006A8AE1 /* album_select_gray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC2FFF61E9CFB60006A8AE1 /* album_select_gray@3x.png */; };
+		ABC2FFFF1E9CFB60006A8AE1 /* icon_back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABC2FFF71E9CFB60006A8AE1 /* icon_back_white@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB0F683D1E9796B7009E3C0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB0F68291E9796B7009E3C0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB0F68311E9796B7009E3C0A;
+			remoteInfo = WQPhotoAlbumKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AB0F68321E9796B7009E3C0A /* WQPhotoAlbumKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WQPhotoAlbumKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB0F68351E9796B7009E3C0A /* WQPhotoAlbumKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WQPhotoAlbumKit.h; sourceTree = "<group>"; };
+		AB0F68361E9796B7009E3C0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB0F683B1E9796B7009E3C0A /* WQPhotoAlbumKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WQPhotoAlbumKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB0F68401E9796B7009E3C0A /* WQPhotoAlbumKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WQPhotoAlbumKitTests.swift; sourceTree = "<group>"; };
+		AB0F68421E9796B7009E3C0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB0F684D1E97978A009E3C0A /* WQPhotoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoData.swift; sourceTree = "<group>"; };
+		AB0F68581E97978A009E3C0A /* WQPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		AB0F68591E97978A009E3C0A /* WQPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		AB0F685A1E97978A009E3C0A /* WQProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQProgressView.swift; sourceTree = "<group>"; };
+		AB0F685C1E97978A009E3C0A /* WQPhotoAlbumListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoAlbumListViewController.swift; sourceTree = "<group>"; };
+		AB0F685D1E97978A009E3C0A /* WQPhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		AB0F685E1E97978A009E3C0A /* WQPhotoBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoBaseViewController.swift; sourceTree = "<group>"; };
+		AB0F685F1E97978A009E3C0A /* WQPhotoNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoNavigationViewController.swift; sourceTree = "<group>"; };
+		AB0F68601E97978A009E3C0A /* WQPhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewViewController.swift; sourceTree = "<group>"; };
+		AB0F68611E97978A009E3C0A /* WQCachingImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQCachingImageManager.swift; sourceTree = "<group>"; };
+		AB3D8E971E9CE4B000EF5D42 /* WQExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQExtension.swift; sourceTree = "<group>"; };
+		ABC07C011E9B890C00619C00 /* WQPhotoPreviewDeleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewDeleteViewController.swift; sourceTree = "<group>"; };
+		ABC07C081E9B895700619C00 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		ABC2FFF11E9CFB60006A8AE1 /* album_photo_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_photo_delete@2x.png"; sourceTree = "<group>"; };
+		ABC2FFF21E9CFB60006A8AE1 /* album_photo_delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_photo_delete@3x.png"; sourceTree = "<group>"; };
+		ABC2FFF31E9CFB60006A8AE1 /* album_select_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_select_blue@2x.png"; sourceTree = "<group>"; };
+		ABC2FFF41E9CFB60006A8AE1 /* album_select_blue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_select_blue@3x.png"; sourceTree = "<group>"; };
+		ABC2FFF51E9CFB60006A8AE1 /* album_select_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_select_gray@2x.png"; sourceTree = "<group>"; };
+		ABC2FFF61E9CFB60006A8AE1 /* album_select_gray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_select_gray@3x.png"; sourceTree = "<group>"; };
+		ABC2FFF71E9CFB60006A8AE1 /* icon_back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back_white@2x.png"; sourceTree = "<group>"; };
+		ABC2FFF81E9CFB60006A8AE1 /* icon_back_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back_white@3x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB0F682E1E9796B7009E3C0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABC07C091E9B895700619C00 /* Photos.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB0F68381E9796B7009E3C0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB0F683C1E9796B7009E3C0A /* WQPhotoAlbumKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AB0F68281E9796B7009E3C0A = {
+			isa = PBXGroup;
+			children = (
+				AB0F68341E9796B7009E3C0A /* WQPhotoAlbumKit */,
+				AB0F683F1E9796B7009E3C0A /* WQPhotoAlbumKitTests */,
+				AB0F68331E9796B7009E3C0A /* Products */,
+				ABC07C071E9B895700619C00 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AB0F68331E9796B7009E3C0A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB0F68321E9796B7009E3C0A /* WQPhotoAlbumKit.framework */,
+				AB0F683B1E9796B7009E3C0A /* WQPhotoAlbumKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB0F68341E9796B7009E3C0A /* WQPhotoAlbumKit */ = {
+			isa = PBXGroup;
+			children = (
+				ABC2FFF01E9CFB60006A8AE1 /* resource */,
+				ABC07C031E9B891800619C00 /* Third */,
+				AB0F684C1E97978A009E3C0A /* Model */,
+				AB0F68571E97978A009E3C0A /* View */,
+				AB0F685B1E97978A009E3C0A /* ViewController */,
+				AB0F68611E97978A009E3C0A /* WQCachingImageManager.swift */,
+				AB3D8E971E9CE4B000EF5D42 /* WQExtension.swift */,
+				AB0F68351E9796B7009E3C0A /* WQPhotoAlbumKit.h */,
+				AB0F68361E9796B7009E3C0A /* Info.plist */,
+			);
+			path = WQPhotoAlbumKit;
+			sourceTree = "<group>";
+		};
+		AB0F683F1E9796B7009E3C0A /* WQPhotoAlbumKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				AB0F68401E9796B7009E3C0A /* WQPhotoAlbumKitTests.swift */,
+				AB0F68421E9796B7009E3C0A /* Info.plist */,
+			);
+			path = WQPhotoAlbumKitTests;
+			sourceTree = "<group>";
+		};
+		AB0F684C1E97978A009E3C0A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB0F684D1E97978A009E3C0A /* WQPhotoData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AB0F68571E97978A009E3C0A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB0F68581E97978A009E3C0A /* WQPhotoCollectionViewCell.swift */,
+				AB0F68591E97978A009E3C0A /* WQPreviewCollectionViewCell.swift */,
+				AB0F685A1E97978A009E3C0A /* WQProgressView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB0F685B1E97978A009E3C0A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AB0F685E1E97978A009E3C0A /* WQPhotoBaseViewController.swift */,
+				AB0F685F1E97978A009E3C0A /* WQPhotoNavigationViewController.swift */,
+				AB0F685C1E97978A009E3C0A /* WQPhotoAlbumListViewController.swift */,
+				AB0F685D1E97978A009E3C0A /* WQPhotoAlbumViewController.swift */,
+				AB0F68601E97978A009E3C0A /* WQPhotoPreviewViewController.swift */,
+				ABC07C011E9B890C00619C00 /* WQPhotoPreviewDeleteViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		ABC07C031E9B891800619C00 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Third;
+			sourceTree = "<group>";
+		};
+		ABC07C071E9B895700619C00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ABC07C081E9B895700619C00 /* Photos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ABC2FFF01E9CFB60006A8AE1 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				ABC2FFF11E9CFB60006A8AE1 /* album_photo_delete@2x.png */,
+				ABC2FFF21E9CFB60006A8AE1 /* album_photo_delete@3x.png */,
+				ABC2FFF31E9CFB60006A8AE1 /* album_select_blue@2x.png */,
+				ABC2FFF41E9CFB60006A8AE1 /* album_select_blue@3x.png */,
+				ABC2FFF51E9CFB60006A8AE1 /* album_select_gray@2x.png */,
+				ABC2FFF61E9CFB60006A8AE1 /* album_select_gray@3x.png */,
+				ABC2FFF71E9CFB60006A8AE1 /* icon_back_white@2x.png */,
+				ABC2FFF81E9CFB60006A8AE1 /* icon_back_white@3x.png */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AB0F682F1E9796B7009E3C0A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB0F68431E9796B7009E3C0A /* WQPhotoAlbumKit.h in Headers */,
+				AB1D022B1E97A14E0087D146 /* WQPhotoNavigationViewController.swift in Headers */,
+				AB1D022C1E97A2140087D146 /* WQCachingImageManager.swift in Headers */,
+				ABC07C061E9B893D00619C00 /* WQPhotoPreviewDeleteViewController.swift in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AB0F68311E9796B7009E3C0A /* WQPhotoAlbumKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB0F68461E9796B7009E3C0A /* Build configuration list for PBXNativeTarget "WQPhotoAlbumKit" */;
+			buildPhases = (
+				AB0F682D1E9796B7009E3C0A /* Sources */,
+				AB0F682E1E9796B7009E3C0A /* Frameworks */,
+				AB0F682F1E9796B7009E3C0A /* Headers */,
+				AB0F68301E9796B7009E3C0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WQPhotoAlbumKit;
+			productName = WQPhotoAlbumKit;
+			productReference = AB0F68321E9796B7009E3C0A /* WQPhotoAlbumKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AB0F683A1E9796B7009E3C0A /* WQPhotoAlbumKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB0F68491E9796B7009E3C0A /* Build configuration list for PBXNativeTarget "WQPhotoAlbumKitTests" */;
+			buildPhases = (
+				AB0F68371E9796B7009E3C0A /* Sources */,
+				AB0F68381E9796B7009E3C0A /* Frameworks */,
+				AB0F68391E9796B7009E3C0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB0F683E1E9796B7009E3C0A /* PBXTargetDependency */,
+			);
+			name = WQPhotoAlbumKitTests;
+			productName = WQPhotoAlbumKitTests;
+			productReference = AB0F683B1E9796B7009E3C0A /* WQPhotoAlbumKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB0F68291E9796B7009E3C0A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = qian.com;
+				TargetAttributes = {
+					AB0F68311E9796B7009E3C0A = {
+						CreatedOnToolsVersion = 8.3;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+					AB0F683A1E9796B7009E3C0A = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AB0F682C1E9796B7009E3C0A /* Build configuration list for PBXProject "WQPhotoAlbumKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AB0F68281E9796B7009E3C0A;
+			productRefGroup = AB0F68331E9796B7009E3C0A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AB0F68311E9796B7009E3C0A /* WQPhotoAlbumKit */,
+				AB0F683A1E9796B7009E3C0A /* WQPhotoAlbumKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB0F68301E9796B7009E3C0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABC2FFFB1E9CFB60006A8AE1 /* album_select_blue@2x.png in Resources */,
+				ABC2FFFC1E9CFB60006A8AE1 /* album_select_blue@3x.png in Resources */,
+				ABC2FFFD1E9CFB60006A8AE1 /* album_select_gray@2x.png in Resources */,
+				ABC2FFFF1E9CFB60006A8AE1 /* icon_back_white@2x.png in Resources */,
+				ABC2FFF91E9CFB60006A8AE1 /* album_photo_delete@2x.png in Resources */,
+				ABC200001E9CFB60006A8AE1 /* icon_back_white@3x.png in Resources */,
+				ABC2FFFE1E9CFB60006A8AE1 /* album_select_gray@3x.png in Resources */,
+				ABC2FFFA1E9CFB60006A8AE1 /* album_photo_delete@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB0F68391E9796B7009E3C0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB0F682D1E9796B7009E3C0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB0F68621E97978A009E3C0A /* WQPhotoData.swift in Sources */,
+				AB3D8E981E9CE4B000EF5D42 /* WQExtension.swift in Sources */,
+				AB0F68731E97978A009E3C0A /* WQCachingImageManager.swift in Sources */,
+				AB0F68711E97978A009E3C0A /* WQPhotoNavigationViewController.swift in Sources */,
+				ABC07C021E9B890C00619C00 /* WQPhotoPreviewDeleteViewController.swift in Sources */,
+				AB0F68701E97978A009E3C0A /* WQPhotoBaseViewController.swift in Sources */,
+				AB0F686C1E97978A009E3C0A /* WQPreviewCollectionViewCell.swift in Sources */,
+				AB0F686F1E97978A009E3C0A /* WQPhotoAlbumViewController.swift in Sources */,
+				AB0F686B1E97978A009E3C0A /* WQPhotoCollectionViewCell.swift in Sources */,
+				AB0F686E1E97978A009E3C0A /* WQPhotoAlbumListViewController.swift in Sources */,
+				AB0F68721E97978A009E3C0A /* WQPhotoPreviewViewController.swift in Sources */,
+				AB0F686D1E97978A009E3C0A /* WQProgressView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB0F68371E9796B7009E3C0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB0F68411E9796B7009E3C0A /* WQPhotoAlbumKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AB0F683E1E9796B7009E3C0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB0F68311E9796B7009E3C0A /* WQPhotoAlbumKit */;
+			targetProxy = AB0F683D1E9796B7009E3C0A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AB0F68441E9796B7009E3C0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AB0F68451E9796B7009E3C0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AB0F68471E9796B7009E3C0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WQPhotoAlbumKit/Third",
+				);
+				INFOPLIST_FILE = WQPhotoAlbumKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = qian.com.WQPhotoAlbumKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AB0F68481E9796B7009E3C0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WQPhotoAlbumKit/Third",
+				);
+				INFOPLIST_FILE = WQPhotoAlbumKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = qian.com.WQPhotoAlbumKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		AB0F684A1E9796B7009E3C0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = WQPhotoAlbumKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = qian.com.WQPhotoAlbumKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AB0F684B1E9796B7009E3C0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = WQPhotoAlbumKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = qian.com.WQPhotoAlbumKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB0F682C1E9796B7009E3C0A /* Build configuration list for PBXProject "WQPhotoAlbumKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB0F68441E9796B7009E3C0A /* Debug */,
+				AB0F68451E9796B7009E3C0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB0F68461E9796B7009E3C0A /* Build configuration list for PBXNativeTarget "WQPhotoAlbumKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB0F68471E9796B7009E3C0A /* Debug */,
+				AB0F68481E9796B7009E3C0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB0F68491E9796B7009E3C0A /* Build configuration list for PBXNativeTarget "WQPhotoAlbumKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB0F684A1E9796B7009E3C0A /* Debug */,
+				AB0F684B1E9796B7009E3C0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AB0F68291E9796B7009E3C0A /* Project object */;
+}

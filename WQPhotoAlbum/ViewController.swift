@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WQPhotoAlbumKit
 
 class ViewController: UIViewController, WQPhotoAlbumProtocol {
 
