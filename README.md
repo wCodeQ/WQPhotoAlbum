@@ -24,6 +24,7 @@ self.navigationController?.present(photoAlbumVC, animated: true, completion: nil
 ```
 * 直接预览跳转，支持删除
 ```Swift
+// 基于WQPhotoModel中的资源，如果有原图直接展示，否者先展示缩略图然后加载网络图，完成后再展示原图，已做掉缓存
 let wqPhotoPreviewVC = WQPhotoPreviewDeleteViewController()
 wqPhotoPreviewVC.previewPhotoArray = self.selectIamgeArr        //传入预览源，为WQPhotoModel数组，支持缩略图，原图和网络图
 wqPhotoPreviewVC.currentIndex = currentIndex                    //当前展示第几张   
