@@ -15,6 +15,7 @@ public class WQCachingImageManager: PHCachingImageManager {
         return super.default() as! WQCachingImageManager
     }
     
+    // 获取缩略图
     public func requestThumbnailImage(for asset: PHAsset, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) -> PHImageRequestID {
         let option = PHImageRequestOptions()
 //        option.resizeMode = .fast
@@ -25,6 +26,7 @@ public class WQCachingImageManager: PHCachingImageManager {
         }
     }
     
+    // 获取预览图
     public func requestPreviewImage(for asset: PHAsset, progressHandler: Photos.PHAssetImageProgressHandler?, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) -> PHImageRequestID {
         let option = PHImageRequestOptions()
 //        option.version = .current

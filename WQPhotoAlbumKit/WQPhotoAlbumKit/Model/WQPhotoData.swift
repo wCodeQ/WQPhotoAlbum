@@ -25,8 +25,11 @@ class WQPhotoData: NSObject {
 }
 
 public class WQPhotoModel: NSObject {
+    // 缩略图
     public var thumbnailImage: UIImage?
+    // 预览图
     public var originImage: UIImage?
+    // 网络图URL
     public var imageURL: String?
     
     public convenience override init() {

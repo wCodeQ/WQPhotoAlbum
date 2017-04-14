@@ -10,15 +10,18 @@ import UIKit
 import Photos
 
 @objc public protocol WQPhotoAlbumProtocol: NSObjectProtocol {
+    //返回图片原资源，需要用PHCachingImageManager或者我封装的WQCachingImageManager进行解析处理
     @available(iOS 8.0, *)
     @objc optional func photoAlbum(selectPhotoAssets: [PHAsset]) -> Void
     
+    // 返回WQPhotoModel数组，其中包含选择的缩略图和预览图
     @available(iOS 8.0, *)
     @objc optional func photoAlbum(selectPhotos: [WQPhotoModel]) -> Void
 }
 
 public class WQPhotoNavigationViewController: UINavigationController {
     
+    // 最大选择张数
     public var maxSelectCount = 0 {
         didSet {
             self.photoAlbumVC.maxSelectCount = maxSelectCount
