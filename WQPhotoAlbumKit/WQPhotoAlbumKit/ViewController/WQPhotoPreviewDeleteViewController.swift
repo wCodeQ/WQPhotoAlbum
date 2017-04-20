@@ -58,6 +58,7 @@ public class WQPhotoPreviewDeleteViewController: WQPhotoBaseViewController, UICo
         
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.black
+        self.automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(self.photoCollectionView)
         self.initNavigation()
     }

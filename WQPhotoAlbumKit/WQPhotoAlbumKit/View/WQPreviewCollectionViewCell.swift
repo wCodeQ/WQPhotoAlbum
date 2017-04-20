@@ -14,20 +14,12 @@ class WQPreviewCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     
     lazy var photoImageView: UIImageView = {
         let imageView = UIImageView()
-        var frame = self.contentView.bounds
-        frame.size.width -= 10
-        imageView.frame = frame
+//        var frame = self.contentView.bounds
+//        frame.size.width -= 10
+//        imageView.frame = frame
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
-        let oneTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(oneTap(oneTapGestureRecognizer:)))
-        oneTapGestureRecognizer.numberOfTapsRequired = 1
-        oneTapGestureRecognizer.numberOfTouchesRequired = 1
-        imageView.addGestureRecognizer(oneTapGestureRecognizer)
-        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTap(doubleTapGestureRecognizer:)))
-        doubleTapGestureRecognizer.numberOfTapsRequired = 2
-        doubleTapGestureRecognizer.numberOfTouchesRequired = 1
-        imageView.addGestureRecognizer(doubleTapGestureRecognizer)
-        oneTapGestureRecognizer.require(toFail: doubleTapGestureRecognizer)
+        
         return imageView
     }()
     
@@ -38,8 +30,18 @@ class WQPreviewCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
         scrollView.frame = frame
         scrollView.delegate = self
         scrollView.isUserInteractionEnabled = true
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.maximumZoomScale = self._maxScale
         scrollView.minimumZoomScale = self._minScale
+        let oneTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(oneTap(oneTapGestureRecognizer:)))
+        oneTapGestureRecognizer.numberOfTapsRequired = 1
+        oneTapGestureRecognizer.numberOfTouchesRequired = 1
+        scrollView.addGestureRecognizer(oneTapGestureRecognizer)
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTap(doubleTapGestureRecognizer:)))
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        doubleTapGestureRecognizer.numberOfTouchesRequired = 1
+        scrollView.addGestureRecognizer(doubleTapGestureRecognizer)
+        oneTapGestureRecognizer.require(toFail: doubleTapGestureRecognizer)
 //        scrollView.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin, .flexibleHeight]
         return scrollView
     }()
@@ -48,10 +50,19 @@ class WQPreviewCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     private let _maxScale: CGFloat = 2
     private let _minScale: CGFloat = 1
     
+    private var setContent = false
     // 图片设置
     var photoImage: UIImage? {
         didSet {
             self.photoImageView.image = photoImage
+            guard let size = self.photoImage?.size, !setContent else {
+                return
+            }
+            setContent = true
+            let imageHeight = WQScreenWidth*size.height/size.width
+            self.photoImageView.frame = CGRect(x: 0, y: 0, width: WQScreenWidth, height: imageHeight)
+            self.photoImageView.center = self.photoImageScrollView.center
+            self.photoImageScrollView.contentSize = self.photoImageView.frame.size
         }
     }
     
@@ -94,15 +105,22 @@ class WQPreviewCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
             self.photoImageScrollView.setZoomScale(currentScale, animated: true)
         } else if currentScale < aveScale {
             currentScale = _maxScale
-            let touchPoint = doubleTapGestureRecognizer.location(in: self)
-            self.photoImageScrollView.zoom(to: CGRect(x: touchPoint.x ,y:touchPoint.y ,width: 10 ,height:10), animated: true)
+            let touchPoint = doubleTapGestureRecognizer.location(in: doubleTapGestureRecognizer.view)
+            self.photoImageScrollView.zoom(to: CGRect(x: touchPoint.x, y: touchPoint.y, width: 10, height: 10), animated: true)
         }
-        
     }
     
     //MARK: -UIScrollView delegate
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.photoImageView
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        var xcenter = scrollView.center.x , ycenter = scrollView.center.y
+        //目前contentsize的width是否大于原scrollview的contentsize，如果大于，设置imageview中心x点为contentsize的一半，以固定imageview在该contentsize中心。如果不大于说明图像的宽还没有超出屏幕范围，可继续让中心x点为屏幕中点，此种情况确保图像在屏幕中心。
+        xcenter = scrollView.contentSize.width > scrollView.frame.size.width ? scrollView.contentSize.width/2 : xcenter;
+        ycenter = scrollView.contentSize.height > scrollView.frame.size.height ? scrollView.contentSize.height/2 : ycenter;
+        self.photoImageView.center = CGPoint(x: xcenter, y: ycenter)
     }
     
     func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
