@@ -11,6 +11,7 @@ import Photos
 
 class WQPhotoAlbumListViewController: WQPhotoBaseViewController, UITableViewDelegate, UITableViewDataSource {
 
+    weak var photoAlbumDelegate: WQPhotoAlbumProtocol?
     var type: WQPhotoAlbumType = .selectPhoto
     
     private var albumsList: [(assetCollection:PHAssetCollection, assetsFetchResult: PHFetchResult<PHAsset>)] = []
@@ -101,6 +102,7 @@ class WQPhotoAlbumListViewController: WQPhotoBaseViewController, UITableViewDele
         let assetsFetchResult = albumsList[indexPath.row].assetsFetchResult
         let photoAlbumViewController = WQPhotoAlbumViewController()
         photoAlbumViewController.assetsFetchResult = assetsFetchResult
+        photoAlbumViewController.photoAlbumDelegate = self.photoAlbumDelegate
         photoAlbumViewController.type = self.type
         self.navigationController?.pushViewController(photoAlbumViewController, animated: true)
     }

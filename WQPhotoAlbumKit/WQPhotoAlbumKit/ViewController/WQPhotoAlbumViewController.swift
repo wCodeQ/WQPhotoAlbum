@@ -206,7 +206,7 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
         clipVC.clipBounds = self.clipBounds
         clipVC.photoImage = photoImage
         clipVC.sureClicked = { [unowned self] (clipPhoto: UIImage?) in
-            if self.photoAlbumDelegate!.responds(to: #selector(WQPhotoAlbumProtocol.photoAlbum(clipPhoto:))) {
+            if self.photoAlbumDelegate != nil, self.photoAlbumDelegate!.responds(to: #selector(WQPhotoAlbumProtocol.photoAlbum(clipPhoto:))) {
                 self.photoAlbumDelegate?.photoAlbum!(clipPhoto: clipPhoto)
             }
             self.dismiss(animated: true, completion: nil)
@@ -272,7 +272,6 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
             self.showLoadingView(inView: self.view)
             let asset = self.photoData.assetArray[indexPath.row]
             _ = WQCachingImageManager.default().requestPreviewImage(for: asset, progressHandler: nil, resultHandler: { (image: UIImage?, dictionry: Dictionary?) in
-                self.hideLoadingView()
                 var downloadFinined = true
                 if let cancelled = dictionry![PHImageCancelledKey] as? Bool {
                     downloadFinined = !cancelled
@@ -284,6 +283,7 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
                     downloadFinined = !resultIsDegraded
                 }
                 if downloadFinined, let photoImage = image {
+                    self.hideLoadingView()
                     self.gotoClipViewController(photoImage: photoImage)
                 }
             })

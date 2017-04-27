@@ -51,6 +51,7 @@ public class WQPhotoNavigationViewController: UINavigationController {
     
     public init(photoAlbumDelegate: WQPhotoAlbumProtocol?, photoAlbumType: WQPhotoAlbumType) {
         let photoAlbumListVC = WQPhotoAlbumListViewController()
+        photoAlbumListVC.photoAlbumDelegate = photoAlbumDelegate
         photoAlbumListVC.type = photoAlbumType
         super.init(rootViewController: photoAlbumListVC)
         self.isNavigationBarHidden = true
