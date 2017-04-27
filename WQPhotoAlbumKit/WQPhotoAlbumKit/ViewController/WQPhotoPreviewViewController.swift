@@ -89,7 +89,7 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
     
     private func setBottomView() {
 //        self.bottomView.backgroundColor = UIColor(white: 0.1, alpha: 0.9)
-        self.bottomView.sureClicked = { [unowned self] in
+        self.bottomView.rightClicked = { [unowned self] in
             if self.sureClicked != nil {
                 self.sureClicked!(self.view, self.photoData.seletedAssetArray)
             }
@@ -100,10 +100,10 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
     
     private func completedButtonShow() {
         if self.photoData.seletedAssetArray.count > 0 {
-            self.bottomView.sureButtonTitle = "(\(self.photoData.seletedAssetArray.count))完成"
+            self.bottomView.rightButtonTitle = "(\(self.photoData.seletedAssetArray.count))完成"
             self.bottomView.buttonIsEnabled = true
         } else {
-            self.bottomView.sureButtonTitle = "完成"
+            self.bottomView.rightButtonTitle = "完成"
             self.bottomView.buttonIsEnabled = false
         }
     }

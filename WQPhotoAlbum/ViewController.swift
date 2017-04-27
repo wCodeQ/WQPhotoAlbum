@@ -11,18 +11,29 @@ import WQPhotoAlbumKit
 
 class ViewController: UIViewController, WQPhotoAlbumProtocol {
 
+    @IBOutlet weak var clipImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    @IBAction func clipClick(_ sender: UIButton) {
+        let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self, photoAlbumType: .clipPhoto)    //初始化需要设置代理对象
+//        photoAlbumVC.clipBounds = CGSize(width: self.view.frame.width-100, height: 400)
+        self.navigationController?.present(photoAlbumVC, animated: true, completion: nil)
+    }
     @IBAction func buttonClick(_ sender: UIButton) {
-        let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self)    //初始化需要设置代理对象
+        let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self, photoAlbumType: .selectPhoto)    //初始化需要设置代理对象
         photoAlbumVC.maxSelectCount = 10    //最大可选择张数
         self.navigationController?.present(photoAlbumVC, animated: true, completion: nil)
     }
     
     func photoAlbum(selectPhotos: [UIImage]) {
         print(selectPhotos.count)
+    }
+    
+    func photoAlbum(clipPhoto: UIImage?) {
+        clipImage.image = clipPhoto
     }
 
     override func didReceiveMemoryWarning() {

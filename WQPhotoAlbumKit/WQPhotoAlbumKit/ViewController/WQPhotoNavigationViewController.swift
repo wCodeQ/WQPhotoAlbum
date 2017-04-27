@@ -17,6 +17,14 @@ import Photos
     // 返回WQPhotoModel数组，其中包含选择的缩略图和预览图
     @available(iOS 8.0, *)
     @objc optional func photoAlbum(selectPhotos: [WQPhotoModel]) -> Void
+    
+    // 返回WQPhotoModel数组，其中包含选择的缩略图和预览图
+    @available(iOS 8.0, *)
+    @objc optional func photoAlbum(clipPhoto: UIImage?) -> Void
+}
+
+public enum WQPhotoAlbumType {
+    case selectPhoto, clipPhoto
 }
 
 public class WQPhotoNavigationViewController: UINavigationController {
@@ -28,16 +36,26 @@ public class WQPhotoNavigationViewController: UINavigationController {
         }
     }
     
-    private let photoAlbumVC = WQPhotoAlbumViewController()
-    
-    convenience init() {
-        self.init(photoAlbumDelegate: nil)
+    // 裁剪大小
+    public var clipBounds: CGSize = CGSize(width: WQScreenWidth, height: WQScreenWidth) {
+        didSet {
+            self.photoAlbumVC.clipBounds = clipBounds
+        }
     }
     
-    public init(photoAlbumDelegate: WQPhotoAlbumProtocol?) {
-        super.init(rootViewController: WQPhotoAlbumListViewController())
+    private let photoAlbumVC = WQPhotoAlbumViewController()
+    
+    private convenience init() {
+        self.init(photoAlbumDelegate: nil, photoAlbumType: .selectPhoto)
+    }
+    
+    public init(photoAlbumDelegate: WQPhotoAlbumProtocol?, photoAlbumType: WQPhotoAlbumType) {
+        let photoAlbumListVC = WQPhotoAlbumListViewController()
+        photoAlbumListVC.type = photoAlbumType
+        super.init(rootViewController: photoAlbumListVC)
         self.isNavigationBarHidden = true
         photoAlbumVC.photoAlbumDelegate = photoAlbumDelegate
+        photoAlbumVC.type = photoAlbumType
         self.pushViewController(photoAlbumVC, animated: false)
     }
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {

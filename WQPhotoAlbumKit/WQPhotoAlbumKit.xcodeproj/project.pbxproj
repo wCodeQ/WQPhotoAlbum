@@ -23,6 +23,7 @@
 		AB1D022B1E97A14E0087D146 /* WQPhotoNavigationViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = AB0F685F1E97978A009E3C0A /* WQPhotoNavigationViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB1D022C1E97A2140087D146 /* WQCachingImageManager.swift in Headers */ = {isa = PBXBuildFile; fileRef = AB0F68611E97978A009E3C0A /* WQCachingImageManager.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB3D8E981E9CE4B000EF5D42 /* WQExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D8E971E9CE4B000EF5D42 /* WQExtension.swift */; };
+		AB6CF88F1EB18C7F00AB0397 /* WQPhotoClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6CF88E1EB18C7F00AB0397 /* WQPhotoClipViewController.swift */; };
 		ABC07C021E9B890C00619C00 /* WQPhotoPreviewDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC07C011E9B890C00619C00 /* WQPhotoPreviewDeleteViewController.swift */; };
 		ABC07C061E9B893D00619C00 /* WQPhotoPreviewDeleteViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = ABC07C011E9B890C00619C00 /* WQPhotoPreviewDeleteViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		ABC07C091E9B895700619C00 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABC07C081E9B895700619C00 /* Photos.framework */; };
@@ -64,6 +65,7 @@
 		AB0F68601E97978A009E3C0A /* WQPhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		AB0F68611E97978A009E3C0A /* WQCachingImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQCachingImageManager.swift; sourceTree = "<group>"; };
 		AB3D8E971E9CE4B000EF5D42 /* WQExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQExtension.swift; sourceTree = "<group>"; };
+		AB6CF88E1EB18C7F00AB0397 /* WQPhotoClipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoClipViewController.swift; sourceTree = "<group>"; };
 		ABC07C011E9B890C00619C00 /* WQPhotoPreviewDeleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewDeleteViewController.swift; sourceTree = "<group>"; };
 		ABC07C081E9B895700619C00 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		ABC2FFF11E9CFB60006A8AE1 /* album_photo_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "album_photo_delete@2x.png"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				AB0F685D1E97978A009E3C0A /* WQPhotoAlbumViewController.swift */,
 				AB0F68601E97978A009E3C0A /* WQPhotoPreviewViewController.swift */,
 				ABC07C011E9B890C00619C00 /* WQPhotoPreviewDeleteViewController.swift */,
+				AB6CF88E1EB18C7F00AB0397 /* WQPhotoClipViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				AB0F68731E97978A009E3C0A /* WQCachingImageManager.swift in Sources */,
 				AB0F68711E97978A009E3C0A /* WQPhotoNavigationViewController.swift in Sources */,
 				ABC07C021E9B890C00619C00 /* WQPhotoPreviewDeleteViewController.swift in Sources */,
+				AB6CF88F1EB18C7F00AB0397 /* WQPhotoClipViewController.swift in Sources */,
 				AB0F68701E97978A009E3C0A /* WQPhotoBaseViewController.swift in Sources */,
 				AB0F686C1E97978A009E3C0A /* WQPreviewCollectionViewCell.swift in Sources */,
 				AB0F686F1E97978A009E3C0A /* WQPhotoAlbumViewController.swift in Sources */,

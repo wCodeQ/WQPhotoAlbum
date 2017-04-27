@@ -14,8 +14,12 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     var assetsFetchResult: PHFetchResult<PHAsset>?
     
     var maxSelectCount = 0
-//     完成闭包
-//    var sureClicked: ((_ selectPhotos: [PHAsset]) -> Void)?
+    
+    var type: WQPhotoAlbumType = .selectPhoto
+    
+    // 剪裁大小
+    var clipBounds: CGSize = CGSize(width: WQScreenWidth, height: WQScreenWidth)
+    
     weak var photoAlbumDelegate: WQPhotoAlbumProtocol?
     
     private let cellIdentifier = "PhotoCollectionCell"
@@ -24,7 +28,7 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
         let shape: CGFloat = 5
         let cellWidth: CGFloat = (WQScreenWidth - 5 * shape) / 4
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsetsMake(64, shape, 44, shape)
+        flowLayout.sectionInset = UIEdgeInsetsMake(64, shape, self.type == .selectPhoto ? 44:0, shape)
         flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
         flowLayout.minimumLineSpacing = shape
         flowLayout.minimumInteritemSpacing = shape
@@ -70,7 +74,9 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
         self.automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(self.photoCollectionView)
         self.initNavigation()
-        self.setBottomView()
+        if type == .selectPhoto {
+            self.setBottomView()
+        }
         self.getAllPhotos()
     }
     
@@ -99,10 +105,10 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     }
     
     private func setBottomView() {
-        self.bottomView.previewClicked = { [unowned self] in
+        self.bottomView.leftClicked = { [unowned self] in
             self.gotoPreviewViewController(previewArray: self.photoData.seletedAssetArray, currentIndex: 0)
         }
-        self.bottomView.sureClicked = { [unowned self] in
+        self.bottomView.rightClicked = { [unowned self] in
             self.selectSuccess(fromeView: self.view, selectAssetArray: self.photoData.seletedAssetArray)
         }
         self.view.addSubview(self.bottomView)
@@ -167,10 +173,10 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     
     private func completedButtonShow() {
         if self.photoData.seletedAssetArray.count > 0 {
-            self.bottomView.sureButtonTitle = "(\(self.photoData.seletedAssetArray.count))完成"
+            self.bottomView.rightButtonTitle = "(\(self.photoData.seletedAssetArray.count))完成"
             self.bottomView.buttonIsEnabled = true
         } else {
-            self.bottomView.sureButtonTitle = "完成"
+            self.bottomView.rightButtonTitle = "完成"
             self.bottomView.buttonIsEnabled = false
         }
     }
@@ -193,6 +199,19 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
             self.selectSuccess(fromeView: view, selectAssetArray: selectPhotos)
         }
         self.navigationController?.pushViewController(previewVC, animated: true)
+    }
+    
+    private func gotoClipViewController(photoImage: UIImage) {
+        let clipVC = WQPhotoClipViewController()
+        clipVC.clipBounds = self.clipBounds
+        clipVC.photoImage = photoImage
+        clipVC.sureClicked = { [unowned self] (clipPhoto: UIImage?) in
+            if self.photoAlbumDelegate!.responds(to: #selector(WQPhotoAlbumProtocol.photoAlbum(clipPhoto:))) {
+                self.photoAlbumDelegate?.photoAlbum!(clipPhoto: clipPhoto)
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
+        self.navigationController?.pushViewController(clipVC, animated: true)
     }
     
     override func rightButtonClick(button: UIButton) {
@@ -218,32 +237,57 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
         _ = WQCachingImageManager.default().requestThumbnailImage(for: asset) { (image: UIImage?, dictionry: Dictionary?) in
             cell.photoImage = image ?? UIImage()
         }
-        cell.isChoose = self.photoData.divideArray[indexPath.row]
-        cell.selectPhotoCompleted = { [unowned self] in
-            self.photoData.divideArray[indexPath.row] = !self.photoData.divideArray[indexPath.row]
-            if self.photoData.divideArray[indexPath.row] {
-                if self.maxSelectCount != 0, self.photoData.seletedAssetArray.count >= self.maxSelectCount {
-                    cell.isChoose = false
-                    //超过最大数
-                    self.photoData.divideArray[indexPath.row] = !self.photoData.divideArray[indexPath.row]
-                    let alert = UIAlertController(title: nil, message: "您最多只能选择\(self.maxSelectCount)张照片", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "我知道了", style: .cancel, handler: nil)
-                    alert.addAction(action)
-                    self.present(alert, animated: true, completion: nil)
-                    return
+        if type == .selectPhoto {
+            cell.isChoose = self.photoData.divideArray[indexPath.row]
+            cell.selectPhotoCompleted = { [unowned self] in
+                self.photoData.divideArray[indexPath.row] = !self.photoData.divideArray[indexPath.row]
+                if self.photoData.divideArray[indexPath.row] {
+                    if self.maxSelectCount != 0, self.photoData.seletedAssetArray.count >= self.maxSelectCount {
+                        cell.isChoose = false
+                        //超过最大数
+                        self.photoData.divideArray[indexPath.row] = !self.photoData.divideArray[indexPath.row]
+                        let alert = UIAlertController(title: nil, message: "您最多只能选择\(self.maxSelectCount)张照片", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "我知道了", style: .cancel, handler: nil)
+                        alert.addAction(action)
+                        self.present(alert, animated: true, completion: nil)
+                        return
+                    }
+                    self.photoData.seletedAssetArray.append(self.photoData.assetArray[indexPath.row])
+                } else {
+                    self.photoData.seletedAssetArray.remove(at: self.photoData.seletedAssetArray.index(of: self.photoData.assetArray[indexPath.row])!)
                 }
-                self.photoData.seletedAssetArray.append(self.photoData.assetArray[indexPath.row])
-            } else {
-                self.photoData.seletedAssetArray.remove(at: self.photoData.seletedAssetArray.index(of: self.photoData.assetArray[indexPath.row])!)
+                self.completedButtonShow()
             }
-            self.completedButtonShow()
+        } else {
+            cell.selectButton.isHidden = true
         }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.gotoPreviewViewController(previewArray: self.photoData.assetArray, currentIndex: indexPath.row)
+        if self.type == .selectPhoto {
+            self.gotoPreviewViewController(previewArray: self.photoData.assetArray, currentIndex: indexPath.row)
+        } else {
+            self.showLoadingView(inView: self.view)
+            let asset = self.photoData.assetArray[indexPath.row]
+            _ = WQCachingImageManager.default().requestPreviewImage(for: asset, progressHandler: nil, resultHandler: { (image: UIImage?, dictionry: Dictionary?) in
+                self.hideLoadingView()
+                var downloadFinined = true
+                if let cancelled = dictionry![PHImageCancelledKey] as? Bool {
+                    downloadFinined = !cancelled
+                }
+                if downloadFinined, let error = dictionry![PHImageErrorKey] as? Bool {
+                    downloadFinined = !error
+                }
+                if downloadFinined, let resultIsDegraded = dictionry![PHImageResultIsDegradedKey] as? Bool {
+                    downloadFinined = !resultIsDegraded
+                }
+                if downloadFinined, let photoImage = image {
+                    self.gotoClipViewController(photoImage: photoImage)
+                }
+            })
+        }
     }
 }
 
@@ -251,7 +295,7 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
 class WQAlbumBottomView: UIView {
     
     private lazy var previewButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 12, y: 12, width: 60, height: 20))
+        let button = UIButton(frame: CGRect(x: 12, y: 2, width: 60, height: 40))
         button.backgroundColor = UIColor.clear
         button.contentHorizontalAlignment = .left
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
@@ -264,7 +308,7 @@ class WQAlbumBottomView: UIView {
     }()
     
     private lazy var sureButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: WQScreenWidth-12-80, y: 12, width: 80, height: 20))
+        let button = UIButton(frame: CGRect(x: WQScreenWidth-12-80, y: 2, width: 80, height: 40))
         button.backgroundColor = UIColor.clear
         button.contentHorizontalAlignment = .right
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
@@ -276,15 +320,15 @@ class WQAlbumBottomView: UIView {
         return button
     }()
     
-    var previewButtonTitle: String? {
+    var leftButtonTitle: String? {
         didSet {
-            self.previewButton.setTitle(previewButtonTitle, for: .normal)
+            self.previewButton.setTitle(leftButtonTitle, for: .normal)
         }
     }
     
-    var sureButtonTitle: String? {
+    var rightButtonTitle: String? {
         didSet {
-            self.sureButton.setTitle(sureButtonTitle, for: .normal)
+            self.sureButton.setTitle(rightButtonTitle, for: .normal)
         }
     }
     
@@ -296,10 +340,10 @@ class WQAlbumBottomView: UIView {
     }
     
     // 预览闭包
-    var previewClicked: ((Void) -> Void)?
+    var leftClicked: ((Void) -> Void)?
     
     // 完成闭包
-    var sureClicked: ((Void) -> Void)?
+    var rightClicked: ((Void) -> Void)?
     
     enum WQAlbumBottomViewType {
         case normal, noPreview
@@ -336,14 +380,14 @@ class WQAlbumBottomView: UIView {
     
     //MARK: handle events
     func previewClick(button: UIButton) {
-        if previewClicked != nil {
-            previewClicked!()
+        if leftClicked != nil {
+            leftClicked!()
         }
     }
     
     func sureClick(button: UIButton) {
-        if sureClicked != nil {
-            sureClicked!()
+        if rightClicked != nil {
+            rightClicked!()
         }
     }
 }
