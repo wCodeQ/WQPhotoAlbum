@@ -19,7 +19,7 @@ class ViewController: UIViewController, WQPhotoAlbumProtocol {
     }
     @IBAction func clipClick(_ sender: UIButton) {
         let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self, photoAlbumType: .clipPhoto)    //初始化需要设置代理对象
-        photoAlbumVC.clipBounds = CGSize(width: self.view.frame.width, height: 400)
+//        photoAlbumVC.clipBounds = CGSize(width: self.view.frame.width, height: 400)
         self.navigationController?.present(photoAlbumVC, animated: true, completion: nil)
     }
     @IBAction func buttonClick(_ sender: UIButton) {

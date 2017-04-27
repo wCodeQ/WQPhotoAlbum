@@ -14,11 +14,11 @@ import Photos
     @available(iOS 8.0, *)
     @objc optional func photoAlbum(selectPhotoAssets: [PHAsset]) -> Void
     
-    // 返回WQPhotoModel数组，其中包含选择的缩略图和预览图
+    //返回WQPhotoModel数组，其中包含选择的缩略图和预览图
     @available(iOS 8.0, *)
     @objc optional func photoAlbum(selectPhotos: [WQPhotoModel]) -> Void
     
-    // 返回WQPhotoModel数组，其中包含选择的缩略图和预览图
+    // 返回裁剪后图片
     @available(iOS 8.0, *)
     @objc optional func photoAlbum(clipPhoto: UIImage?) -> Void
 }
