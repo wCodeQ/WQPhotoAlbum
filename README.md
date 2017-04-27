@@ -7,19 +7,35 @@
 * 返回列表为相册列表，点击取消dismiss
 * 单独公开预览界面，支持删除
 ## 接入说明
-* 直接跳转所有照片
+* 直接跳转所有照片,默认是选择图片
 ```Swift
 let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self)    //初始化需要设置代理对象
 photoAlbumVC.maxSelectCount = 10    //最大可选择张数
 self.navigationController?.present(photoAlbumVC, animated: true, completion: nil)
 
+//跳转裁剪图片选择列表
+let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self, photoAlbumType: .clipPhoto)
+photoAlbumVC.clipBounds = CGSize(width: self.view.frame.width, height: 400)
+self.navigationController?.present(photoAlbumVC, animated: true, completion: nil)
+
 // 实现WQPhotoAlbumProtocol协议获取选择图片资源
 @objc public protocol WQPhotoAlbumProtocol: NSObjectProtocol {
-    @available(iOS 8.0, *)  //返回图片原资源，需要用PHCachingImageManager或者我封装的WQCachingImageManager进行解析处理
-    @objc optional func photoAlbum(selectPhotoAssets: [PHAsset]) -> Void  
+    //返回图片原资源，需要用PHCachingImageManager或者我封装的WQCachingImageManager进行解析处理
+    @available(iOS 8.0, *)
+    @objc optional func photoAlbum(selectPhotoAssets: [PHAsset]) -> Void
     
-    @available(iOS 8.0, *)  //直接返回处理后的图片model，里面包含选择的缩略图和预览图
-    @objc optional func photoAlbum(selectPhotos: [WQPhotoModel]) -> Void
+    // 返回WQPhotoModel数组，其中包含选择的缩略图和预览图
+    @available(iOS 8.0, *)
+    @objc optional func photoAlbum(selectPhotos: [WQPhotoModel]) -> Void
+    
+    // 返回WQPhotoModel数组，其中包含选择的缩略图和预览图
+    @available(iOS 8.0, *)
+    @objc optional func photoAlbum(clipPhoto: UIImage?) -> Void
+}
+
+//跳转图片列表类型
+public enum WQPhotoAlbumType {
+    case selectPhoto, clipPhoto
 }
 ```
 * 直接预览跳转，支持删除
