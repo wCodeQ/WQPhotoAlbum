@@ -9,7 +9,7 @@
 ## 接入说明
 * 直接跳转所有照片,默认是选择图片
 ```Swift
-let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self)    //初始化需要设置代理对象
+let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self, photoAlbumType: .selectPhoto)   //初始化需要设置代理对象
 photoAlbumVC.maxSelectCount = 10    //最大可选择张数
 self.navigationController?.present(photoAlbumVC, animated: true, completion: nil)
 
@@ -18,7 +18,12 @@ let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self, pho
 photoAlbumVC.clipBounds = CGSize(width: self.view.frame.width, height: 400)
 self.navigationController?.present(photoAlbumVC, animated: true, completion: nil)
 
-// 实现WQPhotoAlbumProtocol协议获取选择图片资源
+//跳转图片列表类型
+public enum WQPhotoAlbumType {
+    case selectPhoto, clipPhoto
+}
+
+//实现WQPhotoAlbumProtocol协议获取选择图片资源
 @objc public protocol WQPhotoAlbumProtocol: NSObjectProtocol {
     //返回图片原资源，需要用PHCachingImageManager或者我封装的WQCachingImageManager进行解析处理
     @available(iOS 8.0, *)
@@ -28,19 +33,14 @@ self.navigationController?.present(photoAlbumVC, animated: true, completion: nil
     @available(iOS 8.0, *)
     @objc optional func photoAlbum(selectPhotos: [WQPhotoModel]) -> Void
 
-    // 返回裁剪后图片
+    //返回裁剪后图片
     @available(iOS 8.0, *)
     @objc optional func photoAlbum(clipPhoto: UIImage?) -> Void
-}
-
-//跳转图片列表类型
-public enum WQPhotoAlbumType {
-    case selectPhoto, clipPhoto
 }
 ```
 * 直接预览跳转，支持删除
 ```Swift
-// 基于WQPhotoModel中的资源，如果有原图直接展示，否者先展示缩略图然后加载网络图，完成后再展示原图，已做掉缓存
+//基于WQPhotoModel中的资源，如果有原图直接展示，否者先展示缩略图然后加载网络图，完成后再展示原图，已做掉缓存
 let wqPhotoPreviewVC = WQPhotoPreviewDeleteViewController()
 wqPhotoPreviewVC.previewPhotoArray = self.selectIamgeArr        //传入预览源，为WQPhotoModel数组，支持缩略图，原图和网络图
 wqPhotoPreviewVC.currentIndex = currentIndex                    //当前展示第几张   
