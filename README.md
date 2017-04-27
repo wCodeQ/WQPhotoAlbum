@@ -15,7 +15,7 @@ self.navigationController?.present(photoAlbumVC, animated: true, completion: nil
 
 //跳转裁剪图片选择列表
 let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self, photoAlbumType: .clipPhoto)
-photoAlbumVC.clipBounds = CGSize(width: self.view.frame.width, height: 400)
+photoAlbumVC.clipBounds = CGSize(width: self.view.frame.width, height: 400)     //裁剪框大小，不设置默认为屏幕宽度正方形
 self.navigationController?.present(photoAlbumVC, animated: true, completion: nil)
 
 //跳转图片列表类型
