@@ -19,9 +19,8 @@ public class WQCachingImageManager: PHCachingImageManager {
     public func requestThumbnailImage(for asset: PHAsset, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) -> PHImageRequestID {
         let option = PHImageRequestOptions()
 //        option.resizeMode = .fast
-        let cellWidth: CGFloat = (WQScreenWidth - 5 * 5) / 4 * UIScreen.main.scale
-        let pixelScale = CGFloat(asset.pixelWidth)/CGFloat(asset.pixelHeight)
-        return self.requestImage(for: asset, targetSize: CGSize(width: cellWidth, height: cellWidth/pixelScale), contentMode: .aspectFit, options: option) { (image: UIImage?, dictionry: Dictionary?) in
+        let targetSize = self.getThumbnailSize(originSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight))
+        return self.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: option) { (image: UIImage?, dictionry: Dictionary?) in
             resultHandler(image, dictionry)
         }
     }
@@ -34,9 +33,44 @@ public class WQCachingImageManager: PHCachingImageManager {
 //        option.deliveryMode = .fastFormat
         option.isNetworkAccessAllowed = true
         option.progressHandler = progressHandler
-        let width = asset.pixelWidth
-        let height = asset.pixelHeight
-        let pixelScale = CGFloat(asset.pixelWidth)/CGFloat(asset.pixelHeight)
+        
+        let targetSize = self.getPriviewSize(originSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight))
+
+        return self.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: option) { (image: UIImage?, dictionry: Dictionary?) in
+            resultHandler(image, dictionry)
+        }
+    }
+    
+    public func getThumbnailAndPreviewImage(originImage: UIImage) -> (thumbnailImage: UIImage?, previewImage: UIImage?) {
+
+        let targetSize = self.getPriviewSize(originSize: originImage.size)
+        
+        UIGraphicsBeginImageContext(targetSize)
+        originImage.draw(in: CGRect(x: 0, y: 0, width: targetSize.width, height: targetSize.height))
+        let previewImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext();
+        
+        let thumbnailSize = self.getThumbnailSize(originSize: originImage.size)
+        UIGraphicsBeginImageContext(thumbnailSize)
+        originImage.draw(in: CGRect(x: 0, y: 0, width: thumbnailSize.width, height: thumbnailSize.height))
+        let thumbnailImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext();
+        
+        return (thumbnailImage: thumbnailImage, previewImage: previewImage)
+    }
+    
+    private func getThumbnailSize(originSize: CGSize) -> CGSize {
+        let thumbnailWidth: CGFloat = (WQScreenWidth - 5 * 5) / 4 * UIScreen.main.scale
+        let pixelScale = CGFloat(originSize.width)/CGFloat(originSize.height)
+        let thumbnailSize = CGSize(width: thumbnailWidth, height: thumbnailWidth/pixelScale)
+        
+        return thumbnailSize
+    }
+    
+    private func getPriviewSize(originSize: CGSize) -> CGSize {
+        let width = originSize.width
+        let height = originSize.height
+        let pixelScale = CGFloat(width)/CGFloat(height)
         var targetSize = CGSize()
         if width <= 1280 && height <= 1280 {
             //a，图片宽或者高均小于或等于1280时图片尺寸保持不变，不改变图片大小
@@ -70,12 +104,8 @@ public class WQCachingImageManager: PHCachingImageManager {
                 targetSize.height = CGFloat(height)
             }
         }
-
-        return self.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: option) { (image: UIImage?, dictionry: Dictionary?) in
-            resultHandler(image, dictionry)
-        }
+        return targetSize
     }
-    
     
     // UIImageView Cache
     class func readCacheFromUrl(url: String) -> Data? {
