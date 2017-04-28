@@ -60,6 +60,3 @@ public func requestPreviewImage(for asset: PHAsset, progressHandler: Photos.PHAs
 // 根据原图获取缩略图和预览图
 public func getThumbnailAndPreviewImage(originImage: UIImage) -> (thumbnailImage: UIImage?, previewImage: UIImage?)
 ```
-
-public enum WQPhotoAlbumType {有原图
-public enum WQPhotoAlbumType {
