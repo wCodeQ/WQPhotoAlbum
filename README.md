@@ -50,3 +50,16 @@ wqPhotoPreviewVC.deleteClicked = { [unowned self] (photos: [WQPhotoModel]) in
 }
 self.navigationController?.pushViewController(wqPhotoPreviewVC, animated: true)
 ```
+* 可以根据PHAsset或者UIImage获取相应缩略图和预览图
+```Swift
+// WQCachingImageManager实例方法
+// 获取缩略图
+public func requestThumbnailImage(for asset: PHAsset, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) -> PHImageRequestID
+// 获取预览图
+public func requestPreviewImage(for asset: PHAsset, progressHandler: Photos.PHAssetImageProgressHandler?, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) -> PHImageRequestID
+// 根据原图获取缩略图和预览图
+public func getThumbnailAndPreviewImage(originImage: UIImage) -> (thumbnailImage: UIImage?, previewImage: UIImage?)
+```
+
+public enum WQPhotoAlbumType {有原图
+public enum WQPhotoAlbumType {
