@@ -14,9 +14,9 @@ class WQPreviewCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     
     lazy var photoImageView: UIImageView = {
         let imageView = UIImageView()
-//        var frame = self.contentView.bounds
-//        frame.size.width -= 10
-//        imageView.frame = frame
+        var frame = self.contentView.bounds
+        frame.size.width -= 10
+        imageView.frame = frame
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
         

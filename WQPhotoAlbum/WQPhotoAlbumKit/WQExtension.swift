@@ -71,7 +71,8 @@ extension UIImageView {
                 let dispath=DispatchQueue.global(qos: .utility)
                 dispath.async(execute: { () -> Void in
                     do {
-                        data = try Data(contentsOf: URL(string: url!)!)
+                        guard let imageURL = URL(string: url!) else {return}
+                        data = try Data(contentsOf: imageURL)
                         if data != nil {
                             wqImage = UIImage(data: data!)
                             //写缓存
@@ -92,7 +93,8 @@ extension UIImageView {
             let dispath=DispatchQueue.global(qos: .utility)
             dispath.async(execute: { () -> Void in
                 do {
-                    let data = try Data(contentsOf: URL(string: url!)!)
+                    guard let imageURL = URL(string: url!) else {return}
+                    let data = try Data(contentsOf: imageURL)
                     wqImage = UIImage(data: data)
                     DispatchQueue.main.async(execute: { () -> Void in
                         //刷新主UI

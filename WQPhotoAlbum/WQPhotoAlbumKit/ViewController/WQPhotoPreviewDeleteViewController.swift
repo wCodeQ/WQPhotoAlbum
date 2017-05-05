@@ -136,6 +136,7 @@ public class WQPhotoPreviewDeleteViewController: WQPhotoBaseViewController, UICo
             cell.photoImageView.addSubview(loading)
             cell.photoImageView.setWebImage(url: imageURL, defaultImage: photoTuple.thumbnailImage, isCache: true, downloadSuccess: { (image: UIImage?) in
                 loading.removeFromSuperview()
+                cell.photoImage = image
             })
         } else {
             cell.photoImage = photoTuple.thumbnailImage
