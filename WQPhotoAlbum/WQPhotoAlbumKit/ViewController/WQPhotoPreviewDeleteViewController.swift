@@ -114,7 +114,9 @@ public class WQPhotoPreviewDeleteViewController: WQPhotoBaseViewController, UICo
         if self.naviView.frame.origin.y < 0 {
             moveY = 0
         }
-        UIView.animate(withDuration: 0.2) {
+        let isStatusBarHidden = UIApplication.shared.isStatusBarHidden
+        UIApplication.shared.setStatusBarHidden(!isStatusBarHidden, with: .slide)
+        UIView.animate(withDuration: 0.25) {
             self.naviView.frame.origin.y = CGFloat(moveY)
         }
     }
