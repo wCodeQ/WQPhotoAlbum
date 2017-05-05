@@ -130,6 +130,9 @@ public class WQPhotoPreviewDeleteViewController: WQPhotoBaseViewController, UICo
         if let originImage = photoTuple.originImage {
             cell.photoImage = originImage
         } else if let imageURL = photoTuple.imageURL {
+            if let thumbnailImage = photoTuple.thumbnailImage {
+                cell.photoImage = thumbnailImage
+            }
             let loading = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
             loading.center = CGPoint(x: cell.photoImageView.frame.width/2, y: cell.photoImageView.frame.height/2)
             loading.startAnimating()

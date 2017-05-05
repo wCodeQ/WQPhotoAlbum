@@ -29,8 +29,11 @@ class ViewController: UIViewController, WQPhotoAlbumProtocol {
     
     @IBAction func previewNetworkImage(_ sender: UIButton) {
         var imageModels = [WQPhotoModel]()
-        for _ in 0 ..< 3 {
-            let model = WQPhotoModel(thumbnailImage: nil, originImage: nil, imageURL: "http://site.test.tf56.com/fastdfsWeb/dfs/group1/M00/04/11/CgcN7FkIMJuAVNCfAABo88Yk6DA189.png")
+        var imageUrl = ["http://site.test.tf56.com/fastdfsWeb/dfs/group1/M00/03/F8/CgcN7Vj26fWAbmh8AAW9Qr9M7wI360.jpg",
+            "http://site.test.tf56.com/fastdfsWeb/dfs/group1/M00/03/FA/CgcN7Fj26fSAWD7YAABjcoM6lB4696.jpg",
+            "http://site.test.tf56.com/fastdfsWeb/dfs/group1/M00/04/13/CgcN7VkL6AeAfuhcABWqhv3Pwzc782.jpg"]
+        for i in 0 ..< 3 {
+            let model = WQPhotoModel(thumbnailImage: nil, originImage: nil, imageURL: imageUrl[i])
             imageModels.append(model)
         }
         let wqPhotoPreviewVC = WQPhotoPreviewDeleteViewController()
@@ -41,7 +44,7 @@ class ViewController: UIViewController, WQPhotoAlbumProtocol {
     
     @IBAction func buttonClick(_ sender: UIButton) {
         let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self, photoAlbumType: .selectPhoto)    //初始化需要设置代理对象
-        photoAlbumVC.maxSelectCount = 10    //最大可选择张数
+        photoAlbumVC.maxSelectCount = 3    //最大可选择张数
         self.navigationController?.present(photoAlbumVC, animated: true, completion: nil)
     }
     

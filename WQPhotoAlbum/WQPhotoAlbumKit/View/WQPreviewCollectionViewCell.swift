@@ -50,17 +50,16 @@ class WQPreviewCollectionViewCell: UICollectionViewCell, UIScrollViewDelegate {
     private let _maxScale: CGFloat = 2
     private let _minScale: CGFloat = 1
     
-    private var setContent = false
     // 图片设置
     var photoImage: UIImage? {
         didSet {
             self.photoImageView.image = photoImage
-            guard let size = self.photoImage?.size, !setContent else {
+            guard let size = self.photoImage?.size else {
                 return
             }
-            setContent = true
             let imageHeight = WQScreenWidth*size.height/size.width
-            self.photoImageView.frame = CGRect(x: 0, y: 0, width: WQScreenWidth, height: imageHeight)
+            let frame = CGRect(x: 0, y: 0, width: WQScreenWidth, height: imageHeight)
+            self.photoImageView.frame = frame
             self.photoImageView.center = self.photoImageScrollView.center
             self.photoImageScrollView.contentSize = self.photoImageView.frame.size
         }
