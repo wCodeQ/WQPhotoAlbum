@@ -117,6 +117,23 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     private func getAllPhotos() {
         //  注意点！！-这里必须注册通知，不然第一次运行程序时获取不到图片，以后运行会正常显示。体验方式：每次运行项目时修改一下 Bundle Identifier，就可以看到效果。
         PHPhotoLibrary.shared().register(self)
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .restricted || status == .denied {
+            // 无权限
+            // do something...
+            print("无权限")
+            let alert = UIAlertController(title: nil, message: "请打开相册访问权限", preferredStyle: .alert)
+            let cancleAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            alert.addAction(cancleAction)
+            let goAction = UIAlertAction(title: "设置", style: .default, handler: { (action) in
+                if let url = URL(string: UIApplicationOpenSettingsURLString), UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.openURL(url)
+                }
+            })
+            alert.addAction(goAction)
+            self.present(alert, animated: true, completion: nil)
+            return;
+        }
         //  获取所有系统图片信息集合体
         let allOptions = PHFetchOptions()
         //  对内部元素排序，按照时间由远到近排序
