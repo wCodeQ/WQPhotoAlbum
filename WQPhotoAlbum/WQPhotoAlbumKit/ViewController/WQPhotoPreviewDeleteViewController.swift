@@ -72,7 +72,7 @@ public class WQPhotoPreviewDeleteViewController: WQPhotoBaseViewController, UICo
     
     override public func didMove(toParentViewController parent: UIViewController?) {
         if parent == nil {
-            
+            UIApplication.shared.setStatusBarHidden(false, with: .none)
         }
     }
     
