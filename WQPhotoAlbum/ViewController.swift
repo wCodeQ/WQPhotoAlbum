@@ -44,6 +44,7 @@ class ViewController: UIViewController, WQPhotoAlbumProtocol {
     }
     
     @IBAction func buttonClick(_ sender: UIButton) {
+        WQPhotoAlbumSkinColor = UIColor.red
         let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self, photoAlbumType: .selectPhoto)    //初始化需要设置代理对象
         photoAlbumVC.maxSelectCount = 3    //最大可选择张数
         self.navigationController?.present(photoAlbumVC, animated: true, completion: nil)

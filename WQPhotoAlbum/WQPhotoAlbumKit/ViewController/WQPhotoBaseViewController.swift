@@ -44,7 +44,7 @@ public class WQPhotoBaseViewController: UIViewController {
     }
     
     func setBackNav() {
-        let backImage = UIImage.imageFromeWQBundle(named: "icon_back_white.png")
+        let backImage = UIImage.wqImageFromeBundle(named: "icon_back_white.png")
         let backButton = UIButton(frame: CGRect(x: 0, y: 20, width: 50, height: 44))
         backButton.backgroundColor = UIColor.clear
         backButton.setImage(backImage, for: .normal)
@@ -65,12 +65,10 @@ public class WQPhotoBaseViewController: UIViewController {
         naviView.addSubview(rightButton)
     }
 
-    func setRightImageButton(normalImageName: String, selectedImageName: String?, isSelected: Bool) {
+    func setRightImageButton(normalImage: UIImage?, selectedImage: UIImage?, isSelected: Bool) {
         rightButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 13, bottom: 10, right: 13)
-        rightButton.setImage(UIImage.imageFromeWQBundle(named: normalImageName), for: .normal)
-        if selectedImageName != nil {
-            rightButton.setImage(UIImage.imageFromeWQBundle(named: selectedImageName!), for: .selected)
-        }
+        rightButton.setImage(normalImage, for: .normal)
+        rightButton.setImage(selectedImage, for: .selected)
         rightButton.isSelected = isSelected
         naviView.addSubview(rightButton)
     }

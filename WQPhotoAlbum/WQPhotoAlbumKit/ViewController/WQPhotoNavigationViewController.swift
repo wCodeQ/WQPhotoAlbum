@@ -9,6 +9,14 @@
 import UIKit
 import Photos
 
+// 主题色
+public var WQPhotoAlbumSkinColor = UIColor(red: 0, green: 147/255.0, blue: 1, alpha: 1) {
+    didSet {
+        WQSelectSkinImage = UIImage.wqCreateImageWithView(view: WQPhotoNavigationViewController.wqGetSelectView())!
+    }
+}
+var WQSelectSkinImage: UIImage = UIImage.wqCreateImageWithView(view: WQPhotoNavigationViewController.wqGetSelectView())!
+
 @objc public protocol WQPhotoAlbumProtocol: NSObjectProtocol {
     //返回图片原资源，需要用PHCachingImageManager或者我封装的WQCachingImageManager进行解析处理
     @available(iOS 8.0, *)
@@ -28,7 +36,7 @@ public enum WQPhotoAlbumType {
 }
 
 public class WQPhotoNavigationViewController: UINavigationController {
-    
+
     // 最大选择张数
     public var maxSelectCount = 0 {
         didSet {
@@ -76,4 +84,14 @@ public class WQPhotoNavigationViewController: UINavigationController {
         // Do any additional setup after loading the view.
     }
 
+    class func wqGetSelectView() -> UIView {
+        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        view.backgroundColor = WQPhotoAlbumSkinColor
+        view.image = UIImage.wqImageFromeBundle(named: "album_select_blue.png")
+        view.layer.cornerRadius = 16
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.masksToBounds = true
+        return view
+    }
 }

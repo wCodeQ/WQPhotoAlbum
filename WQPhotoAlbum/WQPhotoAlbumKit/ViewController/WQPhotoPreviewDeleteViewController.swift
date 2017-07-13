@@ -81,7 +81,7 @@ public class WQPhotoPreviewDeleteViewController: WQPhotoBaseViewController, UICo
         self.setBackNav()
         self.setNavTitle(title: "\(self.currentIndex+1)/\(self.previewPhotoArray.count)")
         if isAllowDelete {
-            self.setRightImageButton(normalImageName: "album_photo_delete.png", selectedImageName: "album_photo_delete.png", isSelected: false)
+            self.setRightImageButton(normalImage: UIImage.wqImageFromeBundle(named: "album_photo_delete.png"), selectedImage: WQSelectSkinImage, isSelected: false)
         }
         self.view.bringSubview(toFront: self.naviView)
     }

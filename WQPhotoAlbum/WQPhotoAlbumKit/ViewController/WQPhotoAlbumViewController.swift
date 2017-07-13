@@ -190,7 +190,7 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     
     private func completedButtonShow() {
         if self.photoData.seletedAssetArray.count > 0 {
-            self.bottomView.rightButtonTitle = "(\(self.photoData.seletedAssetArray.count))完成"
+            self.bottomView.rightButtonTitle = "完成(\(self.photoData.seletedAssetArray.count))"
             self.bottomView.buttonIsEnabled = true
         } else {
             self.bottomView.rightButtonTitle = "完成"
@@ -256,24 +256,25 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
         }
         if type == .selectPhoto {
             cell.isChoose = self.photoData.divideArray[indexPath.row]
-            cell.selectPhotoCompleted = { [unowned self] in
-                self.photoData.divideArray[indexPath.row] = !self.photoData.divideArray[indexPath.row]
-                if self.photoData.divideArray[indexPath.row] {
-                    if self.maxSelectCount != 0, self.photoData.seletedAssetArray.count >= self.maxSelectCount {
+            cell.selectPhotoCompleted = { [weak self] in
+                guard let strongSelf = self else {return}
+                strongSelf.photoData.divideArray[indexPath.row] = !strongSelf.photoData.divideArray[indexPath.row]
+                if strongSelf.photoData.divideArray[indexPath.row] {
+                    if strongSelf.maxSelectCount != 0, strongSelf.photoData.seletedAssetArray.count >= strongSelf.maxSelectCount {
                         cell.isChoose = false
                         //超过最大数
-                        self.photoData.divideArray[indexPath.row] = !self.photoData.divideArray[indexPath.row]
-                        let alert = UIAlertController(title: nil, message: "您最多只能选择\(self.maxSelectCount)张照片", preferredStyle: .alert)
+                        strongSelf.photoData.divideArray[indexPath.row] = !strongSelf.photoData.divideArray[indexPath.row]
+                        let alert = UIAlertController(title: nil, message: "您最多只能选择\(strongSelf.maxSelectCount)张照片", preferredStyle: .alert)
                         let action = UIAlertAction(title: "我知道了", style: .cancel, handler: nil)
                         alert.addAction(action)
-                        self.present(alert, animated: true, completion: nil)
+                        strongSelf.present(alert, animated: true, completion: nil)
                         return
                     }
-                    self.photoData.seletedAssetArray.append(self.photoData.assetArray[indexPath.row])
+                    strongSelf.photoData.seletedAssetArray.append(strongSelf.photoData.assetArray[indexPath.row])
                 } else {
-                    self.photoData.seletedAssetArray.remove(at: self.photoData.seletedAssetArray.index(of: self.photoData.assetArray[indexPath.row])!)
+                    strongSelf.photoData.seletedAssetArray.remove(at: strongSelf.photoData.seletedAssetArray.index(of: strongSelf.photoData.assetArray[indexPath.row])!)
                 }
-                self.completedButtonShow()
+                strongSelf.completedButtonShow()
             }
         } else {
             cell.selectButton.isHidden = true
@@ -325,11 +326,13 @@ class WQAlbumBottomView: UIView {
     }()
     
     private lazy var sureButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: WQScreenWidth-12-80, y: 2, width: 80, height: 40))
-        button.backgroundColor = UIColor.clear
-        button.contentHorizontalAlignment = .right
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        let button = UIButton(frame: CGRect(x: WQScreenWidth-12-64, y: 6, width: 64, height: 32))
+        button.layer.cornerRadius = 4
+        button.clipsToBounds = true
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.setTitle("完成", for: .normal)
+        button.setBackgroundImage(UIImage.wqCreateImageWithColor(color: WQPhotoAlbumSkinColor), for: .normal)
+        button.setBackgroundImage(UIImage.wqCreateImageWithColor(color: WQPhotoAlbumSkinColor.withAlphaComponent(0.5)), for: .disabled)
         button.setTitleColor(UIColor(white: 0.5, alpha: 1), for: .disabled)
         button.setTitleColor(UIColor.white, for: .normal)
         button.addTarget(self, action: #selector(sureClick(button:)), for: .touchUpInside)

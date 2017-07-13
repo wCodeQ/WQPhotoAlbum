@@ -82,7 +82,7 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
     private func initNavigation() {
         self.setBackNav()
         if let index = self.photoData.assetArray.index(of: self.previewPhotoArray[currentIndex]) {
-            self.setRightImageButton(normalImageName: "album_select_gray.png", selectedImageName: "album_select_blue.png", isSelected: self.photoData.divideArray[index])
+            self.setRightImageButton(normalImage: UIImage.wqImageFromeBundle(named: "album_select_gray.png"), selectedImage: WQSelectSkinImage, isSelected: self.photoData.divideArray[index])
         }
         self.view.bringSubview(toFront: self.naviView)
     }
@@ -100,7 +100,7 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
     
     private func completedButtonShow() {
         if self.photoData.seletedAssetArray.count > 0 {
-            self.bottomView.rightButtonTitle = "(\(self.photoData.seletedAssetArray.count))完成"
+            self.bottomView.rightButtonTitle = "完成(\(self.photoData.seletedAssetArray.count))"
             self.bottomView.buttonIsEnabled = true
         } else {
             self.bottomView.rightButtonTitle = "完成"

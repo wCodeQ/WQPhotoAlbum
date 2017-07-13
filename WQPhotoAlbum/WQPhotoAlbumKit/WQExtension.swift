@@ -33,12 +33,33 @@ public extension DispatchQueue {
 }
 
 extension UIImage {
-    class func imageFromeWQBundle(named: String) -> UIImage? {
+    class func wqImageFromeBundle(named: String) -> UIImage? {
         let pathName = "/Frameworks/WQPhotoAlbumKit.framework/\(named)"
         if let fullImagePath = Bundle.main.resourcePath?.appending(pathName) {
             return UIImage(contentsOfFile: fullImagePath)
         }
         return nil
+    }
+
+    class func wqCreateImageWithColor(color: UIColor) -> UIImage? {
+        let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context?.setFillColor(color.cgColor)
+        context?.fill(rect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+
+    class func wqCreateImageWithView(view: UIView) -> UIImage? {
+        let size = view.bounds.size;
+        // 下面方法，第一个参数表示区域大小。第二个参数表示是否是非透明的。如果需要显示半透明效果，需要传NO，否则传YES。第三个参数就是屏幕密度了，关键就是第三个参数。
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
 }
 
