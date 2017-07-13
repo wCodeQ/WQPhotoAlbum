@@ -10,6 +10,10 @@
 ## 接入说明
 * 直接跳转所有照片,默认是选择图片
 ```Swift
+WQPhotoAlbumSkinColor = UIColor.red
+
+* 直接跳转所有照片,默认是选择图片
+```Swift
 let photoAlbumVC = WQPhotoNavigationViewController(photoAlbumDelegate: self, photoAlbumType: .selectPhoto)   //初始化需要设置代理对象
 photoAlbumVC.maxSelectCount = 10    //最大可选择张数
 self.navigationController?.present(photoAlbumVC, animated: true, completion: nil)
