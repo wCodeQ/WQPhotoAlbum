@@ -8,7 +8,7 @@
 * 单独公开预览界面，支持删除
 * 支持裁剪功能
 ## 接入说明
-* 直接跳转所有照片,默认是选择图片
+* 修改皮肤色
 ```Swift
 WQPhotoAlbumSkinColor = UIColor.red
 
@@ -50,7 +50,7 @@ let wqPhotoPreviewVC = WQPhotoPreviewDeleteViewController()
 wqPhotoPreviewVC.previewPhotoArray = self.selectIamgeArr        //传入预览源，为WQPhotoModel数组，支持缩略图，原图和网络图
 wqPhotoPreviewVC.currentIndex = currentIndex                    //当前展示第几张   
 wqPhotoPreviewVC.isAllowDelete = true                           //设置是否支持删除，默认不支持，当设置了deleteClicked闭包时默认支持删除
-wqPhotoPreviewVC.deleteClicked = { [unowned self] (photos: [WQPhotoModel]) in
+wqPhotoPreviewVC.deleteClicked = { [unowned self] (photos: [WQPhotoModel], deleteModel: WQPhotoModel) in
     self.selectIamgeArr = photos
 }
 self.navigationController?.pushViewController(wqPhotoPreviewVC, animated: true)
