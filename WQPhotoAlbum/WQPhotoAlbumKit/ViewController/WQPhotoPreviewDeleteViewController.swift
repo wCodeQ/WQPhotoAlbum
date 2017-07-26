@@ -18,7 +18,7 @@ public class WQPhotoPreviewDeleteViewController: WQPhotoBaseViewController, UICo
     // 是否支持删除，默认不支持
     public var isAllowDelete = false
     // 删除闭包，设置该闭包后删除功能默认打开
-    public var deleteClicked: ((_ photos: [WQPhotoModel], _ deleteModel: WQPhotoModel) -> Void)? {
+    public var deleteClicked: ((_ photos: [WQPhotoModel], _ deleteIndex: Int) -> Void)? {
         didSet {
             if deleteClicked != nil {
                 isAllowDelete = true
@@ -92,14 +92,15 @@ public class WQPhotoPreviewDeleteViewController: WQPhotoBaseViewController, UICo
             let cancleAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
             deleteAlert.addAction(cancleAction)
             let deleteAction = UIAlertAction(title: "删除", style: .default, handler: { [unowned self] (alertAction) in
-                let deleteModel = self.previewPhotoArray.remove(at: self.currentIndex)
+                let deleteIndex = self.currentIndex
+                self.previewPhotoArray.remove(at: self.currentIndex)
                 self.photoCollectionView.deleteItems(at: [IndexPath(item: self.currentIndex, section: 0)])
                 if self.currentIndex >= self.previewPhotoArray.count-1 {
                     self.currentIndex = self.previewPhotoArray.count-1
                 }
                 self.setNavTitle(title: "\(self.currentIndex+1)/\(self.previewPhotoArray.count)")
                 if self.deleteClicked != nil {
-                    self.deleteClicked!(self.previewPhotoArray, deleteModel)
+                    self.deleteClicked!(self.previewPhotoArray, deleteIndex)
                 }
                 if self.previewPhotoArray.count == 0 {
                     self.navigationController!.popViewController(animated: true)
