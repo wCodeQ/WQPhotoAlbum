@@ -2,6 +2,11 @@
 * 语言：Swift3.0
 * 系统：iOS 8及以上
 * 依赖库：Photos.framework
+
+![Platform](https://img.shields.io/badge/platforms-iOS-orange.svg)
+![Languages](https://img.shields.io/badge/languages-Swift-orange.svg)
+
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-59C939.svg?style=flat)](https://github.com/Carthage/Carthage)
 ## 功能说明
 * 默认跳转所有相册列表，选择图片和预览。
 * 返回列表为相册列表，点击取消dismiss
