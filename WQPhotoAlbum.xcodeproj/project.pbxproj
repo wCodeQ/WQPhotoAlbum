@@ -19,13 +19,7 @@
 		AB7093A01EBB32BD004682CE /* WQPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB70937B1EBB32A0004682CE /* WQPhotoCollectionViewCell.swift */; };
 		AB7093A11EBB32BD004682CE /* WQPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB70937C1EBB32A0004682CE /* WQPreviewCollectionViewCell.swift */; };
 		AB7093A21EBB32BD004682CE /* WQProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB70937D1EBB32A0004682CE /* WQProgressView.swift */; };
-		AB7093A31EBB32BD004682CE /* WQPhotoAlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB70937F1EBB32A0004682CE /* WQPhotoAlbumListViewController.swift */; };
-		AB7093A41EBB32BD004682CE /* WQPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7093801EBB32A0004682CE /* WQPhotoAlbumViewController.swift */; };
 		AB7093A51EBB32BD004682CE /* WQPhotoBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7093811EBB32A0004682CE /* WQPhotoBaseViewController.swift */; };
-		AB7093A61EBB32BD004682CE /* WQPhotoClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7093821EBB32A0004682CE /* WQPhotoClipViewController.swift */; };
-		AB7093A71EBB32BD004682CE /* WQPhotoNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7093831EBB32A0004682CE /* WQPhotoNavigationViewController.swift */; };
-		AB7093A81EBB32BD004682CE /* WQPhotoPreviewDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7093841EBB32A0004682CE /* WQPhotoPreviewDeleteViewController.swift */; };
-		AB7093A91EBB32BD004682CE /* WQPhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7093851EBB32A0004682CE /* WQPhotoPreviewViewController.swift */; };
 		AB7093AA1EBB32BD004682CE /* WQCachingImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7093861EBB32A0004682CE /* WQCachingImageManager.swift */; };
 		AB7093AB1EBB32BD004682CE /* WQExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7093871EBB32A0004682CE /* WQExtension.swift */; };
 		AB7093AC1EBB32CA004682CE /* album_photo_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB7093711EBB32A0004682CE /* album_photo_delete@2x.png */; };
@@ -36,11 +30,17 @@
 		AB7093B11EBB32CA004682CE /* album_select_gray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB7093761EBB32A0004682CE /* album_select_gray@3x.png */; };
 		AB7093B21EBB32CA004682CE /* icon_back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB7093771EBB32A0004682CE /* icon_back_white@2x.png */; };
 		AB7093B31EBB32CA004682CE /* icon_back_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB7093781EBB32A0004682CE /* icon_back_white@3x.png */; };
-		AB7093B51EBB32FD004682CE /* WQPhotoNavigationViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = AB7093831EBB32A0004682CE /* WQPhotoNavigationViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB7093B61EBB3305004682CE /* WQCachingImageManager.swift in Headers */ = {isa = PBXBuildFile; fileRef = AB7093861EBB32A0004682CE /* WQCachingImageManager.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		AB7093B71EBB330B004682CE /* WQPhotoPreviewDeleteViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = AB7093841EBB32A0004682CE /* WQPhotoPreviewDeleteViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB7093BC1EBB338E004682CE /* WQPhotoAlbumKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AB7093BA1EBB337B004682CE /* WQPhotoAlbumKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB7093BD1EBB3401004682CE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB4AE2771DED57D8002E58E0 /* Info.plist */; };
+		AB8408C71F3D528C0079448F /* WQPhotoNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8408B91F3D52680079448F /* WQPhotoNavigationViewController.swift */; };
+		AB8408C81F3D52900079448F /* WQPhotoAlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8408BB1F3D52680079448F /* WQPhotoAlbumListViewController.swift */; };
+		AB8408C91F3D52940079448F /* WQPhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8408BC1F3D52680079448F /* WQPhotoAlbumViewController.swift */; };
+		AB8408CA1F3D52980079448F /* WQPhotoClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8408BE1F3D52680079448F /* WQPhotoClipViewController.swift */; };
+		AB8408CB1F3D529B0079448F /* WQPhotoPreviewDeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8408BF1F3D52680079448F /* WQPhotoPreviewDeleteViewController.swift */; };
+		AB8408CC1F3D529F0079448F /* WQPhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8408C01F3D52680079448F /* WQPhotoPreviewViewController.swift */; };
+		AB8408CD1F3D53440079448F /* WQPhotoNavigationViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = AB8408B91F3D52680079448F /* WQPhotoNavigationViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB8408CE1F3D53440079448F /* WQPhotoPreviewDeleteViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = AB8408BF1F3D52680079448F /* WQPhotoPreviewDeleteViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB9D6E5E1DEFF9A60004F7D5 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9D6E5D1DEFF9A60004F7D5 /* Photos.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,17 +89,17 @@
 		AB70937B1EBB32A0004682CE /* WQPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB70937C1EBB32A0004682CE /* WQPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB70937D1EBB32A0004682CE /* WQProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQProgressView.swift; sourceTree = "<group>"; };
-		AB70937F1EBB32A0004682CE /* WQPhotoAlbumListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoAlbumListViewController.swift; sourceTree = "<group>"; };
-		AB7093801EBB32A0004682CE /* WQPhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		AB7093811EBB32A0004682CE /* WQPhotoBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoBaseViewController.swift; sourceTree = "<group>"; };
-		AB7093821EBB32A0004682CE /* WQPhotoClipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoClipViewController.swift; sourceTree = "<group>"; };
-		AB7093831EBB32A0004682CE /* WQPhotoNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoNavigationViewController.swift; sourceTree = "<group>"; };
-		AB7093841EBB32A0004682CE /* WQPhotoPreviewDeleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewDeleteViewController.swift; sourceTree = "<group>"; };
-		AB7093851EBB32A0004682CE /* WQPhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		AB7093861EBB32A0004682CE /* WQCachingImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQCachingImageManager.swift; sourceTree = "<group>"; };
 		AB7093871EBB32A0004682CE /* WQExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQExtension.swift; sourceTree = "<group>"; };
 		AB7093B91EBB337B004682CE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB7093BA1EBB337B004682CE /* WQPhotoAlbumKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WQPhotoAlbumKit.h; sourceTree = "<group>"; };
+		AB8408B91F3D52680079448F /* WQPhotoNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoNavigationViewController.swift; sourceTree = "<group>"; };
+		AB8408BB1F3D52680079448F /* WQPhotoAlbumListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoAlbumListViewController.swift; sourceTree = "<group>"; };
+		AB8408BC1F3D52680079448F /* WQPhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		AB8408BE1F3D52680079448F /* WQPhotoClipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoClipViewController.swift; sourceTree = "<group>"; };
+		AB8408BF1F3D52680079448F /* WQPhotoPreviewDeleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewDeleteViewController.swift; sourceTree = "<group>"; };
+		AB8408C01F3D52680079448F /* WQPhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		AB9D6E5D1DEFF9A60004F7D5 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -215,13 +215,10 @@
 		AB70937E1EBB32A0004682CE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				AB70937F1EBB32A0004682CE /* WQPhotoAlbumListViewController.swift */,
-				AB7093801EBB32A0004682CE /* WQPhotoAlbumViewController.swift */,
+				AB8408B81F3D52680079448F /* NavigationController */,
+				AB8408BA1F3D52680079448F /* PhotoAlbumViewController */,
+				AB8408BD1F3D52680079448F /* PhotoPreviewViewController */,
 				AB7093811EBB32A0004682CE /* WQPhotoBaseViewController.swift */,
-				AB7093821EBB32A0004682CE /* WQPhotoClipViewController.swift */,
-				AB7093831EBB32A0004682CE /* WQPhotoNavigationViewController.swift */,
-				AB7093841EBB32A0004682CE /* WQPhotoPreviewDeleteViewController.swift */,
-				AB7093851EBB32A0004682CE /* WQPhotoPreviewViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -233,6 +230,33 @@
 				AB7093BA1EBB337B004682CE /* WQPhotoAlbumKit.h */,
 			);
 			path = WQPhotoAlbumKit;
+			sourceTree = "<group>";
+		};
+		AB8408B81F3D52680079448F /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				AB8408B91F3D52680079448F /* WQPhotoNavigationViewController.swift */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		AB8408BA1F3D52680079448F /* PhotoAlbumViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AB8408BB1F3D52680079448F /* WQPhotoAlbumListViewController.swift */,
+				AB8408BC1F3D52680079448F /* WQPhotoAlbumViewController.swift */,
+			);
+			path = PhotoAlbumViewController;
+			sourceTree = "<group>";
+		};
+		AB8408BD1F3D52680079448F /* PhotoPreviewViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AB8408BE1F3D52680079448F /* WQPhotoClipViewController.swift */,
+				AB8408BF1F3D52680079448F /* WQPhotoPreviewDeleteViewController.swift */,
+				AB8408C01F3D52680079448F /* WQPhotoPreviewViewController.swift */,
+			);
+			path = PhotoPreviewViewController;
 			sourceTree = "<group>";
 		};
 		AB9D6E5C1DEFF9A60004F7D5 /* Frameworks */ = {
@@ -251,9 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB7093BC1EBB338E004682CE /* WQPhotoAlbumKit.h in Headers */,
-				AB7093B51EBB32FD004682CE /* WQPhotoNavigationViewController.swift in Headers */,
 				AB7093B61EBB3305004682CE /* WQCachingImageManager.swift in Headers */,
-				AB7093B71EBB330B004682CE /* WQPhotoPreviewDeleteViewController.swift in Headers */,
+				AB8408CD1F3D53440079448F /* WQPhotoNavigationViewController.swift in Headers */,
+				AB8408CE1F3D53440079448F /* WQPhotoPreviewDeleteViewController.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,17 +406,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB70939F1EBB32BD004682CE /* WQPhotoData.swift in Sources */,
+				AB8408CA1F3D52980079448F /* WQPhotoClipViewController.swift in Sources */,
+				AB8408C71F3D528C0079448F /* WQPhotoNavigationViewController.swift in Sources */,
 				AB7093A01EBB32BD004682CE /* WQPhotoCollectionViewCell.swift in Sources */,
 				AB7093A11EBB32BD004682CE /* WQPreviewCollectionViewCell.swift in Sources */,
+				AB8408CB1F3D529B0079448F /* WQPhotoPreviewDeleteViewController.swift in Sources */,
 				AB7093A21EBB32BD004682CE /* WQProgressView.swift in Sources */,
-				AB7093A31EBB32BD004682CE /* WQPhotoAlbumListViewController.swift in Sources */,
-				AB7093A41EBB32BD004682CE /* WQPhotoAlbumViewController.swift in Sources */,
 				AB7093A51EBB32BD004682CE /* WQPhotoBaseViewController.swift in Sources */,
-				AB7093A61EBB32BD004682CE /* WQPhotoClipViewController.swift in Sources */,
-				AB7093A71EBB32BD004682CE /* WQPhotoNavigationViewController.swift in Sources */,
-				AB7093A81EBB32BD004682CE /* WQPhotoPreviewDeleteViewController.swift in Sources */,
-				AB7093A91EBB32BD004682CE /* WQPhotoPreviewViewController.swift in Sources */,
 				AB7093AA1EBB32BD004682CE /* WQCachingImageManager.swift in Sources */,
+				AB8408C81F3D52900079448F /* WQPhotoAlbumListViewController.swift in Sources */,
+				AB8408C91F3D52940079448F /* WQPhotoAlbumViewController.swift in Sources */,
+				AB8408CC1F3D529F0079448F /* WQPhotoPreviewViewController.swift in Sources */,
 				AB7093AB1EBB32BD004682CE /* WQExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,6 +660,7 @@
 				AB7093501EBB2DC8004682CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

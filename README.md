@@ -16,6 +16,7 @@
 * 修改皮肤色
 ```Swift
 WQPhotoAlbumSkinColor = UIColor.red
+```
 
 * 直接跳转所有照片,默认是选择图片
 ```Swift
