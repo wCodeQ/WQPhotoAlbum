@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Security
 
 public extension DispatchQueue {
     
@@ -72,16 +73,14 @@ extension UIImageView {
      */
     func setWebImage(url:String?, defaultImage:UIImage?, isCache:Bool, downloadSuccess: ((_ image: UIImage?) -> Void)?) {
         var wqImage:UIImage?
-        if url == nil {
-            return
-        }
+        guard url != nil else {return}
         //设置默认图片
         if defaultImage != nil {
             self.image = defaultImage
         }
         
         if isCache {
-            var data: Data? = WQCachingImageManager.readCacheFromUrl(url: url!)
+            var data: Data? = WQCachingImageManager.default().readCacheFromUrl(url: url!)
             if data != nil {
                 wqImage = UIImage(data: data!)
                 self.image = wqImage
@@ -89,7 +88,7 @@ extension UIImageView {
                     downloadSuccess!(wqImage)
                 }
             }else{
-                let dispath=DispatchQueue.global(qos: .utility)
+                let dispath = DispatchQueue.global(qos: .utility)
                 dispath.async(execute: { () -> Void in
                     do {
                         guard let imageURL = URL(string: url!) else {return}
@@ -97,7 +96,7 @@ extension UIImageView {
                         if data != nil {
                             wqImage = UIImage(data: data!)
                             //写缓存
-                            WQCachingImageManager.writeCacheToUrl(url: url!, data: data!)
+                            WQCachingImageManager.default().writeCacheToUrl(url: url!, data: data!)
                             DispatchQueue.main.async(execute: { () -> Void in
                                 //刷新主UI
                                 self.image = wqImage
@@ -111,7 +110,7 @@ extension UIImageView {
                 })
             }
         }else{
-            let dispath=DispatchQueue.global(qos: .utility)
+            let dispath = DispatchQueue.global(qos: .utility)
             dispath.async(execute: { () -> Void in
                 do {
                     guard let imageURL = URL(string: url!) else {return}

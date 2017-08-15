@@ -30,9 +30,9 @@ class ViewController: UIViewController, WQPhotoAlbumProtocol {
     
     @IBAction func previewNetworkImage(_ sender: UIButton) {
         var imageModels = [WQPhotoModel]()
-        var imageUrl = ["http://site.test.tf56.com/fastdfsWeb/dfs/group1/M00/03/F8/CgcN7Vj26fWAbmh8AAW9Qr9M7wI360.jpg",
-            "http://site.test.tf56.com/fastdfsWeb/dfs/group1/M00/03/FA/CgcN7Fj26fSAWD7YAABjcoM6lB4696.jpg",
-            "http://site.test.tf56.com/fastdfsWeb/dfs/group1/M00/04/13/CgcN7VkL6AeAfuhcABWqhv3Pwzc782.jpg"]
+        var imageUrl = ["http://pic.ruiwen.com/allimg/1708/598c667c4a7e337671.jpg",
+            "http://img.juimg.com/tuku/yulantu/120926/219049-12092612154377.jpg",
+            "http://pic1.win4000.com/mobile/0/53718339417a9.jpg"]
         for i in 0 ..< 3 {
             let model = WQPhotoModel(thumbnailImage: nil, originImage: nil, imageURL: imageUrl[i])
             imageModels.append(model)

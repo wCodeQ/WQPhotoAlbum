@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-// 主题色
+/// 主题色
 public var WQPhotoAlbumSkinColor = UIColor(red: 0, green: 147/255.0, blue: 1, alpha: 1) {
     didSet {
         WQSelectSkinImage = UIImage.wqCreateImageWithView(view: WQPhotoNavigationViewController.wqGetSelectView())!
@@ -20,31 +20,48 @@ var WQSelectSkinImage: UIImage = UIImage.wqCreateImageWithView(view: WQPhotoNavi
 @objc public protocol WQPhotoAlbumProtocol: NSObjectProtocol {
     //返回图片原资源，需要用PHCachingImageManager或者我封装的WQCachingImageManager进行解析处理
     @available(iOS 8.0, *)
+    /// 选择照片完成代理方法
+    ///
+    /// - Parameter selectPhotoAssets: 选择照片源
+    /// - Returns: Void
     @objc optional func photoAlbum(selectPhotoAssets: [PHAsset]) -> Void
     
     //返回WQPhotoModel数组，其中包含选择的缩略图和预览图
     @available(iOS 8.0, *)
+    /// 选择照片完成代理方法
+    ///
+    /// - Parameter selectPhotoAssets: 选择照片Model
+    /// - Returns: Void
     @objc optional func photoAlbum(selectPhotos: [WQPhotoModel]) -> Void
     
     // 返回裁剪后图片
     @available(iOS 8.0, *)
+    /// 裁剪照片回调代理方法
+    ///
+    /// - Parameter clipPhoto: 裁剪图
+    /// - Returns: Void
     @objc optional func photoAlbum(clipPhoto: UIImage?) -> Void
 }
 
+
+/// 相册SDK类型枚举
+///
+/// - selectPhoto: 选择照片
+/// - clipPhoto: 裁剪照片
 public enum WQPhotoAlbumType {
     case selectPhoto, clipPhoto
 }
 
 public class WQPhotoNavigationViewController: UINavigationController {
 
-    // 最大选择张数
+    /// 最大选择张数
     public var maxSelectCount = 0 {
         didSet {
             self.photoAlbumVC.maxSelectCount = maxSelectCount
         }
     }
-    
-    // 裁剪大小
+
+    /// 裁剪大小
     public var clipBounds: CGSize = CGSize(width: WQScreenWidth, height: WQScreenWidth) {
         didSet {
             self.photoAlbumVC.clipBounds = clipBounds
@@ -56,7 +73,12 @@ public class WQPhotoNavigationViewController: UINavigationController {
     private convenience init() {
         self.init(photoAlbumDelegate: nil, photoAlbumType: .selectPhoto)
     }
-    
+
+    /// 接入SDK照片列表构造方法
+    ///
+    /// - Parameters:
+    ///   - photoAlbumDelegate: 代理回调方法
+    ///   - photoAlbumType: 相册类型
     public init(photoAlbumDelegate: WQPhotoAlbumProtocol?, photoAlbumType: WQPhotoAlbumType) {
         let photoAlbumListVC = WQPhotoAlbumListViewController()
         photoAlbumListVC.photoAlbumDelegate = photoAlbumDelegate

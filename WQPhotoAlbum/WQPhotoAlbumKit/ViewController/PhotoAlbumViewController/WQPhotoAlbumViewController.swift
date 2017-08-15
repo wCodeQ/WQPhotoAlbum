@@ -249,7 +249,7 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! WQPhotoCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? WQPhotoCollectionViewCell, self.photoData.assetArray.count > indexPath.row else {return WQPhotoCollectionViewCell()}
         let asset = self.photoData.assetArray[indexPath.row]
         _ = WQCachingImageManager.default().requestThumbnailImage(for: asset) { (image: UIImage?, dictionry: Dictionary?) in
             cell.photoImage = image ?? UIImage()
@@ -272,7 +272,9 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
                     }
                     strongSelf.photoData.seletedAssetArray.append(strongSelf.photoData.assetArray[indexPath.row])
                 } else {
-                    strongSelf.photoData.seletedAssetArray.remove(at: strongSelf.photoData.seletedAssetArray.index(of: strongSelf.photoData.assetArray[indexPath.row])!)
+                    if let index = strongSelf.photoData.seletedAssetArray.index(of: strongSelf.photoData.assetArray[indexPath.row]) {
+                        strongSelf.photoData.seletedAssetArray.remove(at: index)
+                    }
                 }
                 strongSelf.completedButtonShow()
             }

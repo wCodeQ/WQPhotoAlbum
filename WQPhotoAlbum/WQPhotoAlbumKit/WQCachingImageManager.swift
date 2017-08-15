@@ -10,12 +10,22 @@ import UIKit
 import Photos
 
 public class WQCachingImageManager: PHCachingImageManager {
-   
+
+    private var imageMemoryCacheKey = Array<String>()
+    private var imageMemoryCache = Dictionary<String, Data>()
+
+    private let imageMeoryCacheCount = 10
+
     public override class func `default`() -> WQCachingImageManager {
         return super.default() as! WQCachingImageManager
     }
-    
-    // 获取缩略图
+
+    /// 获取缩略图
+    ///
+    /// - Parameters:
+    ///   - asset: 照片源
+    ///   - resultHandler: 请求完成回调
+    /// - Returns: 请求ID
     public func requestThumbnailImage(for asset: PHAsset, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) -> PHImageRequestID {
         let option = PHImageRequestOptions()
 //        option.resizeMode = .fast
@@ -24,8 +34,14 @@ public class WQCachingImageManager: PHCachingImageManager {
             resultHandler(image, dictionry)
         }
     }
-    
-    // 获取预览图
+
+    /// 获取预览图
+    ///
+    /// - Parameters:
+    ///   - asset: 照片源
+    ///   - progressHandler: 请求进度回调
+    ///   - resultHandler: 请求完成回调
+    /// - Returns: 请求ID
     public func requestPreviewImage(for asset: PHAsset, progressHandler: Photos.PHAssetImageProgressHandler?, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) -> PHImageRequestID {
         let option = PHImageRequestOptions()
 //        option.version = .current
@@ -40,7 +56,31 @@ public class WQCachingImageManager: PHCachingImageManager {
             resultHandler(image, dictionry)
         }
     }
-    
+
+    /// 获取原图
+    ///
+    /// - Parameters:
+    ///   - asset: 照片源
+    ///   - progressHandler: 请求进度回调
+    ///   - resultHandler: 请求完成回调
+    /// - Returns: 请求ID
+    public func requestOriginImage(for asset: PHAsset, progressHandler: Photos.PHAssetImageProgressHandler?, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) -> PHImageRequestID {
+        let option = PHImageRequestOptions()
+        option.resizeMode = .none
+        option.deliveryMode = .highQualityFormat
+        option.isNetworkAccessAllowed = true
+        option.progressHandler = progressHandler
+
+        return self.requestImage(for: asset, targetSize: CGSize(), contentMode: .aspectFit, options: option) { (image: UIImage?, dictionry: Dictionary?) in
+            resultHandler(image, dictionry)
+        }
+    }
+
+
+    /// 根据原图获取相应大小的缩略图和预览图
+    ///
+    /// - Parameter originImage: 原图
+    /// - Returns:  缩略图和预览图
     public func getThumbnailAndPreviewImage(originImage: UIImage) -> (thumbnailImage: UIImage?, previewImage: UIImage?) {
 
         let targetSize = self.getPriviewSize(originSize: originImage.size)
@@ -108,24 +148,28 @@ public class WQCachingImageManager: PHCachingImageManager {
     }
     
     // UIImageView Cache
-    class func readCacheFromUrl(url: String) -> Data? {
-        var data: Data?
-        let path: String = WQCachingImageManager.getFullCachePathFromUrl(url: url)
-        if FileManager.default.fileExists(atPath: path) {
-            do { data = try Data(contentsOf: URL(fileURLWithPath: path)) }
-            catch { print("读取缓存图片失败！") }
+    func readCacheFromUrl(url: String) -> Data? {
+        var data: Data? = getImageMemoryCache(key: url)
+        if data == nil {
+            let path: String = WQCachingImageManager.default().getFullCachePathFromUrl(url: url)
+            if FileManager.default.fileExists(atPath: path) {
+                do { data = try Data(contentsOf: URL(fileURLWithPath: path)) }
+                catch { print("读取缓存图片失败！") }
+            }
         }
         return data
     }
     
-    class func writeCacheToUrl(url: String, data: Data) {
-        let path: String = WQCachingImageManager.getFullCachePathFromUrl(url: url)
+    func writeCacheToUrl(url: String, data: Data) {
+        setImageMemoryCache(key: url, data: data)
+        let path: String = WQCachingImageManager.default().getFullCachePathFromUrl(url: url)
         do { try data.write(to: URL(fileURLWithPath: path), options: .atomic) }
         catch { print("写入缓存图片失败！") }
     }
+
     //设置缓存路径
-    class func getFullCachePathFromUrl(url: String) -> String {
-        var chchePath = NSHomeDirectory().appending("/Library/Caches/MyCache")
+    func getFullCachePathFromUrl(url: String) -> String {
+        var chchePath = NSHomeDirectory().appending("/Library/Caches/WQImageCache")
         let fileManager: FileManager = FileManager.default
         fileManager.fileExists(atPath: chchePath)
         if !(fileManager.fileExists(atPath: chchePath)) {
@@ -134,21 +178,23 @@ public class WQCachingImageManager: PHCachingImageManager {
         }
         //进行字符串处理
         var newURL: String
-        newURL = WQCachingImageManager.stringToString(str: url)
+        newURL = WQCachingImageManager.default().stringToString(str: url)
         chchePath = chchePath.appending("/\(newURL)")
         return chchePath
     }
+
     //删除缓存
-    class func removeAllCache(){
-        let chchePath = NSHomeDirectory().appending("/Library/Caches/MyCache")
+    func removeAllCache(){
+        removeAllImageMemoryCache()
+        let chchePath = NSHomeDirectory().appending("/Library/Caches/WQImageCache")
         let fileManager: FileManager = FileManager.default
         if fileManager.fileExists(atPath: chchePath) {
             do { try fileManager.removeItem(atPath: chchePath) }
             catch { print("清楚缓存失败！") }
         }
-        
     }
-    class func stringToString(str: String) -> String {
+
+    func stringToString(str: String) -> String {
         var newStr: String = String()
         for i in 0 ..< str.characters.count {
             let c = str.cString(using: .utf8)![i]
@@ -157,6 +203,24 @@ public class WQCachingImageManager: PHCachingImageManager {
             }
         }
         return newStr
-        
+    }
+
+    private func setImageMemoryCache(key: String, data: Data) {
+        guard !imageMemoryCacheKey.contains(key) else {return}
+        if imageMemoryCacheKey.count >= imageMeoryCacheCount {
+            let removeKey = imageMemoryCacheKey.removeFirst()
+            imageMemoryCache.removeValue(forKey: removeKey)
+        }
+        imageMemoryCacheKey.append(key)
+        imageMemoryCache[key] = data
+    }
+
+    private func getImageMemoryCache(key: String) -> Data? {
+        return imageMemoryCache[key]
+    }
+
+    private func removeAllImageMemoryCache() {
+        imageMemoryCacheKey.removeAll()
+        imageMemoryCache.removeAll()
     }
 }

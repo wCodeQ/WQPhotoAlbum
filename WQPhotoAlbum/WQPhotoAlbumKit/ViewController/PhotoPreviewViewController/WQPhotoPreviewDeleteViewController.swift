@@ -11,13 +11,13 @@ import Photos
 
 public class WQPhotoPreviewDeleteViewController: WQPhotoBaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    // 当前展示第几张，默认0
+    /// 当前展示第几张，默认0
     public var currentIndex = 0
-    // 浏览数据源
+    /// 浏览数据源
     public var previewPhotoArray: [WQPhotoModel] = []
-    // 是否支持删除，默认不支持
+    /// 是否支持删除，默认不支持
     public var isAllowDelete = false
-    // 删除闭包，设置该闭包后删除功能默认打开
+    /// 删除闭包，设置该闭包后删除功能默认打开
     public var deleteClicked: ((_ photos: [WQPhotoModel], _ deleteIndex: Int) -> Void)? {
         didSet {
             if deleteClicked != nil {
