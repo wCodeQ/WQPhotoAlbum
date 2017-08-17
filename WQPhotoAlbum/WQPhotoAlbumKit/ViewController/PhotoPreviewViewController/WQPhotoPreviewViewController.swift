@@ -146,7 +146,7 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
                     button.isSelected = false
                     //超过最大数
                     self.photoData.divideArray[index] = !self.photoData.divideArray[index]
-                    let alert = UIAlertController(title: nil, message: "您最多只能选择\(self.maxSelectCount)", preferredStyle: .alert)
+                    let alert = UIAlertController(title: nil, message: "您最多只能选择\(maxSelectCount)张照片", preferredStyle: .alert)
                     let action = UIAlertAction(title: "我知道了", style: .cancel, handler: nil)
                     alert.addAction(action)
                     self.present(alert, animated: true, completion: nil)
