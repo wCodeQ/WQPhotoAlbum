@@ -35,15 +35,22 @@ public extension DispatchQueue {
 
 extension UIImage {
     class func wqImageFromeBundle(named: String) -> UIImage? {
+        if let cacheImageData = WQCachingImageManager.default().getImageMemoryCache(key: named) {
+            return UIImage(data: cacheImageData, scale: UIScreen.main.scale)
+        }
         let pathName = "/Frameworks/WQPhotoAlbumKit.framework/\(named)"
         if let fullImagePath = Bundle.main.resourcePath?.appending(pathName) {
-            return UIImage(contentsOfFile: fullImagePath)
+            guard let image = UIImage(contentsOfFile: fullImagePath) else {return nil}
+            if let imageData = UIImagePNGRepresentation(image) {
+                WQCachingImageManager.default().setImageMemoryCache(key: named, data: imageData)
+            }
+            return image
         }
         return nil
     }
 
-    class func wqCreateImageWithColor(color: UIColor) -> UIImage? {
-        let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+    class func wqCreateImageWithColor(color: UIColor, size: CGSize) -> UIImage? {
+        let rect = CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
         context?.setFillColor(color.cgColor)
@@ -64,7 +71,80 @@ extension UIImage {
     }
 }
 
+struct ImageConst{
+    static let bytesPerPixel = 4
+    static let bitsPerComponent = 8
+}
+
+extension UIImage {
+    //解压缩来提高效率
+    func wqDecodedImage() -> UIImage? {
+        guard let cgImage = self.cgImage else{
+            return nil
+        }
+        guard let colorspace = cgImage.colorSpace else {
+            return nil
+        }
+        let alpha = cgImage.alphaInfo
+        let anyAlpha = (alpha == .first ||
+            alpha == .last ||
+            alpha == .premultipliedFirst ||
+            alpha == .premultipliedLast)
+        // do not decode images with alpha
+        if anyAlpha {
+            return self;
+        }
+
+        let width = cgImage.width
+        let height = cgImage.height
+        let bytesPerRow = ImageConst.bytesPerPixel * width
+        let ctx = CGContext(data: nil,
+                            width: width,
+                            height: height,
+                            bitsPerComponent: ImageConst.bitsPerComponent,
+                            bytesPerRow: bytesPerRow,
+                            space: colorspace,
+                            bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue)
+        guard let context = ctx else {
+            return nil
+        }
+        let rect = CGRect(x: 0, y: 0, width: width, height: height)
+        context.draw(cgImage, in: rect)
+        guard let drawedImage = context.makeImage() else{
+            return nil
+        }
+        let result = UIImage(cgImage: drawedImage, scale:self.scale , orientation: self.imageOrientation)
+        return result
+    }
+}
+
+extension UIImage {
+    func wqSetRoundedCorner(radius: CGFloat) -> UIImage? {
+        let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: self.size)
+
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.main.scale)
+        let context = UIGraphicsGetCurrentContext()
+        context?.addPath(UIBezierPath(roundedRect: rect, byRoundingCorners: UIRectCorner.allCorners, cornerRadii: CGSize(width: radius, height: radius)).cgPath)
+        context?.clip()
+
+        self.draw(in: rect)
+        context?.drawPath(using: .fillStroke)
+        let output = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+        return output
+    }
+}
+
 extension UIImageView {
+    func asyncSetImage(_ image:UIImage?){
+        DispatchQueue.global(qos: .userInteractive).async {
+            let decodeImage = image?.wqDecodedImage()
+            DispatchQueue.main.async {
+                self.image = decodeImage
+            }
+        }
+    }
     /**
      *设置web图片
      *url:图片路径
@@ -76,14 +156,14 @@ extension UIImageView {
         guard url != nil else {return}
         //设置默认图片
         if defaultImage != nil {
-            self.image = defaultImage
+            self.asyncSetImage(defaultImage)
         }
         
         if isCache {
             var data: Data? = WQCachingImageManager.default().readCacheFromUrl(url: url!)
             if data != nil {
                 wqImage = UIImage(data: data!)
-                self.image = wqImage
+                self.asyncSetImage(wqImage)
                 if downloadSuccess != nil {
                     downloadSuccess!(wqImage)
                 }
@@ -99,14 +179,18 @@ extension UIImageView {
                             WQCachingImageManager.default().writeCacheToUrl(url: url!, data: data!)
                             DispatchQueue.main.async(execute: { () -> Void in
                                 //刷新主UI
-                                self.image = wqImage
+                                self.asyncSetImage(wqImage)
                                 if downloadSuccess != nil {
                                     downloadSuccess!(wqImage)
                                 }
                             })
                         }
                     }
-                    catch { print("下载图片失败")}
+                    catch {
+                        if WQPhotoAlbumEnableDebugOn {
+                            print(error)
+                        }
+                    }
                 })
             }
         }else{
@@ -118,14 +202,29 @@ extension UIImageView {
                     wqImage = UIImage(data: data)
                     DispatchQueue.main.async(execute: { () -> Void in
                         //刷新主UI
-                        self.image = wqImage
+                        self.asyncSetImage(wqImage)
                         if downloadSuccess != nil {
                             downloadSuccess!(wqImage)
                         }
                     })
                 }
-                catch {print("下载图片失败")}
+                catch {
+                    if WQPhotoAlbumEnableDebugOn {
+                        print(error)
+                    }
+                }
             })
+        }
+    }
+}
+
+extension UIButton{
+    func asyncSetImage(_ image:UIImage?, for state:UIControlState){
+        DispatchQueue.global(qos: .userInteractive).async {
+            let decodeImage = image?.wqDecodedImage()
+            DispatchQueue.main.async {
+                self.setImage(decodeImage, for: state)
+            }
         }
     }
 }

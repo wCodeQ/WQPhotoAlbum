@@ -48,13 +48,11 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     private lazy var loadingView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 64, width: WQScreenWidth, height: WQScreenHeight-64))
         view.backgroundColor = UIColor.clear
-        let loadingBackView = UIView(frame: CGRect(x: view.frame.width/2-30, y: view.frame.height/2-32-30, width: 60, height: 60))
-        loadingBackView.backgroundColor = UIColor(white: 0, alpha: 0.8)
-        loadingBackView.layer.cornerRadius = 10;
-        loadingBackView.clipsToBounds = true
+        let loadingBackView = UIImageView(frame: CGRect(x: view.frame.width/2-54, y: view.frame.height/2-32-54, width: 108, height: 108))
+        loadingBackView.image = UIImage.wqCreateImageWithColor(color: UIColor(white: 0, alpha: 0.8), size: CGSize(width: 108, height: 108))?.wqSetRoundedCorner(radius: 6)
         view.addSubview(loadingBackView)
         let loading = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-        loading.center = CGPoint(x: 30, y: 30)
+        loading.center = CGPoint(x: 54, y: 54)
         loading.startAnimating()
         loadingBackView.addSubview(loading)
         return view
@@ -64,7 +62,9 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     private var photoData = WQPhotoData()
     
     deinit {
-        print("=====================\(self)未内存泄露")
+        if WQPhotoAlbumEnableDebugOn {
+            print("=====================\(self)未内存泄露")
+        }
     }
     
     override func viewDidLoad() {
@@ -121,7 +121,9 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
         if status == .restricted || status == .denied {
             // 无权限
             // do something...
-            print("无权限")
+            if WQPhotoAlbumEnableDebugOn {
+                print("无相册访问权限")
+            }
             let alert = UIAlertController(title: nil, message: "请打开相册访问权限", preferredStyle: .alert)
             let cancleAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
             alert.addAction(cancleAction)
@@ -134,58 +136,22 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
             self.present(alert, animated: true, completion: nil)
             return;
         }
-        //  获取所有系统图片信息集合体
-        let allOptions = PHFetchOptions()
-        //  对内部元素排序，按照时间由远到近排序
-        allOptions.sortDescriptors = [NSSortDescriptor.init(key: "creationDate", ascending: false)]
-        //  将元素集合拆解开，此时 allResults 内部是一个个的PHAsset单元
-        let fetchAssets = assetsFetchResult ?? PHAsset.fetchAssets(with: allOptions)
-        self.photoData.assetArray = fetchAssets.objects(at: IndexSet.init(integersIn: 0..<fetchAssets.count))
-        
-        self.photoData.divideArray = Array(repeating: false, count: self.photoData.assetArray.count)
-    }
-    
-    private func selectSuccess(fromeView: UIView, selectAssetArray: [PHAsset]) {
-        self.showLoadingView(inView: fromeView)
-        var selectPhotos: [WQPhotoModel] = Array(repeating: WQPhotoModel(), count: selectAssetArray.count)
-        let group = DispatchGroup()
-        for i in 0 ..< selectAssetArray.count {
-            let asset = selectAssetArray[i]
-            group.enter()
-            let photoModel = WQPhotoModel()
-            _ = WQCachingImageManager.default().requestThumbnailImage(for: asset, resultHandler: { (image: UIImage?, dictionry: Dictionary?) in
-                photoModel.thumbnailImage = image
-            })
-            _ = WQCachingImageManager.default().requestPreviewImage(for: asset, progressHandler: nil, resultHandler: { (image: UIImage?, dictionry: Dictionary?) in
-                var downloadFinined = true
-                if let cancelled = dictionry![PHImageCancelledKey] as? Bool {
-                    downloadFinined = !cancelled
-                }
-                if downloadFinined, let error = dictionry![PHImageErrorKey] as? Bool {
-                    downloadFinined = !error
-                }
-                if downloadFinined, let resultIsDegraded = dictionry![PHImageResultIsDegradedKey] as? Bool {
-                    downloadFinined = !resultIsDegraded
-                }
-                if downloadFinined, let photoImage = image {
-                    photoModel.originImage = photoImage
-                    selectPhotos[i] = photoModel
-                    group.leave()
-                }
-            })
-        }
-        group.notify(queue: DispatchQueue.main, execute: {
-            self.hideLoadingView()
-            if self.photoAlbumDelegate != nil {
-                if self.photoAlbumDelegate!.responds(to: #selector(WQPhotoAlbumProtocol.photoAlbum(selectPhotoAssets:))){
-                    self.photoAlbumDelegate?.photoAlbum!(selectPhotoAssets: selectAssetArray)
-                }
-                if self.photoAlbumDelegate!.responds(to: #selector(WQPhotoAlbumProtocol.photoAlbum(selectPhotos:))) {
-                    self.photoAlbumDelegate?.photoAlbum!(selectPhotos: selectPhotos)
-                }
+        DispatchQueue.global(qos: .userInteractive).async {
+            //  获取所有系统图片信息集合体
+            let allOptions = PHFetchOptions()
+            //  对内部元素排序，按照时间由远到近排序
+            allOptions.sortDescriptors = [NSSortDescriptor.init(key: "creationDate", ascending: false)]
+            //  将元素集合拆解开，此时 allResults 内部是一个个的PHAsset单元
+            let fetchAssets = self.assetsFetchResult ?? PHAsset.fetchAssets(with: allOptions)
+            self.photoData.assetArray = fetchAssets.objects(at: IndexSet.init(integersIn: 0..<fetchAssets.count))
+            if self.photoData.divideArray.count == 0 {
+                self.photoData.divideArray = Array(repeating: false, count: self.photoData.assetArray.count)
+                self.photoData.dataChanged = false
             }
-            self.dismiss(animated: true, completion: nil)
-        })
+            DispatchQueue.main.async {
+                self.photoCollectionView.reloadData()
+            }
+        }
     }
     
     private func completedButtonShow() {
@@ -230,6 +196,72 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
         }
         self.navigationController?.pushViewController(clipVC, animated: true)
     }
+
+    private func selectPhotoCell(cell: WQPhotoCollectionViewCell, index: Int) {
+        photoData.divideArray[index] = !photoData.divideArray[index]
+        let asset = photoData.assetArray[index]
+        if photoData.divideArray[index] {
+            if maxSelectCount != 0, photoData.seletedAssetArray.count >= maxSelectCount {
+                //超过最大数
+                cell.isChoose = false
+                photoData.divideArray[index] = !photoData.divideArray[index]
+                let alert = UIAlertController(title: nil, message: "您最多只能选择\(maxSelectCount)张照片", preferredStyle: .alert)
+                let action = UIAlertAction(title: "我知道了", style: .cancel, handler: nil)
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            photoData.seletedAssetArray.append(asset)
+        } else {
+            if let removeIndex = photoData.seletedAssetArray.index(of: asset) {
+                photoData.seletedAssetArray.remove(at: removeIndex)
+            }
+        }
+        self.completedButtonShow()
+    }
+
+    private func selectSuccess(fromeView: UIView, selectAssetArray: [PHAsset]) {
+        self.showLoadingView(inView: fromeView)
+        var selectPhotos: [WQPhotoModel] = Array(repeating: WQPhotoModel(), count: selectAssetArray.count)
+        let group = DispatchGroup()
+        for i in 0 ..< selectAssetArray.count {
+            let asset = selectAssetArray[i]
+            group.enter()
+            let photoModel = WQPhotoModel()
+            _ = WQCachingImageManager.default().requestThumbnailImage(for: asset, resultHandler: { (image: UIImage?, dictionry: Dictionary?) in
+                photoModel.thumbnailImage = image
+            })
+            _ = WQCachingImageManager.default().requestPreviewImage(for: asset, progressHandler: nil, resultHandler: { (image: UIImage?, dictionry: Dictionary?) in
+                var downloadFinined = true
+                if let cancelled = dictionry![PHImageCancelledKey] as? Bool {
+                    downloadFinined = !cancelled
+                }
+                if downloadFinined, let error = dictionry![PHImageErrorKey] as? Bool {
+                    downloadFinined = !error
+                }
+                if downloadFinined, let resultIsDegraded = dictionry![PHImageResultIsDegradedKey] as? Bool {
+                    downloadFinined = !resultIsDegraded
+                }
+                if downloadFinined, let photoImage = image {
+                    photoModel.originImage = photoImage
+                    selectPhotos[i] = photoModel
+                    group.leave()
+                }
+            })
+        }
+        group.notify(queue: DispatchQueue.main, execute: {
+            self.hideLoadingView()
+            if self.photoAlbumDelegate != nil {
+                if self.photoAlbumDelegate!.responds(to: #selector(WQPhotoAlbumProtocol.photoAlbum(selectPhotoAssets:))){
+                    self.photoAlbumDelegate?.photoAlbum!(selectPhotoAssets: selectAssetArray)
+                }
+                if self.photoAlbumDelegate!.responds(to: #selector(WQPhotoAlbumProtocol.photoAlbum(selectPhotos:))) {
+                    self.photoAlbumDelegate?.photoAlbum!(selectPhotos: selectPhotos)
+                }
+            }
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
     
     override func rightButtonClick(button: UIButton) {
         self.navigationController?.dismiss(animated: true)
@@ -238,6 +270,7 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     // MARK:- delegate
     //  PHPhotoLibraryChangeObserver  第一次获取相册信息，这个方法只会进入一次
     func photoLibraryDidChange(_ changeInstance: PHChange) {
+        guard self.photoData.assetArray.count == 0 else {return}
         DispatchQueue.main.async {
             self.getAllPhotos()
             self.photoCollectionView.reloadData()
@@ -258,25 +291,7 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
             cell.isChoose = self.photoData.divideArray[indexPath.row]
             cell.selectPhotoCompleted = { [weak self] in
                 guard let strongSelf = self else {return}
-                strongSelf.photoData.divideArray[indexPath.row] = !strongSelf.photoData.divideArray[indexPath.row]
-                if strongSelf.photoData.divideArray[indexPath.row] {
-                    if strongSelf.maxSelectCount != 0, strongSelf.photoData.seletedAssetArray.count >= strongSelf.maxSelectCount {
-                        cell.isChoose = false
-                        //超过最大数
-                        strongSelf.photoData.divideArray[indexPath.row] = !strongSelf.photoData.divideArray[indexPath.row]
-                        let alert = UIAlertController(title: nil, message: "您最多只能选择\(strongSelf.maxSelectCount)张照片", preferredStyle: .alert)
-                        let action = UIAlertAction(title: "我知道了", style: .cancel, handler: nil)
-                        alert.addAction(action)
-                        strongSelf.present(alert, animated: true, completion: nil)
-                        return
-                    }
-                    strongSelf.photoData.seletedAssetArray.append(strongSelf.photoData.assetArray[indexPath.row])
-                } else {
-                    if let index = strongSelf.photoData.seletedAssetArray.index(of: strongSelf.photoData.assetArray[indexPath.row]) {
-                        strongSelf.photoData.seletedAssetArray.remove(at: index)
-                    }
-                }
-                strongSelf.completedButtonShow()
+                strongSelf.selectPhotoCell(cell: cell, index: indexPath.row)
             }
         } else {
             cell.selectButton.isHidden = true
@@ -329,12 +344,10 @@ class WQAlbumBottomView: UIView {
     
     private lazy var sureButton: UIButton = {
         let button = UIButton(frame: CGRect(x: WQScreenWidth-12-64, y: 6, width: 64, height: 32))
-        button.layer.cornerRadius = 4
-        button.clipsToBounds = true
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.setTitle("完成", for: .normal)
-        button.setBackgroundImage(UIImage.wqCreateImageWithColor(color: WQPhotoAlbumSkinColor), for: .normal)
-        button.setBackgroundImage(UIImage.wqCreateImageWithColor(color: WQPhotoAlbumSkinColor.withAlphaComponent(0.5)), for: .disabled)
+        button.setBackgroundImage(UIImage.wqCreateImageWithColor(color: WQPhotoAlbumSkinColor, size: CGSize(width: 64, height: 32))?.wqSetRoundedCorner(radius: 4), for: .normal)
+        button.setBackgroundImage(UIImage.wqCreateImageWithColor(color: WQPhotoAlbumSkinColor.withAlphaComponent(0.5), size: CGSize(width: 64, height: 32))?.wqSetRoundedCorner(radius: 4), for: .disabled)
         button.setTitleColor(UIColor(white: 0.5, alpha: 1), for: .disabled)
         button.setTitleColor(UIColor.white, for: .normal)
         button.addTarget(self, action: #selector(sureClick(button:)), for: .touchUpInside)
@@ -391,9 +404,6 @@ class WQAlbumBottomView: UIView {
         }
         
         self.addSubview(self.sureButton)
-//        let cutLine = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 0.5))
-//        cutLine.backgroundColor = UIColor(red: 223/255.0, green: 223/255.0, blue: 223/255.0, alpha: 1)
-//        self.addSubview(cutLine)
     }
     
     required init?(coder aDecoder: NSCoder) {

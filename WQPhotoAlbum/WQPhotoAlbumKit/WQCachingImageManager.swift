@@ -153,8 +153,14 @@ public class WQCachingImageManager: PHCachingImageManager {
         if data == nil {
             let path: String = WQCachingImageManager.default().getFullCachePathFromUrl(url: url)
             if FileManager.default.fileExists(atPath: path) {
-                do { data = try Data(contentsOf: URL(fileURLWithPath: path)) }
-                catch { print("读取缓存图片失败！") }
+                do {
+                    data = try Data(contentsOf: URL(fileURLWithPath: path))
+                }
+                catch {
+                    if WQPhotoAlbumEnableDebugOn {
+                        print(error)
+                    }
+                }
             }
         }
         return data
@@ -163,8 +169,14 @@ public class WQCachingImageManager: PHCachingImageManager {
     func writeCacheToUrl(url: String, data: Data) {
         setImageMemoryCache(key: url, data: data)
         let path: String = WQCachingImageManager.default().getFullCachePathFromUrl(url: url)
-        do { try data.write(to: URL(fileURLWithPath: path), options: .atomic) }
-        catch { print("写入缓存图片失败！") }
+        do {
+            try data.write(to: URL(fileURLWithPath: path), options: .atomic)
+        }
+        catch {
+            if WQPhotoAlbumEnableDebugOn {
+                print(error)
+            }
+        }
     }
 
     //设置缓存路径
@@ -173,8 +185,14 @@ public class WQCachingImageManager: PHCachingImageManager {
         let fileManager: FileManager = FileManager.default
         fileManager.fileExists(atPath: chchePath)
         if !(fileManager.fileExists(atPath: chchePath)) {
-            do { try fileManager.createDirectory(atPath: chchePath, withIntermediateDirectories: true, attributes: nil) }
-            catch { print("创建目录失败！") }
+            do {
+                try fileManager.createDirectory(atPath: chchePath, withIntermediateDirectories: true, attributes: nil)
+            }
+            catch {
+                if WQPhotoAlbumEnableDebugOn {
+                    print(error)
+                }
+            }
         }
         //进行字符串处理
         var newURL: String
@@ -183,14 +201,20 @@ public class WQCachingImageManager: PHCachingImageManager {
         return chchePath
     }
 
-    //删除缓存
-    func removeAllCache(){
+    /// 删除图片缓存
+    public func removeAllCache(){
         removeAllImageMemoryCache()
         let chchePath = NSHomeDirectory().appending("/Library/Caches/WQImageCache")
         let fileManager: FileManager = FileManager.default
         if fileManager.fileExists(atPath: chchePath) {
-            do { try fileManager.removeItem(atPath: chchePath) }
-            catch { print("清楚缓存失败！") }
+            do {
+                try fileManager.removeItem(atPath: chchePath)
+            }
+            catch {
+                if WQPhotoAlbumEnableDebugOn {
+                    print(error)
+                }
+            }
         }
     }
 
@@ -205,7 +229,7 @@ public class WQCachingImageManager: PHCachingImageManager {
         return newStr
     }
 
-    private func setImageMemoryCache(key: String, data: Data) {
+    func setImageMemoryCache(key: String, data: Data) {
         guard !imageMemoryCacheKey.contains(key) else {return}
         if imageMemoryCacheKey.count >= imageMeoryCacheCount {
             let removeKey = imageMemoryCacheKey.removeFirst()
@@ -215,11 +239,11 @@ public class WQCachingImageManager: PHCachingImageManager {
         imageMemoryCache[key] = data
     }
 
-    private func getImageMemoryCache(key: String) -> Data? {
+    func getImageMemoryCache(key: String) -> Data? {
         return imageMemoryCache[key]
     }
 
-    private func removeAllImageMemoryCache() {
+    func removeAllImageMemoryCache() {
         imageMemoryCacheKey.removeAll()
         imageMemoryCache.removeAll()
     }

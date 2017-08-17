@@ -14,8 +14,8 @@ class WQPhotoCollectionViewCell: UICollectionViewCell {
         let contenViewSize = self.contentView.bounds.size
         button.frame = CGRect(x: contenViewSize.width * 2 / 3 - 2, y: 2, width: contenViewSize.width / 3, height: contenViewSize.width / 3)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: contenViewSize.width/3 - contenViewSize.width/4, bottom: contenViewSize.width/3 - contenViewSize.width/4, right: 0)
-        button.setImage(UIImage.wqImageFromeBundle(named: "album_select_gray.png"), for: .normal)
-        button.setImage(WQSelectSkinImage, for: .selected)
+        button.asyncSetImage(UIImage.wqImageFromeBundle(named: "album_select_gray.png"), for: .normal)
+        button.asyncSetImage(WQSelectSkinImage, for: .selected)
         button.addTarget(self, action: #selector(selelctButtonClick(button:)), for: .touchUpInside)
         return button
     }()
@@ -25,7 +25,6 @@ class WQPhotoCollectionViewCell: UICollectionViewCell {
         imageView.frame = self.contentView.bounds
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = UIColor.cyan
         return imageView
     }()
     

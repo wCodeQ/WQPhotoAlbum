@@ -9,6 +9,9 @@
 import UIKit
 import Photos
 
+/// 是否开启print信息打印
+public var WQPhotoAlbumEnableDebugOn = false
+
 /// 主题色
 public var WQPhotoAlbumSkinColor = UIColor(red: 0, green: 147/255.0, blue: 1, alpha: 1) {
     didSet {
@@ -97,7 +100,9 @@ public class WQPhotoNavigationViewController: UINavigationController {
     }
     
     deinit {
-        print("=====================\(self)未内存泄露")
+        if WQPhotoAlbumEnableDebugOn {
+            print("=====================\(self)未内存泄露")
+        }
     }
     
     override public func viewDidLoad() {

@@ -47,7 +47,8 @@ public class WQPhotoBaseViewController: UIViewController {
         let backImage = UIImage.wqImageFromeBundle(named: "icon_back_white.png")
         let backButton = UIButton(frame: CGRect(x: 0, y: 20, width: 50, height: 44))
         backButton.backgroundColor = UIColor.clear
-        backButton.setImage(backImage, for: .normal)
+        backButton.imageView?.contentMode = .center
+        backButton.asyncSetImage(backImage, for: .normal)
         backButton.addTarget(self, action: #selector(backClick(button:)), for: .touchUpInside)
         naviView.addSubview(backButton)
     }
@@ -67,8 +68,8 @@ public class WQPhotoBaseViewController: UIViewController {
 
     func setRightImageButton(normalImage: UIImage?, selectedImage: UIImage?, isSelected: Bool) {
         rightButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 13, bottom: 10, right: 13)
-        rightButton.setImage(normalImage, for: .normal)
-        rightButton.setImage(selectedImage, for: .selected)
+        rightButton.asyncSetImage(normalImage, for: .normal)
+        rightButton.asyncSetImage(selectedImage, for: .selected)
         rightButton.isSelected = isSelected
         naviView.addSubview(rightButton)
     }

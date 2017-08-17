@@ -25,7 +25,9 @@ class WQPhotoAlbumListViewController: WQPhotoBaseViewController, UITableViewDele
     }()
     
     deinit {
-        print("=====================\(self)未内存泄露")
+        if WQPhotoAlbumEnableDebugOn {
+            print("=====================\(self)未内存泄露")
+        }
     }
     
     override func viewDidLoad() {
@@ -45,25 +47,30 @@ class WQPhotoAlbumListViewController: WQPhotoBaseViewController, UITableViewDele
     }
     
     private func getAllAlbum() {
-        let fetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
-        fetchResult.enumerateObjects({ [unowned self] (assetCollection, index, nil) in
-            let allOptions = PHFetchOptions()
-            allOptions.sortDescriptors = [NSSortDescriptor.init(key: "creationDate", ascending: false)]
-            let assetsFetchResult = PHAsset.fetchAssets(in: assetCollection, options: allOptions)
-            guard assetsFetchResult.count <= 0 else {
-                let assetItem = (assetCollection, assetsFetchResult)
-                if assetCollection.assetCollectionSubtype == .smartAlbumVideos || assetCollection.assetCollectionSubtype == .smartAlbumSlomoVideos {
+        DispatchQueue.global(qos: .userInteractive).async {
+            let fetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
+            fetchResult.enumerateObjects({ [weak self] (assetCollection, index, nil) in
+                guard let strongSelf = self else {return}
+                let allOptions = PHFetchOptions()
+                allOptions.sortDescriptors = [NSSortDescriptor.init(key: "creationDate", ascending: false)]
+                let assetsFetchResult = PHAsset.fetchAssets(in: assetCollection, options: allOptions)
+                guard assetsFetchResult.count <= 0 else {
+                    let assetItem = (assetCollection, assetsFetchResult)
+                    if assetCollection.assetCollectionSubtype == .smartAlbumVideos || assetCollection.assetCollectionSubtype == .smartAlbumSlomoVideos {
+                        return
+                    }
+                    if assetCollection.assetCollectionSubtype == .smartAlbumUserLibrary {
+                        strongSelf.albumsList.insert(assetItem, at: 0)
+                    } else {
+                        strongSelf.albumsList.append(assetItem)
+                    }
                     return
                 }
-                if assetCollection.assetCollectionSubtype == .smartAlbumUserLibrary {
-                    self.albumsList.insert(assetItem, at: 0)
-                } else {
-                    self.albumsList.append(assetItem)
-                }
-                return
+            })
+            DispatchQueue.main.async {
+                self.albumTableView.reloadData()
             }
-        })
-        albumTableView.reloadData()
+        }
     }
     
     override func rightButtonClick(button: UIButton) {
@@ -98,6 +105,7 @@ class WQPhotoAlbumListViewController: WQPhotoBaseViewController, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard albumsList.count > indexPath.row else {return}
         tableView.deselectRow(at: indexPath, animated: true)
         let assetsFetchResult = albumsList[indexPath.row].assetsFetchResult
         let photoAlbumViewController = WQPhotoAlbumViewController()
@@ -113,7 +121,7 @@ private class WQAlbumCell: UITableViewCell {
     
     var albumImage: UIImage? {
         didSet {
-            albumImageView.image = albumImage
+            albumImageView.asyncSetImage(albumImage)
         }
     }
     

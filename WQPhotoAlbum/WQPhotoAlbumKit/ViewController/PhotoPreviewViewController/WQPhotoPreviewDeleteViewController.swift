@@ -50,7 +50,9 @@ public class WQPhotoPreviewDeleteViewController: WQPhotoBaseViewController, UICo
     }()
     
     deinit {
-        print("=====================\(self)未内存泄露")
+        if WQPhotoAlbumEnableDebugOn {
+            print("=====================\(self)未内存泄露")
+        }
     }
     
     override public func viewDidLoad() {

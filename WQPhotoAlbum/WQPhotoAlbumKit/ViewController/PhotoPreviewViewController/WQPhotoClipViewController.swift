@@ -62,7 +62,7 @@ class WQPhotoClipViewController: WQPhotoBaseViewController, UIScrollViewDelegate
     // 图片设置
     var photoImage: UIImage? {
         didSet {
-            self.photoImageView.image = photoImage
+            self.photoImageView.asyncSetImage(photoImage)
             guard let size = self.photoImage?.size, !setContent else {
                 return
             }
@@ -91,7 +91,9 @@ class WQPhotoClipViewController: WQPhotoBaseViewController, UIScrollViewDelegate
     }
     
     deinit {
-        print("=====================\(self)未内存泄露")
+        if WQPhotoAlbumEnableDebugOn {
+            print("=====================\(self)未内存泄露")
+        }
     }
     
     override public func viewDidLoad() {

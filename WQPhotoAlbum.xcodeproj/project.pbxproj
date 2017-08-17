@@ -41,7 +41,6 @@
 		AB8408CC1F3D529F0079448F /* WQPhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8408C01F3D52680079448F /* WQPhotoPreviewViewController.swift */; };
 		AB8408CD1F3D53440079448F /* WQPhotoNavigationViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = AB8408B91F3D52680079448F /* WQPhotoNavigationViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB8408CE1F3D53440079448F /* WQPhotoPreviewDeleteViewController.swift in Headers */ = {isa = PBXBuildFile; fileRef = AB8408BF1F3D52680079448F /* WQPhotoPreviewDeleteViewController.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		AB940A2B1F417946007DB24E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB940A2A1F417946007DB24E /* Security.framework */; };
 		AB9D6E5E1DEFF9A60004F7D5 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9D6E5D1DEFF9A60004F7D5 /* Photos.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,7 +100,6 @@
 		AB8408BE1F3D52680079448F /* WQPhotoClipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoClipViewController.swift; sourceTree = "<group>"; };
 		AB8408BF1F3D52680079448F /* WQPhotoPreviewDeleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewDeleteViewController.swift; sourceTree = "<group>"; };
 		AB8408C01F3D52680079448F /* WQPhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WQPhotoPreviewViewController.swift; sourceTree = "<group>"; };
-		AB940A2A1F417946007DB24E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		AB9D6E5D1DEFF9A60004F7D5 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -119,7 +117,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB940A2B1F417946007DB24E /* Security.framework in Frameworks */,
 				AB7093691EBB2F7C004682CE /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,7 +262,6 @@
 		AB9D6E5C1DEFF9A60004F7D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AB940A2A1F417946007DB24E /* Security.framework */,
 				AB9D6E5D1DEFF9A60004F7D5 /* Photos.framework */,
 			);
 			name = Frameworks;

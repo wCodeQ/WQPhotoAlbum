@@ -51,7 +51,9 @@ class WQPhotoPreviewViewController: WQPhotoBaseViewController, UICollectionViewD
     private lazy var bottomView = WQAlbumBottomView(type: .noPreview)
 
     deinit {
-        print("=====================\(self)未内存泄露")
+        if WQPhotoAlbumEnableDebugOn {
+            print("=====================\(self)未内存泄露")
+        }
     }
     
     override func viewDidLoad() {
