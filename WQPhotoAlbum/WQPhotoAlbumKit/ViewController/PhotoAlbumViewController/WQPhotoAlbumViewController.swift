@@ -273,7 +273,6 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
         guard self.photoData.assetArray.count == 0 else {return}
         DispatchQueue.main.async {
             self.getAllPhotos()
-            self.photoCollectionView.reloadData()
         }
     }
     
