@@ -32,9 +32,12 @@ github "wCodeQ/WQPhotoAlbum"
 * 单独公开预览界面，支持删除
 * 支持裁剪功能
 ## 接入说明
-* 修改皮肤色
+* 全局变量设置
 ```Swift
+//主要按钮和选择图主色调，默认#0093FF色
 WQPhotoAlbumSkinColor = UIColor.red
+//是否打开调试打印信息，默认false
+WQPhotoAlbumEnableDebugOn = true
 ```
 
 * 直接跳转所有照片,默认是选择图片
