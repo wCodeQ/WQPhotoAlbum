@@ -7,6 +7,25 @@
 ![Languages](https://img.shields.io/badge/languages-Swift-orange.svg)
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-59C939.svg?style=flat)](https://github.com/Carthage/Carthage)
+### Installation with Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) 是管理第三方framework动态库的工具.
+
+安装方法： [Homebrew](http://brew.sh/) 打开终端输入以下命令：
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+在工程主目录下创建`Cartfile`文件，然后输入：
+
+```ogdl
+github "wCodeQ/WQPhotoAlbum"
+```
+
+终端运行 `carthage` 编译出 `WQPhotoAlbumKit.framework` 导入到你的工程中。
+
 ## 功能说明
 * 默认跳转所有相册列表，选择图片和预览。
 * 返回列表为相册列表，点击取消dismiss
