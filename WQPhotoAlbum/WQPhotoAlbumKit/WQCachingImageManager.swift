@@ -16,8 +16,10 @@ public class WQCachingImageManager: PHCachingImageManager {
 
     private let imageMeoryCacheCount = 10
 
+    private static let shared = WQCachingImageManager()
+
     public override class func `default`() -> WQCachingImageManager {
-        return super.default() as! WQCachingImageManager
+        return shared
     }
 
     /// 获取缩略图

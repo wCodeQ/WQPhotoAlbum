@@ -45,7 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		AB70934A1EBB2DC8004682CE /* PBXContainerItemProxy */ = {
+		AB5E46D91F7DE65F00C1118C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AB4AE2601DED57D8002E58E0 /* Project object */;
 			proxyType = 1;
@@ -162,7 +162,6 @@
 			children = (
 				AB70936E1EBB32A0004682CE /* Model */,
 				AB7093701EBB32A0004682CE /* resource */,
-				AB7093791EBB32A0004682CE /* Third */,
 				AB70937A1EBB32A0004682CE /* View */,
 				AB70937E1EBB32A0004682CE /* ViewController */,
 				AB7093861EBB32A0004682CE /* WQCachingImageManager.swift */,
@@ -193,13 +192,6 @@
 				AB7093781EBB32A0004682CE /* icon_back_white@3x.png */,
 			);
 			path = resource;
-			sourceTree = "<group>";
-		};
-		AB7093791EBB32A0004682CE /* Third */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Third;
 			sourceTree = "<group>";
 		};
 		AB70937A1EBB32A0004682CE /* View */ = {
@@ -296,7 +288,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				AB70934B1EBB2DC8004682CE /* PBXTargetDependency */,
+				AB5E46DA1F7DE65F00C1118C /* PBXTargetDependency */,
 			);
 			name = WQPhotoAlbum;
 			productName = WQPhotoAlbum;
@@ -424,10 +416,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		AB70934B1EBB2DC8004682CE /* PBXTargetDependency */ = {
+		AB5E46DA1F7DE65F00C1118C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AB7093441EBB2DC8004682CE /* WQPhotoAlbumKit */;
-			targetProxy = AB70934A1EBB2DC8004682CE /* PBXContainerItemProxy */;
+			targetProxy = AB5E46D91F7DE65F00C1118C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -586,6 +578,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = ZGPWV67SM9;
