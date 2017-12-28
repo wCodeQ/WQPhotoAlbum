@@ -12,6 +12,9 @@ import Photos
 /// 是否开启print信息打印
 public var WQPhotoAlbumEnableDebugOn = false
 
+/// 导航条高度（不包含状态栏高度）默认44
+public var WQNavigationHeight: CGFloat = 44
+
 /// 主题色
 public var WQPhotoAlbumSkinColor = UIColor(red: 0, green: 147/255.0, blue: 1, alpha: 1) {
     didSet {

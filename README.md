@@ -36,6 +36,8 @@ github "wCodeQ/WQPhotoAlbum"
 ```Swift
 //主要按钮和选择图主色调，默认#0093FF色
 WQPhotoAlbumSkinColor = UIColor.red
+//导航条高度（不包含状态栏高度）默认44
+WQNavigationHeight = 44
 //是否打开调试打印信息，默认false
 WQPhotoAlbumEnableDebugOn = true
 ```

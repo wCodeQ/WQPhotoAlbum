@@ -113,7 +113,7 @@ public class WQPhotoPreviewDeleteViewController: WQPhotoBaseViewController, UICo
     }
     
     func oneTapClick(tap: UITapGestureRecognizer) {
-        var moveY = -64
+        var moveY = -WQNavigationTotalHeight
         if self.naviView.frame.origin.y < 0 {
             moveY = 0
         }

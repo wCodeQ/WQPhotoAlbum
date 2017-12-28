@@ -16,7 +16,7 @@ class WQPhotoAlbumListViewController: WQPhotoBaseViewController, UITableViewDele
     
     private var albumsList: [(assetCollection:PHAssetCollection, assetsFetchResult: PHFetchResult<PHAsset>)] = []
     private lazy var albumTableView: UITableView = {
-        let tableView = UITableView(frame: CGRect(x: 0, y: 64, width: WQScreenWidth, height: WQScreenHeight-64), style: .plain)
+        let tableView = UITableView(frame: CGRect(x: 0, y: WQNavigationTotalHeight, width: WQScreenWidth, height: WQScreenHeight-WQNavigationTotalHeight), style: .plain)
         tableView.backgroundColor = UIColor.white
         tableView.delegate = self
         tableView.dataSource = self

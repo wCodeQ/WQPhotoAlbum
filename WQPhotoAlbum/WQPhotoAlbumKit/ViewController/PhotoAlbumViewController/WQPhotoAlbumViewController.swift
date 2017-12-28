@@ -28,14 +28,14 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
         let shape: CGFloat = 5
         let cellWidth: CGFloat = (WQScreenWidth - 5 * shape) / 4
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsetsMake(64, shape, self.type == .selectPhoto ? 44:0, shape)
+        flowLayout.sectionInset = UIEdgeInsetsMake(WQNavigationTotalHeight, shape, self.type == .selectPhoto ? 44+WQHomeBarHeight:0, shape)
         flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
         flowLayout.minimumLineSpacing = shape
         flowLayout.minimumInteritemSpacing = shape
         //  collectionView
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: WQScreenWidth, height: WQScreenHeight), collectionViewLayout: flowLayout)
         collectionView.backgroundColor = UIColor.white
-        collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 44, 0)
+        collectionView.scrollIndicatorInsets = UIEdgeInsetsMake(WQNavigationTotalHeight, 0, 44+WQHomeBarHeight, 0)
         //  添加协议方法
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -46,7 +46,7 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     
     private var bottomView = WQAlbumBottomView()
     private lazy var loadingView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 64, width: WQScreenWidth, height: WQScreenHeight-64))
+        let view = UIView(frame: CGRect(x: 0, y: WQNavigationTotalHeight, width: WQScreenWidth, height: WQScreenHeight-WQNavigationTotalHeight))
         view.backgroundColor = UIColor.clear
         let loadingBackView = UIImageView(frame: CGRect(x: view.frame.width/2-54, y: view.frame.height/2-32-54, width: 108, height: 108))
         loadingBackView.image = UIImage.wqCreateImageWithColor(color: UIColor(white: 0, alpha: 0.8), size: CGSize(width: 108, height: 108))?.wqSetRoundedCorner(radius: 6)
@@ -70,8 +70,11 @@ class WQPhotoAlbumViewController: WQPhotoBaseViewController, PHPhotoLibraryChang
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        self.automaticallyAdjustsScrollViewInsets = false
+        if #available(iOS 11.0, *) {
+            self.photoCollectionView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
         self.view.addSubview(self.photoCollectionView)
         self.initNavigation()
         if type == .selectPhoto {
@@ -384,11 +387,11 @@ class WQAlbumBottomView: UIView {
     }
     
     convenience init() {
-        self.init(frame: CGRect(x: 0, y: WQScreenHeight-44, width: WQScreenWidth, height: 44), type: .normal)
+        self.init(frame: CGRect(x: 0, y: WQScreenHeight-WQHomeBarHeight-44, width: WQScreenWidth, height: 44+WQHomeBarHeight), type: .normal)
     }
     
     convenience init(type: WQAlbumBottomViewType) {
-        self.init(frame: CGRect(x: 0, y: WQScreenHeight-44, width: WQScreenWidth, height: 44), type: type)
+        self.init(frame: CGRect(x: 0, y: WQScreenHeight-WQHomeBarHeight-44, width: WQScreenWidth, height: 44+WQHomeBarHeight), type: type)
     }
     
     convenience override init(frame: CGRect) {
